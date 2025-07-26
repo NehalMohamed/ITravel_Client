@@ -1,0 +1,63 @@
+// Import all component styles
+@import './variables';
+@import './mixins';
+@import '../components/ContactNavbar/ContactNavbar';
+@import '../components/MainNavbar/MainNavbar';
+@import '../components/Header/Header';
+@import '../components/SliderSection/SliderSection';
+@import '../components/HeroSlider/HeroSlider';
+@import '../components/ToursSection/ToursSection';
+@import '../components/TourCard/TourCard';
+@import '../components/Footer/Footer';
+
+// Global styles
+.App {
+  font-family: "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+// Global responsive utilities
+.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  @include media-breakpoint-up(sm) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Remove default margins and paddings
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Adjust hero section for fixed header
+.hero-section {
+  margin-top: 100px !important;
+}
+
+
+.nav-item, .icon-btn {
+  @include media-breakpoint-down(sm) {
+    min-height: 44px; // Apple recommended minimum touch target
+    min-width: 44px;
+  }
+}

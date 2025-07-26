@@ -1,0 +1,54 @@
+{
+    "general": {
+        "more": "More",
+        "top_offers": "Top Offers",
+        "show_more": "Show More"
+    },
+    "language": {
+        "language": "Language",
+        "english": "English",
+        "german": "German"
+    },
+    "main_navbar": {
+        "travel": "Travel",
+        "home": "Home",
+        "egypt_excursions": "Egypt Excursions",
+        "hurghada": "Hurghada",
+        "makadi_bay": "Makadi Bay",
+        "el_gouna": "El Gouna",
+        "soma_bay": "Soma Bay",
+        "sahl_hashesh": "Sahl Hashesh",
+        "el_quseir": "El-Quseir",
+        "marsa_alam": "Marsa Alam",
+        "egypt_roundtrips": "Egypt Roundtrips",
+        "transfer_services": "Transfer Services",
+        "about_us": "About Us",
+        "contact": "Contact",
+        "search": "Search",
+        "search_placeholder": "Search...",
+        "wishlist": "Wishlist",
+        "shopping_basket": "Shopping Basket",
+        "profile": "Profile",
+        "my_profile": "My Profile",
+        "logout": "Logout"
+    },
+    "tours": {
+        "loading": "Loading tours...",
+        "empty_title": "No tours available",
+        "empty_text": "Please check back later for new offers.",
+        "top_offers": "Top Offers"
+    },
+    "footer": {
+        "travel": "Travel",
+        "footer_description": "A travel company for transportation and travel to Egypt distinguished by trust, safety, and punctuality.",
+        "home": "Home",
+        "about_us": "About Us",
+        "contact": "Contact",
+        "company": "Company",
+        "privacy": "Privacy",
+        "support": "Support",
+        "help_center": "Help Center",
+        "our_news": "Our News",
+        "discover_egypt": "Discover_Egypt_with_new_eyes"
+    }
+}
