@@ -38,6 +38,13 @@
         "empty_text": "Schauen Sie später wieder vorbei für neue Angebote.",
         "top_offers": "Top Angebote"
     },
+    "wishlist": {
+        "title": "Ihre Wunschliste",
+        "saved": "Gespeichert",
+        "remove": "Von Wunschliste entfernen",
+        "topCities": "Top Städte, die man besuchen sollte",
+        "topCitiesDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
+    },
     "footer": {
         "travel": "Reisen",
         "footer_description": "Ein Reiseunternehmen für Transport und Reisen nach Ägypten, das sich durch Vertrauen, Sicherheit und Pünktlichkeit auszeichnet.",

@@ -38,6 +38,13 @@
         "empty_text": "Please check back later for new offers.",
         "top_offers": "Top Offers"
     },
+    "wishlist": {
+        "title": "Your wishlist",
+        "saved": "Saved",
+        "remove": "Remove from wishlist",
+        "topCities": "Top Cities to Visit",
+        "topCitiesDescription": "Experience the thrill of discovering hidden gems and famous landmarks in the best travel destinations worldwide - your wanderlust awaits!"
+    },
     "footer": {
         "travel": "Travel",
         "footer_description": "A travel company for transportation and travel to Egypt distinguished by trust, safety, and punctuality.",

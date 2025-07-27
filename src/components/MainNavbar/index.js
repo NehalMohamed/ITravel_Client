@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket, FaHeart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -12,6 +13,11 @@ const MainNavbar = () => {
   const wishlistCount = useSelector((state) => state.tours.wishlistCount);
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  const handleWishlistClick = () => {
+    navigate("/Wishlist");
+  };
   return (
     <Navbar expand="lg" className="main-navbar" sticky="top">
       <Container>
@@ -58,7 +64,7 @@ const MainNavbar = () => {
               <LanguageDropdown />
 
               {/* Wishlist/Heart Icon */}
-              <button className="icon-btn wishlist-btn" aria-label="wishlist">
+              <button className="icon-btn wishlist-btn" aria-label="wishlist" onClick={handleWishlistClick}>
                 <FaHeart />
                 {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
               </button>
