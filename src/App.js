@@ -4,6 +4,8 @@ import MainLayout from './layouts/MainLayout';
 import MinimalLayout from './layouts/MinimalLayout';
 import Home from './pages/HomePage';
 import Wishlist from './pages/WishlistPage';
+import NotFound from './components/NotFound';
+import NoResults from './components/NoResults';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
 
@@ -16,14 +18,19 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/Wishlist" element={<Wishlist />} />
+             <Route path="/NoResults" element={<NoResults />} />
             {/* <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} /> */}
+
+              <Route path="*" element={<NotFound />} />
           </Route>
 
           {/* Routes without navbar and footer */}
           <Route element={<MinimalLayout />}>
             {/* <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} /> */}
+
+            
           </Route>
         </Routes>
       </Router>

@@ -57,5 +57,13 @@
         "help_center": "Help Center",
         "our_news": "Our News",
         "discover_egypt": "Discover_Egypt_with_new_eyes"
+    },
+    "NotFound": {
+        "title": "Something gone wrong!",
+        "backBtn": "GO BACK"
+    },
+    "NoResults": {
+        "title": "Ups!... no results found",
+        "subTitle": "Please try another search"
     }
 }
