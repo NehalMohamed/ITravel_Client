@@ -4,10 +4,12 @@ import MainLayout from "./layouts/MainLayout";
 import MinimalLayout from "./layouts/MinimalLayout";
 import Home from "./pages/HomePage";
 import Wishlist from "./pages/WishlistPage";
-import AuthComp from "./components/AuthComp/AuthComp";
+import NotFound from "./components/NotFound";
+import NoResults from "./components/NoResults";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
+import AuthComp from "./components/AuthComp/AuthComp";
 
 function App() {
   return (
@@ -18,9 +20,12 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/Wishlist" element={<Wishlist />} />
-            {/* <Route path="/Auth" element={<AuthComp/>} /> */}
+            <Route path="/NoResults" element={<NoResults />} />
+            <Route path="/Auth" element={<AuthComp />} />
             {/* <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} /> */}
+
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           {/* Routes without navbar and footer */}

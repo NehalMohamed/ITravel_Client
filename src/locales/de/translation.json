@@ -58,6 +58,14 @@
     "our_news": "Unsere Neuigkeiten",
     "discover_egypt": "Entdecke_Ägypten_mit_neuen_Augen"
   },
+  "NotFound": {
+    "title": "Etwas ist schiefgelaufen!",
+    "backBtn": "ZURÜCK"
+  },
+  "NoResults": {
+    "title": "Hoppla!... keine Ergebnisse gefunden",
+    "subTitle": "Bitte versuchen Sie eine andere Suche"
+  },
   "Login": {
     "LoginTitle": "Anmelden",
     "SignUpTitle": "Registrieren",
