@@ -1,22 +1,22 @@
 import { Card, Button } from "react-bootstrap";
 import { FaCheck, FaHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { useTranslation } from 'react-i18next';
-import { bookTour, toggleWishlist } from "../../store/toursSlice";
+import { useTranslation } from "react-i18next";
+import { bookTour, toggleWishlist } from "../../redux/store/toursSlice";
 
 const TourCard = ({ tour }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const handleBooking = () => {
-    dispatch(bookTour(tour.id))
-    alert(`Tour "${tour.title}" wurde gebucht!`)
-  }
+    dispatch(bookTour(tour.id));
+    alert(`Tour "${tour.title}" wurde gebucht!`);
+  };
 
   const handleWishlistToggle = (e) => {
-    e.stopPropagation()
-    dispatch(toggleWishlist(tour.id))
-  }
+    e.stopPropagation();
+    dispatch(toggleWishlist(tour.id));
+  };
 
   return (
     <Card className="tour-card h-100">
@@ -46,7 +46,7 @@ const TourCard = ({ tour }) => {
 
         <div className="card-footer-content">
           <Button variant="outline-primary" className="book-btn">
-            {t('general.show_more')}
+            {t("general.show_more")}
           </Button>
           <div className="price-section">
             <span className="price-label">ab</span>
@@ -56,7 +56,7 @@ const TourCard = ({ tour }) => {
         </div>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
 export default TourCard;

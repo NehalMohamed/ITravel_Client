@@ -1,22 +1,26 @@
 // Import all component styles
-@import './variables';
-@import './mixins';
-@import '../components/ContactNavbar/ContactNavbar';
-@import '../components/MainNavbar/MainNavbar';
-@import '../components/Header/Header';
-@import '../components/SliderSection/SliderSection';
-@import '../components/HeroSlider/HeroSlider';
-@import '../components/ToursSection/ToursSection';
-@import '../components/TourCard/TourCard';
-@import '../components/WishlistCard/WishlistCard';
-@import '../components/WishlistSection/WishlistSection';
-@import '../components/CityCard/CityCard';
-@import '../components/CityCarousel/CityCarousel';
-@import '../components/Footer/Footer';
+@import "./variables";
+@import "./mixins";
+@import "../components/ContactNavbar/ContactNavbar";
+@import "../components/MainNavbar/MainNavbar";
+@import "../components/Header/Header";
+@import "../components/SliderSection/SliderSection";
+@import "../components/HeroSlider/HeroSlider";
+@import "../components/ToursSection/ToursSection";
+@import "../components/TourCard/TourCard";
+@import "../components/WishlistCard/WishlistCard";
+@import "../components/WishlistSection/WishlistSection";
+@import "../components/CityCard/CityCard";
+@import "../components/CityCarousel/CityCarousel";
+@import "../components/Footer/Footer";
+@import "../components/AuthComp/AuthComp.scss";
 
 // Global styles
+body {
+  font-family: "Roboto", sans-serif !important;
+}
 .App {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
 
@@ -24,12 +28,12 @@
 .container-fluid {
   padding-left: 15px;
   padding-right: 15px;
-  
+
   @include media-breakpoint-up(sm) {
     padding-left: 20px;
     padding-right: 20px;
   }
-  
+
   @include media-breakpoint-up(lg) {
     padding-left: 30px;
     padding-right: 30px;
@@ -58,10 +62,33 @@ html {
   margin-top: 100px !important;
 }
 
-
-.nav-item, .icon-btn {
+.nav-item,
+.icon-btn {
   @include media-breakpoint-down(sm) {
     min-height: 44px; // Apple recommended minimum touch target
     min-width: 44px;
   }
+}
+
+//shared style
+.primaryBtn {
+  background-color: $primary-color !important;
+  border-color: $primary-color !important;
+  color: white !important;
+}
+.transBtn {
+  background-color: transparent !important;
+  border-color: $primary-color !important;
+  color: $primary-color !important;
+}
+.FullWidthBtn {
+  width: 100% !important;
+  height: 40px !important;
+  // border-radius: 5px !important;
+  // margin: 20px 0 !important;
+  border-width: 1px !important;
+  font-size: 14px !important;
+}
+input:-internal-autofill-selected {
+  background-color: white !important;
 }

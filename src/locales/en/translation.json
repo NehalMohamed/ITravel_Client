@@ -1,61 +1,84 @@
 {
-    "general": {
-        "more": "More",
-        "top_offers": "Top Offers",
-        "show_more": "Show More"
-    },
-    "language": {
-        "language": "Language",
-        "english": "English",
-        "german": "German"
-    },
-    "main_navbar": {
-        "travel": "Travel",
-        "home": "Home",
-        "egypt_excursions": "Egypt Excursions",
-        "hurghada": "Hurghada",
-        "makadi_bay": "Makadi Bay",
-        "el_gouna": "El Gouna",
-        "soma_bay": "Soma Bay",
-        "sahl_hashesh": "Sahl Hashesh",
-        "el_quseir": "El-Quseir",
-        "marsa_alam": "Marsa Alam",
-        "egypt_roundtrips": "Egypt Roundtrips",
-        "transfer_services": "Transfer Services",
-        "about_us": "About Us",
-        "contact": "Contact",
-        "search": "Search",
-        "search_placeholder": "Search...",
-        "wishlist": "Wishlist",
-        "shopping_basket": "Shopping Basket",
-        "profile": "Profile",
-        "my_profile": "My Profile",
-        "logout": "Logout"
-    },
-    "tours": {
-        "loading": "Loading tours...",
-        "empty_title": "No tours available",
-        "empty_text": "Please check back later for new offers.",
-        "top_offers": "Top Offers"
-    },
-    "wishlist": {
-        "title": "Your wishlist",
-        "saved": "Saved",
-        "remove": "Remove from wishlist",
-        "topCities": "Top Cities to Visit",
-        "topCitiesDescription": "Experience the thrill of discovering hidden gems and famous landmarks in the best travel destinations worldwide - your wanderlust awaits!"
-    },
-    "footer": {
-        "travel": "Travel",
-        "footer_description": "A travel company for transportation and travel to Egypt distinguished by trust, safety, and punctuality.",
-        "home": "Home",
-        "about_us": "About Us",
-        "contact": "Contact",
-        "company": "Company",
-        "privacy": "Privacy",
-        "support": "Support",
-        "help_center": "Help Center",
-        "our_news": "Our News",
-        "discover_egypt": "Discover_Egypt_with_new_eyes"
-    }
+  "general": {
+    "more": "More",
+    "top_offers": "Top Offers",
+    "show_more": "Show More"
+  },
+  "language": {
+    "language": "Language",
+    "english": "English",
+    "german": "German"
+  },
+  "main_navbar": {
+    "travel": "Travel",
+    "home": "Home",
+    "egypt_excursions": "Egypt Excursions",
+    "hurghada": "Hurghada",
+    "makadi_bay": "Makadi Bay",
+    "el_gouna": "El Gouna",
+    "soma_bay": "Soma Bay",
+    "sahl_hashesh": "Sahl Hashesh",
+    "el_quseir": "El-Quseir",
+    "marsa_alam": "Marsa Alam",
+    "egypt_roundtrips": "Egypt Roundtrips",
+    "transfer_services": "Transfer Services",
+    "about_us": "About Us",
+    "contact": "Contact",
+    "search": "Search",
+    "search_placeholder": "Search...",
+    "wishlist": "Wishlist",
+    "shopping_basket": "Shopping Basket",
+    "profile": "Profile",
+    "my_profile": "My Profile",
+    "logout": "Logout"
+  },
+  "tours": {
+    "loading": "Loading tours...",
+    "empty_title": "No tours available",
+    "empty_text": "Please check back later for new offers.",
+    "top_offers": "Top Offers"
+  },
+  "wishlist": {
+    "title": "Your wishlist",
+    "saved": "Saved",
+    "remove": "Remove from wishlist",
+    "topCities": "Top Cities to Visit",
+    "topCitiesDescription": "Experience the thrill of discovering hidden gems and famous landmarks in the best travel destinations worldwide - your wanderlust awaits!"
+  },
+  "footer": {
+    "travel": "Travel",
+    "footer_description": "A travel company for transportation and travel to Egypt distinguished by trust, safety, and punctuality.",
+    "home": "Home",
+    "about_us": "About Us",
+    "contact": "Contact",
+    "company": "Company",
+    "privacy": "Privacy",
+    "support": "Support",
+    "help_center": "Help Center",
+    "our_news": "Our News",
+    "discover_egypt": "Discover_Egypt_with_new_eyes"
+  },
+  "Login": {
+    "LoginTitle": "Log in",
+    "SignUpTitle": "Sign Up",
+    "LoginSubTitle": "Check out more easily and access your tickets on any device with your <strong>I Travel Pro </strong> account.",
+    "LoginCheckBoxTitle": "Send me discounts and other offers by email.<br/>Opt out any time in your settings",
+    "LoginCheckBoxSubTitle": "Opt out any time in your settings",
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "confirmPassword": "Confirm Password",
+    "ConfirmPasswordError": "Password donnot match.",
+    "EmailError": "Please enter a valid email address.",
+    "PasswordError": "Password must be at least 6 characters long.",
+    "email": "Email Address",
+    "signIn": "Sign in",
+    "password": "Password",
+    "LoginWithGoogle": "Login With Google",
+    "RegisterWithGoogle": "Register With Google",
+    "DontHaveAccount": "Don't have an account?",
+    "CreateAccount": "Create an account",
+    "PrivacyText": "By signing in or creating an account, you accept our Terms and Conditions and Privacy Policy.",
+    "Or": "Or Continue With",
+    "HaveAccount": "Already have an account?"
+  }
 }

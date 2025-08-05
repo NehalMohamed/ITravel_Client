@@ -1,61 +1,84 @@
 {
-    "general": {
-        "more": "Mehr",
-        "top_offers": "Top Angebote",
-        "show_more": "Mehr anzeigen"
-    },
-    "language": {
-        "language": "Sprache",
-        "english": "Englisch",
-        "german": "Deutsch"
-    },
-    "main_navbar": {
-        "travel": "Reisen",
-        "home": "Startseite",
-        "egypt_excursions": "Ägypten Ausflüge",
-        "hurghada": "Hurghada",
-        "makadi_bay": "Makadi Bay",
-        "el_gouna": "El Gouna",
-        "soma_bay": "Soma Bay",
-        "sahl_hashesh": "Sahl Hashesh",
-        "el_quseir": "El-Quseir",
-        "marsa_alam": "Marsa Alam",
-        "egypt_roundtrips": "Ägypten Rundreisen",
-        "transfer_services": "Transfer Services",
-        "about_us": "Über uns",
-        "contact": "Kontakt",
-        "search": "Suche",
-        "search_placeholder": "Suchen...",
-        "wishlist": "Wunschliste",
-        "shopping_basket": "Warenkorb",
-        "profile": "Profil",
-        "my_profile": "Mein Profil",
-        "logout": "Abmelden"
-    },
-    "tours": {
-        "loading": "Touren werden geladen...",
-        "empty_title": "Keine Touren verfügbar",
-        "empty_text": "Schauen Sie später wieder vorbei für neue Angebote.",
-        "top_offers": "Top Angebote"
-    },
-    "wishlist": {
-        "title": "Ihre Wunschliste",
-        "saved": "Gespeichert",
-        "remove": "Von Wunschliste entfernen",
-        "topCities": "Top Städte, die man besuchen sollte",
-        "topCitiesDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
-    },
-    "footer": {
-        "travel": "Reisen",
-        "footer_description": "Ein Reiseunternehmen für Transport und Reisen nach Ägypten, das sich durch Vertrauen, Sicherheit und Pünktlichkeit auszeichnet.",
-        "home": "Startseite",
-        "about_us": "Über uns",
-        "contact": "Kontakt",
-        "company": "Unternehmen",
-        "privacy": "Datenschutz",
-        "support": "Support",
-        "help_center": "Hilfezentrum",
-        "our_news": "Unsere Neuigkeiten",
-        "discover_egypt": "Entdecke_Ägypten_mit_neuen_Augen"
-    }
+  "general": {
+    "more": "Mehr",
+    "top_offers": "Top Angebote",
+    "show_more": "Mehr anzeigen"
+  },
+  "language": {
+    "language": "Sprache",
+    "english": "Englisch",
+    "german": "Deutsch"
+  },
+  "main_navbar": {
+    "travel": "Reisen",
+    "home": "Startseite",
+    "egypt_excursions": "Ägypten Ausflüge",
+    "hurghada": "Hurghada",
+    "makadi_bay": "Makadi Bay",
+    "el_gouna": "El Gouna",
+    "soma_bay": "Soma Bay",
+    "sahl_hashesh": "Sahl Hashesh",
+    "el_quseir": "El-Quseir",
+    "marsa_alam": "Marsa Alam",
+    "egypt_roundtrips": "Ägypten Rundreisen",
+    "transfer_services": "Transfer Services",
+    "about_us": "Über uns",
+    "contact": "Kontakt",
+    "search": "Suche",
+    "search_placeholder": "Suchen...",
+    "wishlist": "Wunschliste",
+    "shopping_basket": "Warenkorb",
+    "profile": "Profil",
+    "my_profile": "Mein Profil",
+    "logout": "Abmelden"
+  },
+  "tours": {
+    "loading": "Touren werden geladen...",
+    "empty_title": "Keine Touren verfügbar",
+    "empty_text": "Schauen Sie später wieder vorbei für neue Angebote.",
+    "top_offers": "Top Angebote"
+  },
+  "wishlist": {
+    "title": "Ihre Wunschliste",
+    "saved": "Gespeichert",
+    "remove": "Von Wunschliste entfernen",
+    "topCities": "Top Städte, die man besuchen sollte",
+    "topCitiesDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
+  },
+  "footer": {
+    "travel": "Reisen",
+    "footer_description": "Ein Reiseunternehmen für Transport und Reisen nach Ägypten, das sich durch Vertrauen, Sicherheit und Pünktlichkeit auszeichnet.",
+    "home": "Startseite",
+    "about_us": "Über uns",
+    "contact": "Kontakt",
+    "company": "Unternehmen",
+    "privacy": "Datenschutz",
+    "support": "Support",
+    "help_center": "Hilfezentrum",
+    "our_news": "Unsere Neuigkeiten",
+    "discover_egypt": "Entdecke_Ägypten_mit_neuen_Augen"
+  },
+  "Login": {
+    "LoginTitle": "Anmelden",
+    "SignUpTitle": "Registrieren",
+    "LoginSubTitle": "Melden Sie sich mit Ihrem <strong>I Travel Pro</strong>-Konto an, um einfacher einzuchecken und auf jedem Gerät auf Ihre Tickets zuzugreifen.",
+    "LoginCheckBoxTitle": "Senden Sie mir Rabatte und andere Angebote per E-Mail.<br/>Sie können sich jederzeit in Ihren Einstellungen abmelden.",
+    "LoginCheckBoxSubTitle": "Sie können sich jederzeit in Ihren Einstellungen abmelden.",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "confirmPassword": "Passwort bestätigen",
+    "ConfirmPasswordError": "Passwörter stimmen nicht überein.",
+    "EmailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "PasswordError": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+    "email": "E-Mail-Adresse",
+    "signIn": "Anmelden",
+    "password": "Passwort",
+    "LoginWithGoogle": "Mit Google anmelden",
+    "RegisterWithGoogle": "Mit Google registrieren",
+    "DontHaveAccount": "Sie haben noch kein Konto?",
+    "CreateAccount": "Konto erstellen",
+    "PrivacyText": "Mit der Anmeldung oder Kontoerstellung akzeptieren Sie unsere Allgemeinen Geschäftsbedingungen und Datenschutzrichtlinie.",
+    "Or": "Oder weiter mit",
+    "HaveAccount": "Sie haben bereits ein Konto?"
+  }
 }

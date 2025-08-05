@@ -1,9 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import MinimalLayout from './layouts/MinimalLayout';
-import Home from './pages/HomePage';
-import Wishlist from './pages/WishlistPage';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import MinimalLayout from "./layouts/MinimalLayout";
+import Home from "./pages/HomePage";
+import Wishlist from "./pages/WishlistPage";
+import AuthComp from "./components/AuthComp/AuthComp";
+import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
 
@@ -16,6 +18,7 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/Wishlist" element={<Wishlist />} />
+            {/* <Route path="/Auth" element={<AuthComp/>} /> */}
             {/* <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} /> */}
           </Route>
@@ -27,8 +30,20 @@ function App() {
           </Route>
         </Routes>
       </Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
-  )
+  );
 }
 
 export default App;
