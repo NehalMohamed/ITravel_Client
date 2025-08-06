@@ -16,6 +16,8 @@
 @import "../components/NotFound/NotFound";
 @import "../components/NoResults/NoResults";
 @import "../components/AuthComp/AuthComp.scss";
+@import "../components/AuthComp/OTP/Otp.scss";
+
 // Global styles
 body {
   font-family: "Roboto", sans-serif !important;
@@ -92,4 +94,14 @@ html {
 }
 input:-internal-autofill-selected {
   background-color: white !important;
+}
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  div {
+    margin: 20px 0;
+  }
 }

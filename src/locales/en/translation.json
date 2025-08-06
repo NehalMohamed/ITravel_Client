@@ -87,6 +87,20 @@
     "CreateAccount": "Create an account",
     "PrivacyText": "By signing in or creating an account, you accept our Terms and Conditions and Privacy Policy.",
     "Or": "Or Continue With",
-    "HaveAccount": "Already have an account?"
+    "HaveAccount": "Already have an account?",
+    "CodeVerifyTitle": "Enter The Code sent To",
+    "CodeVerifyTitle2": "To Verify your mail",
+    "SendCode": "Send Code",
+    "fillField": "Please fill this field",
+    "spamAlert": {
+      "title": "Can't find our email?",
+      "check": "Check your",
+      "spam": "spam",
+      "or": "or",
+      "junk": "junk",
+      "folder": "folder",
+      "addToContacts": "Add our email address to your contacts/whitelist",
+      "waitAndRefresh": "Wait a few minutes and refresh your inbox"
+    }
   }
 }

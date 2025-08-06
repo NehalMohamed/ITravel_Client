@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import GoogleLoginButton from "./googleLoginButton";
 import { LoginUser, RegisterUser } from "../../redux/Slices/AuthSlice";
 import LoadingPage from "../Loader/LoadingPage";
-import { toast } from "react-toastify";
+import PopUp from "../Shared/popup/PopUp";
 function AuthComp() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ function AuthComp() {
   const [type, setType] = useState("login");
   const [errorsLst, seterrorsLst] = useState({});
   const [validated, setvalidated] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // State for popup visibility
   const [formData, setformData] = useState({
     FirstName: "",
     LastName: "",
@@ -25,7 +26,7 @@ function AuthComp() {
     sendOffers: false,
   });
 
-  const { loading, error, success } = useSelector((state) => state.auth);
+  const { loading, success, message } = useSelector((state) => state.auth);
   const handleClose = () => {
     setShow(false);
   };
@@ -95,7 +96,18 @@ function AuthComp() {
       } else {
         formData["lang"] = lang;
         let data = { payload: formData, path: "/RegisterUser" };
-        dispatch(RegisterUser(data));
+        dispatch(RegisterUser(data)).then((result) => {
+          if (result.payload && result.payload.isSuccessed) {
+            //if user register successfully so navigate to  verify email first
+            setShowPopup(false);
+            navigate("/verifyEmail", {
+              replace: true,
+              state: { path: "/" },
+            });
+          } else {
+            setShowPopup(true);
+          }
+        });
       }
     }
   };
@@ -107,12 +119,18 @@ function AuthComp() {
       [e.target.name]: e.target.value,
     });
   };
-  useEffect(() => {
-    if (success) {
-      navigate("/");
-    }
-    return () => {};
-  }, [success]);
+  // useEffect(() => {
+  //   let path = type == "login" ? "/" : "/VerifyEmail";
+  //   if (success == true) {
+  //     setShow(false);
+  //     setShowPopup(false);
+
+  //     navigate(path);
+  //   } else {
+  //     setShowPopup(true);
+  //   }
+  //   return () => {};
+  // }, [success]);
 
   return (
     <>
@@ -322,13 +340,22 @@ function AuthComp() {
           </p>
           <GoogleLoginButton
             login={type == "login" ? true : false}
+            sendOffers={formData.sendOffers}
             // isAuthRedirect={props.isAuthRedirect}
             // redirectPath={props.redirectPath}
           />
         </Modal.Body>
       </Modal>
       {loading && <LoadingPage />}
-      {error && !success && toast(error, { type: "error" })}
+      {showPopup == true ? (
+        <PopUp
+          show={showPopup}
+          closeAlert={() => setShowPopup(false)}
+          msg={message}
+          type={success ? "success" : "error"}
+          autoClose={3000}
+        />
+      ) : null}
     </>
   );
 }

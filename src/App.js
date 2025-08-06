@@ -6,10 +6,10 @@ import Home from "./pages/HomePage";
 import Wishlist from "./pages/WishlistPage";
 import NotFound from "./components/NotFound";
 import NoResults from "./components/NoResults";
-import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
 import AuthComp from "./components/AuthComp/AuthComp";
+import OTPInput from "./components/AuthComp/OTP/OTPInput";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
             <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="/NoResults" element={<NoResults />} />
             <Route path="/Auth" element={<AuthComp />} />
+            <Route path="/VerifyEmail" element={<OTPInput />} />
             {/* <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} /> */}
 
@@ -35,18 +36,6 @@ function App() {
           </Route>
         </Routes>
       </Router>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick={true}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 }

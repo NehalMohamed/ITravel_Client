@@ -45,7 +45,7 @@
     &:focus,
     &:active {
       outline: 0;
-      border: 0;
+      border: 1px solid #707070;
     }
     .formInput {
       height: 40px;
@@ -59,8 +59,8 @@
       &:active {
         outline: 0;
         border: 0;
-        background-color: white;
-        box-shadow: unset;
+        background-color: white !important;
+        box-shadow: unset !important;
       }
     }
     label {
