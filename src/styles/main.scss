@@ -16,12 +16,19 @@
 @import "../components/NotFound/NotFound";
 @import "../components/NoResults/NoResults";
 @import "../components/AuthComp/AuthComp.scss";
+@import "../components/About/About.scss";
+@import "../components/ContactInfo/ContactInfo.scss";
+@import "../components/Features/Features.scss";
+@import "../components/Newsletter/Newsletter.scss";
+@import "../components/Testimonial/Testimonial.scss";
+@import "../components/Contact/Contact.scss";
+@import "../components/TopDestinations/TopDestinations.scss";
 // Global styles
 body {
-  font-family: "Roboto", sans-serif !important;
+  font-family: 'Myriad Pro','Source Sans Pro', sans-serif !important;
 }
 .App {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Myriad Pro','Source Sans Pro', sans-serif;
   overflow-x: hidden;
 }
 
@@ -77,6 +84,11 @@ html {
   border-color: $primary-color !important;
   color: white !important;
 }
+.secondryBtn {
+  background-color: $secondary-color !important;
+  border-color: $secondary-color !important;
+  color: $primary-color  !important;
+}
 .transBtn {
   background-color: transparent !important;
   border-color: $primary-color !important;
@@ -92,4 +104,9 @@ html {
 }
 input:-internal-autofill-selected {
   background-color: white !important;
+}
+.end-btn{
+  display: flex;
+  justify-content: flex-end;
+  justify-items: flex-end;
 }

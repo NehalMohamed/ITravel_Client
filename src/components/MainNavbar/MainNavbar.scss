@@ -19,8 +19,8 @@
     }
 
     .logo-img {
-      height: 70px;
-      width: auto;
+      height: auto;
+      width: 119px;
 
       @include media-breakpoint-down(md) {
         height: 35px;
@@ -28,6 +28,10 @@
     }
 
   }
+.nav-dropdown-hover {
+  position: relative;
+  display: inline-block;
+}
 
   .navbar-toggler {
     border: none;
@@ -99,13 +103,13 @@
   }
 
   .navbar-nav {
-    gap: 5px;
+    gap: 1px;
 
     @include media-breakpoint-down(lg) {
       gap: 0;
     }
 
-    .nav-item {
+    .nav-link,.nav-item {
       color: $primary-color !important;
       font-weight: 500;
       font-size: 15px;

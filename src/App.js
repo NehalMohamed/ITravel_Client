@@ -6,6 +6,11 @@ import Home from "./pages/HomePage";
 import Wishlist from "./pages/WishlistPage";
 import NotFound from "./components/NotFound";
 import NoResults from "./components/NoResults";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import ComingSoon from "./components/ComingSoon";
+import Excursions from "./pages/ExcursionsPage";
+import DestinationExcursionsPage from "./pages/DestinationExcursionsPage";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
@@ -22,9 +27,15 @@ function App() {
             <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="/NoResults" element={<NoResults />} />
             <Route path="/Auth" element={<AuthComp />} />
-            {/* <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} /> */}
+            <Route path="/Contact" element={<ContactPage />} />
+            <Route path="/AboutUs" element={<AboutPage />} />
 
+            <Route path="/excursions" element={<Excursions />} />
+            <Route path="/excursions/:location" element={<DestinationExcursionsPage />} />
+
+
+
+            <Route path="/ComingSoon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 

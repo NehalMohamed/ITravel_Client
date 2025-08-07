@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket, FaHeart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -12,16 +12,16 @@ const MainNavbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const wishlistCount = useSelector((state) => state.tours.wishlistCount);
   const { t } = useTranslation();
-
   const navigate = useNavigate();
 
   const handleWishlistClick = () => {
     navigate("/Wishlist");
   };
+
   return (
     <Navbar expand="lg" className="main-navbar" sticky="top">
       <Container>
-        <Navbar.Brand href="/" className="brand-logo">
+        <Navbar.Brand as={NavLink} to="/" className="brand-logo">
           <img src="/ItravelLogo.png" alt={t('main_navbar.travel')} className="logo-img" />
         </Navbar.Brand>
 
@@ -29,21 +29,38 @@ const MainNavbar = () => {
 
         <Navbar.Collapse id="main-navbar-nav">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link href="/" className="nav-item active">
+            <Nav.Link
+              as={NavLink}
+              to="/"
+              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+              end
+            >
               {t('main_navbar.home')}
             </Nav.Link>
 
            <ExcursionsDropdown />
 
-            <Nav.Link href="#transfer" className="nav-item">
+            <Nav.Link
+              as={NavLink}
+              to="/ComingSoon"
+              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+            >
               {t('main_navbar.transfer_services')}
             </Nav.Link>
 
-            <Nav.Link href="#about" className="nav-item">
+                        <Nav.Link
+              as={NavLink}
+              to="/AboutUs"
+              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+            >
               {t('main_navbar.about_us')}
             </Nav.Link>
 
-            <Nav.Link href="#contact" className="nav-item">
+            <Nav.Link
+              as={NavLink}
+              to="/Contact"
+              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+            >
               {t('main_navbar.contact')}
             </Nav.Link>
 
@@ -51,12 +68,21 @@ const MainNavbar = () => {
             <div className="navbar-icons">
               {/* Search Icon */}
               <div className="search-container">
-                <button className="icon-btn search-btn" onClick={() => setShowSearch(!showSearch)} aria-label="search">
+                <button 
+                className="icon-btn search-btn" 
+                onClick={() => setShowSearch(!showSearch)} 
+                aria-label="search"
+                >
                   <FaSearch />
                 </button>
                 {showSearch && (
                   <div className="search-dropdown">
-                    <input type="text" placeholder={t('main_navbar.search_placeholder')} className="search-input" autoFocus />
+                    <input 
+                    type="text" 
+                    placeholder={t('main_navbar.search_placeholder')} 
+                    className="search-input" 
+                    autoFocus 
+                    />
                   </div>
                 )}
               </div>
@@ -64,7 +90,11 @@ const MainNavbar = () => {
               <LanguageDropdown />
 
               {/* Wishlist/Heart Icon */}
-              <button className="icon-btn wishlist-btn" aria-label="wishlist" onClick={handleWishlistClick}>
+              <button 
+              className="icon-btn wishlist-btn" 
+              aria-label="wishlist" 
+              onClick={handleWishlistClick}
+              >
                 <FaHeart />
                 {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
               </button>
@@ -75,7 +105,7 @@ const MainNavbar = () => {
                 {/* <span className="badge">2</span> */}
               </button>
 
-              <ProfileDropdown/>
+              <ProfileDropdown />
               
             </div>
           </Nav>

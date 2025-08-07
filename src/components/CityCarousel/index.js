@@ -49,7 +49,7 @@ const CityCarousel = () => {
     },
     {
       id: 4,
-      image: "/images/Cities/marsa al'am.jpg",
+      image: "/images/Cities/marsa alam.jpg",
       name: "Sahl Hashesh",
       reviews: 100,
       rating: 4,
@@ -58,7 +58,7 @@ const CityCarousel = () => {
     },
     {
       id: 5,
-      image: "/images/Cities/sahl-hasheesh-586155_1920.jpg",
+      image: "/images/Cities/sahl-hasheesh.jpg",
       name: "Sahl Hashesh",
       reviews: 100,
       rating: 5,
@@ -76,7 +76,7 @@ const CityCarousel = () => {
     },
     {
       id: 7,
-      image: "/images/Cities/sahl-hasheesh-586155_1920.jpg",
+      image: "/images/Cities/sahl-hasheesh.jpg",
       name: "Sahl Hashesh",
       reviews: 100,
       rating: 5,
@@ -89,8 +89,8 @@ const CityCarousel = () => {
     <section className="carousel-section" id="cities">
     <Container>
         <div className="section-header">
-            <h2 className="main-title">{t('wishlist.topCities')}</h2>
-            <p className="subtitle">
+            <h2 className="section-title">{t('wishlist.topCities')}</h2>
+            <p className="section-subtitle">
                {t('wishlist.topCitiesDescription')}
             </p>
         </div>

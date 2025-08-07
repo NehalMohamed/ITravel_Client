@@ -88,5 +88,72 @@
     "PrivacyText": "Mit der Anmeldung oder Kontoerstellung akzeptieren Sie unsere Allgemeinen Geschäftsbedingungen und Datenschutzrichtlinie.",
     "Or": "Oder weiter mit",
     "HaveAccount": "Sie haben bereits ein Konto?"
+  },
+  "testimonial": {
+    "title": "Wir Hören Gerne Von Ihnen",
+    "subtitle": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laborum.",
+    "content1": "Nunc cursus in tellus quis luctus. Pellentesque sapien lacus, facilisis non purus quis, placerat gravida lorem. Sed feugiat tortor eu enim dapibus dictum. Praesent non dolor efficitur, lacinia dui volutpat, elementum lacus. Praesent sit amet risus semper, iaculis enim in, bibendum nibh.",
+    "content2": "Maecenas quis venenatis ipsum, id hendrerit ligula. Donec a sem ut erat molestie feugiat ac ut elit. Proin consectetur nulla et ex molestie, quis semper nibh dignissim. Aliquam euismod lacus et sem tincidunt, at porta quam molestie. Sed blandit nibh leo, vel congue odio aliquam non. Etiam scelerisque a odio sed euismod. Proin eget elementum ipsum. Nam et viverra tortor. Mauris tempor nibh odio, id blandit arcu blandit et. Nunc vel dolor porttitor, cursus tortor id, accumsan felis.",
+    "content3": "Aenean ornare metus purus, porta pretium felis pretium sed. Proin placerat tortor a mauris volutpat lacinia. Etiam condimentum vehicula vehicula."
+  },
+  "newsletter": {
+    "label": "Unser Newsletter",
+    "title": "In Kontakt Bleiben",
+    "description": "Es gibt viele Variationen von Lorem Ipsum Passagen, aber die Mehrheit hat Veränderungen in irgendeiner Form erlitten, durch eingefügten Humor oder zufällige Wörter, die nicht einmal leicht glaubwürdig aussehen. Wenn Sie eine Passage von Lorem Ipsum verwenden möchten.",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "subscribeButton": "ABONNIEREN",
+    "successMessage": "Vielen Dank für das Abonnieren unseres Newsletters!"
+  },
+  "contactInfo": {
+    "visitUs": "BESUCHEN SIE UNS",
+    "callUs": "Rufen Sie Uns An",
+    "emailUs": "SCHREIBEN SIE UNS",
+    "address1": "1290 Stiven Street",
+    "address2": "Raleigh, New York City",
+    "phone1": "+22 123 587 4444",
+    "phone2": "+22 456 234 1111",
+    "email1": "mailus@gmail.com",
+    "email2": "getsupport@divi.com"
+  },
+  "features": {
+    "punctual": {
+      "title": "Pünktlich",
+      "feature1": "Pünktlich. Immer",
+      "feature2": "Verlässlich und stets pünktlich",
+      "feature3": "Wir liefern genau dann"
+    },
+    "safe": {
+      "title": "Sicher",
+      "feature1": "Sicherheit garantiert.",
+      "feature2": "Verlässliche Sicherheit für Ihre Bedürfnisse",
+      "feature3": "Schutz und Sicherheit an"
+    },
+    "trustworthy": {
+      "title": "Vertrauensvoll",
+      "feature1": "Ihr Partner in Vertrauen",
+      "feature2": "Verlässliche Zusammenarbeit mit Vertrauen",
+      "feature3": "Wir bauen auf Vertrauen"
+    },
+    "highQuality": {
+      "title": "Hochwertig",
+      "feature1": "erstklassiger Qualität",
+      "feature2": "Exzellente Qualität, die überzeugt",
+      "feature3": "Hochwertige Lösungen"
+    }
+  },
+  "about": {
+    "title": "Ein Reiseunternehmen für Transport und Reisen nach Ägypten, das sich durch Vertrauen, Sicherheit und Pünktlichkeit auszeichnet. Gemeinsam entdecken wir Ägypten mit neuen"
+  },
+  "contact": {
+    "title": "Kontakt Aufnehmen",
+    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laborum.",
+    "subText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisl ut aliquip. Nemo enim ipsam voluptatem quia voluptas",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "phonePlaceholder": "Telefon",
+    "messagePlaceholder": "Nachricht",
+    "sendButton": "Nachricht Senden",
+    "successMessage": "Nachricht erfolgreich gesendet!"
   }
 }
