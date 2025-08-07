@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
 import AuthComp from "./components/AuthComp/AuthComp";
+import OTPInput from "./components/AuthComp/OTP/OTPInput";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
             <Route path="/Auth" element={<AuthComp />} />
             <Route path="/Contact" element={<ContactPage />} />
             <Route path="/AboutUs" element={<AboutPage />} />
-
+            <Route path="/VerifyEmail" element={<OTPInput />} />
             <Route path="/excursions" element={<Excursions />} />
             <Route path="/excursions/:location" element={<DestinationExcursionsPage />} />
 
@@ -46,18 +47,6 @@ function App() {
           </Route>
         </Routes>
       </Router>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick={true}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 }

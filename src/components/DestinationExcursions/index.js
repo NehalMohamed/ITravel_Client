@@ -210,11 +210,97 @@ const DestinationExcursions = () => {
                 break;
             case 'el-gouna':
                 setPageTitle(t('main_navbar.el_gouna'));
-                setTours([
-                    // El Gouna-specific excursions data
-                    { id: 5, title: 'El Gouna Marina Walk', price: '$30' },
-                    { id: 6, title: 'Kitesurfing Lessons', price: '$100' },
-                ]);
+               setTours([
+                    {
+                        id: 1,
+                        title: "Ausflüge ab Hurghada",
+                        description:
+                            "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/makadi bay.jpg",
+                        features: [
+                            "Online buchen und vor Ort bezahlen",
+                            "Abholung von der Lobby Ihres Hotels",
+                            "Inklusive Versicherung",
+                            "Keine Verkaufsveranstaltungen",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 2,
+                        title: "DOLPHIN WATCH und Schnorcheln",
+                        description: "Erlebe Sie hautnah die faszinierende Welt der Delfine bei einem Schnorchelausflug ab Hurghada",
+                        image: "/images/Cities/el guna.jpg",
+                        features: [
+                            "Kostenlose Stornierung",
+                            "Dauer 7 Stunden",
+                            "jetzt buchen und vor Ort bezahlen",
+                            "Abholung von der Lobby Ihres Hotels",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 3,
+                        title: "Hurghada Stadtrundfahrt",
+                        description: "Entdecken Sie das authentische Hurghada mit travelpro Hurghada stadtrundfahrt Privat",
+                        image: "/images/Cities/soma bay.jpg",
+                        features: [
+                            "Deutschsprechender Reiseleiter",
+                            "Dauer 4 Stunden",
+                            "Abholung von der Lobby Ihres Hotels",
+                            "Keine Kaffeefahrt",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 4,
+                        title: "Luxor Tagesausflug",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/makadi bay.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Tal der Könige",
+                            "Karnak Tempel",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 5,
+                        title: "Schnorcheln im Roten Meer",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/el guna.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Schnorchelausrüstung",
+                            "2 Schnorchelstopps",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 6,
+                        title: "Kairo und Pyramiden",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/soma bay.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Pyramiden von Gizeh",
+                            "Ägyptisches Museum",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                ]
+                );
                 break;
             case 'soma-bay':
                 setPageTitle(t('main_navbar.soma_bay'));
@@ -406,10 +492,97 @@ const DestinationExcursions = () => {
                 break;
             case 'el-quseir':
                 setPageTitle(t('main_navbar.el_quseir'));
-                setTours([
-                    // El Quseir-specific excursions data
-                    { id: 9, title: 'El Quseir Historic Tour', price: '$60' },
-                ]);
+              setTours([
+                    {
+                        id: 1,
+                        title: "Ausflüge ab Hurghada",
+                        description:
+                            "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/makadi bay.jpg",
+                        features: [
+                            "Online buchen und vor Ort bezahlen",
+                            "Abholung von der Lobby Ihres Hotels",
+                            "Inklusive Versicherung",
+                            "Keine Verkaufsveranstaltungen",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 2,
+                        title: "DOLPHIN WATCH und Schnorcheln",
+                        description: "Erlebe Sie hautnah die faszinierende Welt der Delfine bei einem Schnorchelausflug ab Hurghada",
+                        image: "/images/Cities/el guna.jpg",
+                        features: [
+                            "Kostenlose Stornierung",
+                            "Dauer 7 Stunden",
+                            "jetzt buchen und vor Ort bezahlen",
+                            "Abholung von der Lobby Ihres Hotels",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 3,
+                        title: "Hurghada Stadtrundfahrt",
+                        description: "Entdecken Sie das authentische Hurghada mit travelpro Hurghada stadtrundfahrt Privat",
+                        image: "/images/Cities/soma bay.jpg",
+                        features: [
+                            "Deutschsprechender Reiseleiter",
+                            "Dauer 4 Stunden",
+                            "Abholung von der Lobby Ihres Hotels",
+                            "Keine Kaffeefahrt",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 4,
+                        title: "Luxor Tagesausflug",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/makadi bay.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Tal der Könige",
+                            "Karnak Tempel",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 5,
+                        title: "Schnorcheln im Roten Meer",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/el guna.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Schnorchelausrüstung",
+                            "2 Schnorchelstopps",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                    {
+                        id: 6,
+                        title: "Kairo und Pyramiden",
+                        description: "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
+                        image: "/images/Cities/soma bay.jpg",
+                        features: [
+                            "Hotelabholung und Rückfahrt",
+                            "Deutschsprachige Reiseleitung",
+                            "Mittagessen inklusive",
+                            "Pyramiden von Gizeh",
+                            "Ägyptisches Museum",
+                        ],
+                        price: "187",
+                        isLiked: false,
+                    },
+                ]
+                );
                 break;
             case 'marsa-alam':
                 setPageTitle(t('main_navbar.marsa_alam'));

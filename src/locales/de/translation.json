@@ -154,6 +154,21 @@
     "phonePlaceholder": "Telefon",
     "messagePlaceholder": "Nachricht",
     "sendButton": "Nachricht Senden",
-    "successMessage": "Nachricht erfolgreich gesendet!"
+    "successMessage": "Nachricht erfolgreich gesendet!",
+    "HaveAccount": "Sie haben bereits ein Konto?",
+    "CodeVerifyTitle": "Geben Sie den an gesendeten Code ein",
+    "CodeVerifyTitle2": "Um Ihre E-Mail zu bestätigen",
+    "SendCode": "Code senden",
+    "fillField": "Bitte füllen Sie dieses Feld aus",
+    "spamAlert": {
+      "title": "E-Mail nicht gefunden?",
+      "check": "Überprüfen Sie Ihren",
+      "spam": "Spam",
+      "or": "oder",
+      "junk": "Junk",
+      "folder": "Ordner",
+      "addToContacts": "Fügen Sie unsere E-Mail-Adresse zu Ihren Kontakten/Whitelist hinzu",
+      "waitAndRefresh": "Warten Sie einige Minuten und aktualisieren Sie Ihren Posteingang"
+    }
   }
 }

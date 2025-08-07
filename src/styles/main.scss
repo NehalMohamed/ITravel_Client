@@ -23,6 +23,8 @@
 @import "../components/Testimonial/Testimonial.scss";
 @import "../components/Contact/Contact.scss";
 @import "../components/TopDestinations/TopDestinations.scss";
+@import "../components/AuthComp/OTP/Otp.scss";
+
 // Global styles
 body {
   font-family: 'Myriad Pro','Source Sans Pro', sans-serif !important;
@@ -109,4 +111,14 @@ input:-internal-autofill-selected {
   display: flex;
   justify-content: flex-end;
   justify-items: flex-end;
+}
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  div {
+    margin: 20px 0;
+  }
 }

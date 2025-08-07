@@ -8,7 +8,11 @@ const LoadingPage = () => {
       {/* Container for the loading content (GIF + text) */}
       <div className="loading-content">
         {/* Loading GIF to indicate loading progress */}
-        <img src="/loading.gif" alt="Loading..." className="loading-gif" />
+        <img
+          src="images/loading.gif"
+          alt="Loading..."
+          className="loading-gif"
+        />
         {/* Optional text shown under the loading animation */}
         <p className="loading-text">Loading...</p>
       </div>
