@@ -11,6 +11,7 @@ import ContactPage from "./pages/ContactPage";
 import ComingSoon from "./components/ComingSoon";
 import Excursions from "./pages/ExcursionsPage";
 import DestinationExcursionsPage from "./pages/DestinationExcursionsPage";
+import TripDetailsPage from "./pages/TripDetailsPage";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
@@ -33,8 +34,8 @@ function App() {
             <Route path="/VerifyEmail" element={<OTPInput />} />
             <Route path="/excursions" element={<Excursions />} />
             <Route path="/excursions/:location" element={<DestinationExcursionsPage />} />
-
-
+            <Route path="/tripDetails" element={<TripDetailsPage />} />
+        
 
             <Route path="/ComingSoon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />

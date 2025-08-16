@@ -2,10 +2,12 @@ import { Card, Button } from "react-bootstrap";
 import { FaCheck, FaHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from 'react-router-dom';
 import { bookTour, toggleWishlist } from "../../redux/store/toursSlice";
 
 const TourCard = ({ tour }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const handleBooking = () => {
@@ -45,7 +47,7 @@ const TourCard = ({ tour }) => {
         </ul>
 
         <div className="card-footer-content">
-          <Button variant="outline-primary" className="book-btn">
+          <Button variant="outline-primary" onClick={() => navigate("/tripDetails")} className="book-btn">
             {t("general.show_more")}
           </Button>
           <div className="price-section">

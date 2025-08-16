@@ -170,5 +170,114 @@
       "addToContacts": "Fügen Sie unsere E-Mail-Adresse zu Ihren Kontakten/Whitelist hinzu",
       "waitAndRefresh": "Warten Sie einige Minuten und aktualisieren Sie Ihren Posteingang"
     }
+  },
+  "tripDetails": {
+    "title": "Tagesausflug nach luxor ( privat )",
+    "reviews": "reviews",
+    "addToWishlist": "Add to wishlist",
+    "share": "Share",
+    "description": "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen.",
+    "aboutTrip": "Über diese",
+    "bookNowPayLater": "Jetzt reservieren, später zahlen: Bleiben Sie flexibel – buchen Sie jetzt und zahlen Sie später.",
+    "duration": "Dauer \"14 Stunden\"",
+    "paymentMethods": "Die Zahlung erfolgt vor Ort in bar in Euro, US-Dollar, Schweizer Franken oder Ägyptischen Pfund oder Paypal",
+    "paymentNote": "Die Bezahlung erfolgt bei der Abholung.",
+    "linkCopied": "Link in die Zwischenablage kopiert!",
+    "itinerary": {
+      "title": "Flugbahn",
+      "departure": {
+        "time": "Früh am Morgen",
+        "location": "Ausgangspunkt",
+        "description": "Hotel"
+      },
+      "qena": {
+        "description": "Für eine Entfernung von etwa 220 Kilometern ins Niltal"
+      },
+      "restStop": {
+        "location": "Rastplatz",
+        "description": "Sie können das Badezimmer benutzen oder sich die Beine vertreten."
+      },
+      "beforeLuxor": {
+        "time": "ca.60 km",
+        "location": "Vor Luxor",
+        "description": "Sie werden durch viele kleine und große Städte fahren, authentischen ägyptischen Alltag erleben."
+      },
+      "luxor": {
+        "description": "Sie besuchen die größte Tempelanlage der Welt mit ihrer riesigen Kolonnädenhalle"
+      },
+      "westBank": {
+        "location": "Westliche Güte",
+        "description": "Traditionelles lokales Mittagessen, das weltberühmte Tal der Könige, die prächtigen Königsgräber, der Tempel der Königin Hatschepsut auf der Terrasse"
+      },
+      "return": {
+        "location": "Rückweg",
+        "description": "Um sich an die Eindrücke des Tages zu erinnern oder das Treiben am Ufer des Nils zu beobachten"
+      },
+      "hotel": {
+        "time": "Um acht Uhr abends",
+        "location": "Hotel",
+        "description": "Voraussichtlich um acht Uhr abends im Hotel ankommen"
+      }
+    },
+    "reviewsFromTravelers": "Highlighted reviews from other travelers",
+    "sampleReview": "Our tour guide was very knowledgeable and patient with my 7 year old questions.",
+    "addReviews": "Add reviews",
+    "seeMoreReviews": "See more reviews",
+    "rateTour": "Rate the tour",
+    "writeReview": "Write Your review",
+    "add": "Add",
+    "highlights": {
+      "title": "Highlights",
+      "noSales": "Wir bieten keine Verkaufsveranstaltungen an.",
+      "karnakTemple": "Bewundern Sie den Karnak-Tempel.",
+      "valleyKings": "Erkunden Sie das Tal der Könige und seine faszinierenden Gräber.",
+      "egyptHistory": "Tauchen Sie ein in die Geschichte Ägyptens.",
+      "nileBoat": "Genießen Sie eine 45-minütige Bootsfahrt auf dem Nil.",
+      "niltalBeauty": "Erleben Sie die Schönheit des Niltals.",
+      "memnon": "Staunen Sie über die beeindruckenden Kolosse von Memnon.",
+      "expressEntry": "Genießen Sie Express-Einlass ohne Wartezeiten bei Abholung und Besichtigungen.",
+      "expertGuide": "Erhalten Sie von Ihrem fachkundigen Reiseführer spannende Informationen zu den Sehenswürdigkeiten.",
+      "massTourfree": "Erleben Sie die Tour abseits des Massentourismus",
+      "itravelPro": "Mit ITRAVELPRO entdecken Sie Ihr Reiseziel wie nie zuvor"
+    },
+    "included": {
+      "title": "Inbegriffen",
+      "transfers": "Alle Transfers mit hochwertigen Markenfahrzeugen und mit professionellen Fahrern.",
+      "entranceFees": "Eintrittsgebühren für die genannten Sehenswürdigkeiten:Karnak-Tempel, Tal der Könige,Tempel der Hatschepsut und Memnon-Kolosse.",
+      "germanGuide": "Deutschsprachige Reiseleitung (Ägyptologe).",
+      "lunch": "Mittagessen mit ägyptischen Spezialitäte",
+      "drinks": "Getränke im Bus."
+    },
+    "notIncluded": {
+      "title": "nicht Inbegriffen",
+      "extras": "Jegliche Zusätze, die nicht im Ablauf erwähnt werden",
+      "restaurantDrinks": "Getränke im Restaurant",
+      "personalExpenses": "Persönliche Ausgaben"
+    },
+    "dontForget": {
+      "title": "Bitte nicht vergessen",
+      "alarm": "Bestellen Sie einen Weckruf an der Rezeption oder stellen Sie selbst den Wecker.",
+      "breakfast": "Bestellen Sie Ihr Frühstückspaket einen Tag vor Beginn der Reise an der Rezeption.",
+      "camera": "Nehmen Sie Ihren Fotoapparat und Ihre Videokamera mit.",
+      "shoes": "Tragen Sie festes Schuhwerk.",
+      "headwear": "Denken Sie an eine Kopfbedeckung (Kappe, Mütze).",
+      "sunProtection": "Vergessen Sie nicht Ihre Sonnenbrille und Sonnencreme.",
+      "documents": "Bitte schicken Sie uns nach der Buchung eine Kopie des Reisepasses oder Personalausweises aller - Mitreisenden. Diese benötigen wir für die Genehmigung der Tour bei den ägyptischen Behörden. Teilen - Sie uns nach Ihrer Ankunft im Hotel Ihre Zimmernummer per SMS oder WhatsApp mit, damit wir Ihren Ausflug organisieren können-"
+    },
+    "additionalInfo": {
+      "title": "Zusätzliche Informationen",
+      "categoryLabel": "Tour-Kategorie",
+      "category": "Privat geführte Tour",
+      "departureLabel": "Abholung",
+      "departure": "Um 05:00 Uhr",
+      "arrivalLuxorLabel": "Ankunft in Luxor",
+      "arrivalLuxor": "Gegen 09:00 Uhr",
+      "returnTimeLabel": "Rückkehr",
+      "returnTime": "Gegen 20:00 Uhr",
+      "meetingPointLabel": "Treff- und Endpunkt",
+      "meetingPoint": "Ihr Hotel"
+    },
+    "priceFrom": "Preis Ab",
+    "bookNow": "jetzt Buchen"
   }
 }

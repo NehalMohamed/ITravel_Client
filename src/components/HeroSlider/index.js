@@ -1,86 +1,53 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { fetchSliderTrips } from '../../redux/Slices/sliderSlice';
 
 const HeroSlider = () => {
-  const { t } = useTranslation();
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-
-  const slides = [
-    {
-      id: 1,
-      image: "/images/slider/slide8.jpg",
-      title: "Orange Bay Insel",
-      subtitle: "Hurghada Schnorchel-Tour"
-    },
-    {
-      id: 2,
-      image: "/images/slider/slide3.jpg",
-      title: "Privater Ausflug",
-      subtitle: "nach Luxor & Tal der Könige"
-    },
-    {
-      id: 3,
-      image: "/images/slider/slide6.jpg",
-      title: "Delfinschwimmen",
-      subtitle: "und Schnorcheln"
-    },
-    {
-      id: 4,
-      image: "/images/slider/slide7.jpg",
-      title: "Privater Ausflug",
-      subtitle: "nach  Kairo von Hurghada "
-    },
-    {
-      id: 5,
-      image: "/images/slider/slide2.jpg",
-      title: "Super Safari",
-      subtitle: "Quad& Spider Fahrt+JeepTour"
-    },
-    {
-      id: 6,
-      image: "/images/slider/slide5.jpg",
-      title: "Sindbad U-Boot",
-      subtitle: "submarine in Hurghada"
-    },
-    {
-      id: 7,
-      image: "/images/slider/slide1.jpg",
-      title: "El Gouna",
-      subtitle: "Stadtrundfahrt ( privat )"
-    }
-  ]
-
+  const { t } = useTranslation();   
+  const dispatch = useDispatch();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const { slides, loading, error } = useSelector((state) => state.slider);
 
   useEffect(() => {
-    if (!isAutoPlaying) return
+    dispatch(fetchSliderTrips(currentLang));
+  }, [dispatch, currentLang]);
+  
+  useEffect(() => {
+    if (!isAutoPlaying || slides.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // for (5 seconds)
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [isAutoPlaying, slides.length])
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
 
   const goToSlide = (index) => {
-    setCurrentSlide(index)
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 5000) // Resume auto-play after 5 seconds
-  }
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000); // Resume auto-play after 5 seconds
+  };
 
   const goToPrevious = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 5000)
-  }
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
 
   const goToNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 5000)
-  }
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+   if (loading) return <div>Loading...</div>;
+   if (error) return <div>Error: {error.message}</div>;
+   if (slides.length === 0) return <div>No slides available</div>;
 
   return (
     <section className="hero-slider">
@@ -125,7 +92,7 @@ const HeroSlider = () => {
         ))}
       </div>
 
-      {/* //Progress Bar
+      {/* Progress Bar */}
       <div className="slider-progress">
         <div
           className="progress-bar"
@@ -133,9 +100,9 @@ const HeroSlider = () => {
             width: `${((currentSlide + 1) / slides.length) * 100}%`,
           }}
         />
-      </div> */}
+      </div>
     </section>
-  )
-}
+  );
+};
 
 export default HeroSlider;

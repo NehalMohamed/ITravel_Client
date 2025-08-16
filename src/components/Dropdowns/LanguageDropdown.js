@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { FaGlobe } from 'react-icons/fa';
+import { setLanguages } from '../../redux/Slices/languageSlice'; 
 import i18n  from "../../i18n";
 
 const LanguageDropdown = () => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   
   const currentLanguage = i18n.language;
@@ -15,6 +18,7 @@ const LanguageDropdown = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    dispatch(setLanguages(lng)); // Dispatch to Redux
   };
 
   return (

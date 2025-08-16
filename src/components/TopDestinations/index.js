@@ -13,74 +13,58 @@ const TopDestinations = () => {
     {
       id: 1,
       name: 'Hurghada',
-      nameKey: 'main_navbar.hurghada',
       image: '/images/Cities/hurghada-2.jpg',
       alt: 'Hurghada Resort Pool',
-      route: 'hurghada',
-      fallbackColor: '#1D1F4D' // Using your primary color
+      route: 'hurghada'
     },
     {
       id: 2,
       name: 'Makadi Bay',
-      nameKey: 'main_navbar.makadi_bay',
       image: '/images/Cities/makadi bay.jpg',
       alt: 'Makadi Bay Beach View',
-      route: 'makadi-bay',
-      fallbackColor: '#02D901' // Using your secondary color
+      route: 'makadi-bay'
     },
     {
       id: 3,
       name: 'El Gouna',
-      nameKey: 'main_navbar.el_gouna',
       image: '/images/Cities/el guna.jpg',
       alt: 'El Gouna Marina',
-      route: 'el-gouna',
-      fallbackColor: '#28a745' // Using your success color
+      route: 'el-gouna'
     },
     {
       id: 4,
       name: 'Soma Bay',
-      nameKey: 'main_navbar.soma_bay',
       image: '/images/Cities/soma bay.jpg',
       alt: 'Soma Bay Sunset',
-      route: 'soma-bay',
-      fallbackColor: '#1D1F4D'
+      route: 'soma-bay'
     },
     {
       id: 5,
       name: 'Sahl Hashesh',
-      nameKey: 'main_navbar.sahl_hashesh',
       image: '/images/Cities/sahl-hasheesh.jpg',
       alt: 'Sahl Hashesh Resort',
-      route: 'sahl-hashesh',
-      fallbackColor: '#02D901'
+      route: 'sahl-hashesh'
     },
     {
       id: 6,
       name: 'El Quseir',
-      nameKey: 'main_navbar.el_quseir',
       image: '/images/Cities/el quseir.jpg',
       alt: 'El Quseir Harbor',
-      route: 'el-quseir',
-      fallbackColor: '#28a745'
+      route: 'el-quseir'
     },
     {
       id: 7,
       name: 'Marsa Alam',
-      nameKey: 'main_navbar.marsa_alam',
       image: '/images/Cities/marsa alam.jpg',
       alt: 'Marsa Alam Underwater',
-      route: 'marsa-alam',
-      fallbackColor: '#1D1F4D'
+      route: 'marsa-alam'
     },
     {
       id: 8,
       name: 'Ägypten Rundreisen',
-      nameKey: 'main_navbar.egypt_roundtrips',
       image: '/images/Cities/Egyptian Pyramids.jpeg',
       alt: 'Egyptian Pyramids',
-      route: 'egypt-roundtrips',
-      fallbackColor: '#02D901'
+      route: 'egypt-roundtrips'
     }
   ];
 
@@ -129,7 +113,6 @@ const TopDestinations = () => {
           {imageErrors[destination.id] ? (
             <div 
               className="destination-fallback"
-              style={{ backgroundColor: destination.fallbackColor }}
             >
               <span className="destination-icon">📍</span>
             </div>
@@ -145,7 +128,7 @@ const TopDestinations = () => {
           )}
           <div className="card-overlay">
             <Card.Title className="destination-name">
-              {t(destination.nameKey) || destination.name}
+              {destination.name}
             </Card.Title>
           </div>
         </div>
