@@ -16,6 +16,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"Hurghada"
     },
     {
       id: 2,
@@ -30,6 +31,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"Guna"
     },
     {
       id: 3,
@@ -44,6 +46,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"SomaBay"
     },
     {
       id: 4,
@@ -59,6 +62,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"MakadiBay"
     },
     {
       id: 5,
@@ -74,6 +78,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"Hurghada2"
     },
     {
       id: 6,
@@ -89,6 +94,7 @@ const initialState = {
       ],
       price: "187",
       isLiked: false,
+      route:"Hurghada"
     },
   ],
   loading: false,

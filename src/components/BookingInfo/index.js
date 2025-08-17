@@ -1,8 +1,10 @@
 import React from 'react';
 import { IoCalendarOutline, IoCashOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { Container } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
 
 const BookingInfo = () => {
+    const { t } = useTranslation();
   return (
     <div className="booking-info-section">
       <Container>
@@ -11,7 +13,7 @@ const BookingInfo = () => {
             Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen.
           </p>
           
-          <h2 className="section-title">Über diese</h2>
+          <h2 className="section-title">{t("tripDetails.aboutTrip")}</h2>
           
           <div className="info-items">
             <div className="info-item">
@@ -20,9 +22,9 @@ const BookingInfo = () => {
               </div>
               <div className="info-content">
                 <p className="info-text">
-                  <strong>Jetzt reservieren, später zahlen:</strong> Bleiben Sie flexibel – buchen Sie jetzt und zahlen Sie später.
+                  {t("tripDetails.bookNowPayLater")}
                 </p>
-                <p className="info-subtext">Dauer: 16 Stunden</p>
+                <p className="info-subtext">{t("tripDetails.duration")}</p>
               </div>
             </div>
             
@@ -32,7 +34,7 @@ const BookingInfo = () => {
               </div>
               <div className="info-content">
                 <p className="info-text">
-                  Die Zahlung erfolgt vor Ort in bar in Euro, US-Dollar, Schweizer Franken oder Ägyptischen Pfund oder PayPal.
+                 {t("tripDetails.paymentMethods")}
                 </p>
               </div>
             </div>
@@ -43,7 +45,7 @@ const BookingInfo = () => {
               </div>
               <div className="info-content">
                 <p className="info-text">
-                  Die Bezahlung erfolgt bei der Abholung.
+                 {t("tripDetails.paymentNote")}
                 </p>
               </div>
             </div>

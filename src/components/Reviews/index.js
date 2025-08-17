@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
+import { useSelector } from 'react-redux';
 
 const Reviews = () => {
+  const { t } = useTranslation();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [userRating, setUserRating] = useState(0);
   const [reviewText, setReviewText] = useState('');
@@ -61,7 +64,7 @@ const Reviews = () => {
         <div className="row">
           <div className="col-lg-10">
             <div className="reviews-container">
-              <h3 className="section-title">Highlighted reviews from other travelers</h3>
+              <h3 className="section-title">{t("tripDetails.reviewsFromTravelers")}</h3>
               
               <div className="row">
                 {reviews.map((review) => (
@@ -97,12 +100,12 @@ const Reviews = () => {
                       className="btn btn-link add-reviews-btn p-0"
                       onClick={handleAddReviewClick}
                     >
-                      Add reviews
+                      {t("tripDetails.addReviews")}
                     </button>
                   </div>
                   <div className="col-md-6 text-md-end">
                     <button className="btn btn-link see-more-btn p-0">
-                      See more reviews
+                       {t("tripDetails.seeMoreReviews")}
                     </button>
                   </div>
                 </div>
@@ -113,7 +116,7 @@ const Reviews = () => {
                     <div className="review-form mt-4">
                       
                       <div className="rating-section mb-3">
-                        <p className="rating-text">Rate the tour</p> 
+                        <p className="rating-text"> {t("tripDetails.rateTour")}</p> 
                         {renderStars(userRating, true)}
                       </div>
                       
@@ -123,7 +126,7 @@ const Reviews = () => {
                           rows={4}
                           value={reviewText}
                           onChange={(e) => setReviewText(e.target.value)}
-                          placeholder="Write Your review..."
+                          placeholder= {t("tripDetails.writeReview")}
                         />
                       </div>
                       
@@ -134,13 +137,13 @@ const Reviews = () => {
                         //   disabled={userRating === 0 || reviewText.trim() === ''}
                           disabled={reviewText.trim() === ''}
                         >
-                          Add
+                           {t("tripDetails.add")}
                         </button>
                         <button 
                           className="btn btn-outline-secondary"
                           onClick={() => setShowReviewForm(false)}
                         >
-                          Cancel
+                         {t("tripDetails.cancel")}
                         </button>
                       </div>
                     </div>

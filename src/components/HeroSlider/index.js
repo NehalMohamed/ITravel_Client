@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { fetchSliderTrips } from '../../redux/Slices/sliderSlice';
+import { fetchTripsAll, selectSliderTrips } from '../../redux/Slices/tripsSlice';
 
 const HeroSlider = () => {
   const { t } = useTranslation();   
@@ -11,10 +11,12 @@ const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
-  const { slides, loading, error } = useSelector((state) => state.slider);
+  const slides = useSelector(selectSliderTrips);
+  const loading = useSelector((s) => s.trips.loading);
+  const error = useSelector((s) => s.trips.error);
 
   useEffect(() => {
-    dispatch(fetchSliderTrips(currentLang));
+    dispatch(fetchTripsAll(currentLang));
   }, [dispatch, currentLang]);
   
   useEffect(() => {
@@ -46,7 +48,7 @@ const HeroSlider = () => {
   };
 
    if (loading) return <div>Loading...</div>;
-   if (error) return <div>Error: {error.message}</div>;
+   if (error) return <div>Error: {error}</div>;
    if (slides.length === 0) return <div>No slides available</div>;
 
   return (
@@ -54,15 +56,15 @@ const HeroSlider = () => {
       <div className="slider-container">
         {slides.map((slide, index) => (
           <div
-            key={slide.id}
+            key={slide.trip_id}
             className={`slide ${index === currentSlide ? "active" : ""}`}
-            style={{ backgroundImage: `url(${slide.image})` }}
+            style={{ backgroundImage: `url(${slide.default_img})` }}
           >
             <div className="slide-overlay"></div>
             <Container>
               <div className="slide-content">
-                <h1 className="slide-title">{slide.title}</h1>
-                <h2 className="slide-subtitle">{slide.subtitle}</h2>
+                <h1 className="slide-title">{slide.trip_name}</h1>
+                <h2 className="slide-subtitle">{slide.trip_description}</h2>
                 <div className="slide-actions">
                   <button className="btn-primary">{t('general.more')}</button>
                 </div>

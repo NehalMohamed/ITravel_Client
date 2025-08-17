@@ -1,7 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+
 
 const TourDetails = () => {
+  const { t } = useTranslation();
+
   const tourInfo = {
     highlights: [
       "Wir bieten keine Verkaufsveranstaltungen an.",
@@ -66,17 +70,17 @@ const TourDetails = () => {
     <section className="tour-details-section">
     <Container>
       <hr />
-      {renderSection("Highlights", tourInfo.highlights)}
-      {renderSection("Inbegriffen", tourInfo.included)}
-      {renderSection("Nicht inbegriffen", tourInfo.notIncluded)}
-      {renderSection("Bitte nicht vergessen", tourInfo.importantNotes)}
-      {renderSection("Zusätzliche Informationen", tourInfo.additionalInfo)}
+      {renderSection(t("tripDetails.highlights"), tourInfo.highlights)}
+      {renderSection(t("tripDetails.included"), tourInfo.included)}
+      {renderSection(t("tripDetails.notIncluded"), tourInfo.notIncluded)}
+      {renderSection(t("tripDetails.dontForget"), tourInfo.importantNotes)}
+      {renderSection(t("tripDetails.additionalInfo"), tourInfo.additionalInfo)}
 
       {/* Pricing */}
       <div className="pricing-section text-center mt-4">
-        <h2 className="price-title">Preis Ab 100 € P.p</h2>
+        <h2 className="price-title">{t("tripDetails.priceFrom")} 100 € P.p</h2>
         <Button variant="success" size="lg" className="mt-2">
-          Jetzt buchen
+         {t("tripDetails.bookNow")}
         </Button>
       </div>
     </Container>

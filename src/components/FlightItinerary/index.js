@@ -1,8 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { IoLocationOutline } from 'react-icons/io5';
+import { useTranslation } from "react-i18next";
 
 const FlightItinerary = () => {
+    const { t } = useTranslation();
+
   const itinerarySteps = [
     {
       id: 1,
@@ -53,7 +56,7 @@ const FlightItinerary = () => {
           <Col lg={8} md={10}>
             <Card className="itinerary-card">
               <Card.Body >
-                <h2 className="section-title mb-4">Flugbahn</h2>
+                <h2 className="section-title mb-4">{t("tripDetails.itinerary")}</h2>
                 
                 <div className="timeline-container">
                   {itinerarySteps.map((step, index) => (

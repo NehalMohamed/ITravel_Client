@@ -226,9 +226,10 @@
     }
 
     .form-actions {
-      @include flex-center;
+      display:flex;
+      align-items:flex-end;
       gap: $spacer-sm;
-      justify-content: flex-start;
+      justify-content: flex-end;
 
       @include media-breakpoint-down(sm) {
         flex-direction: column;

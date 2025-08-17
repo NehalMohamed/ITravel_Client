@@ -172,111 +172,28 @@
     }
   },
   "tripDetails": {
-    "title": "Day trip to Luxor (private)",
     "reviews": "reviews",
     "addToWishlist": "Add to wishlist",
     "share": "Share",
-    "description": "Experience an unforgettable day trip to Luxor - private and without sales events.",
     "aboutTrip": "About this trip",
     "bookNowPayLater": "Book now, pay later: Stay flexible - book now and pay later.",
     "duration": "Duration \"14 hours\"",
     "paymentMethods": "Payment on site in cash in Euro, US Dollar, Swiss Francs or Egyptian Pounds or PayPal",
     "paymentNote": "Payment is made upon pickup.",
     "linkCopied": "Link copied to clipboard!",
-    "itinerary": {
-      "title": "Itinerary",
-      "departure": {
-        "time": "Early morning",
-        "location": "Departure",
-        "description": "Hotel"
-      },
-      "qena": {
-        "description": "For a distance of about 220 kilometers in the Nile valley"
-      },
-      "restStop": {
-        "location": "Rest stop",
-        "description": "You can use the bathroom or stretch your legs."
-      },
-      "beforeLuxor": {
-        "time": "About 60 km",
-        "location": "Before Luxor",
-        "description": "You will drive through many small and large cities, experience authentic Egyptian everyday life."
-      },
-      "luxor": {
-        "description": "You visit the largest temple complex in the world with its gigantic hall of columns"
-      },
-      "westBank": {
-        "location": "West Bank",
-        "description": "Traditional local lunch, the world-famous Valley of the Kings, the magnificent royal tombs, the temple of Queen Hatshepsut on the terrace"
-      },
-      "return": {
-        "location": "Return journey",
-        "description": "To remember the impressions of the day or to watch the hustle and bustle on the banks of the Nile"
-      },
-      "hotel": {
-        "time": "Around 8 PM",
-        "location": "Hotel",
-        "description": "Arrive at the hotel around eight in the evening"
-      }
-    },
+    "itinerary": "Itinerary",
     "reviewsFromTravelers": "Highlighted reviews from other travelers",
-    "sampleReview": "Our tour guide was very knowledgeable and patient with my 7 year old questions.",
     "addReviews": "Add reviews",
     "seeMoreReviews": "See more reviews",
     "rateTour": "Rate the tour",
     "writeReview": "Write Your review",
     "add": "Add",
-    "highlights": {
-      "title": "Highlights",
-      "noSales": "We offer no sales events.",
-      "karnakTemple": "Marvel at the Karnak Temple.",
-      "valleyKings": "Explore the Valley of the Kings and its fascinating tombs.",
-      "egyptHistory": "Immerse yourself in the history of Egypt.",
-      "nileBoat": "Enjoy a 45-minute boat ride on the Nile.",
-      "niltalBeauty": "Experience the beauty of the Nile valley.",
-      "memnon": "Marvel at the impressive Colossi of Memnon.",
-      "expressEntry": "Enjoy express entry without waiting times for pickup and sightseeing.",
-      "expertGuide": "Get exciting information about the sights from your expert tour guide.",
-      "massTourfree": "Experience the tour away from mass tourism",
-      "itravelPro": "With ITRAVELPRO discover your travel destination like never before"
-    },
-    "included": {
-      "title": "Included",
-      "transfers": "All transfers with high-quality brand vehicles and with professional drivers.",
-      "entranceFees": "Entrance fees for the mentioned sights: Karnak Temple, Valley of the Kings, Temple of Hatshepsut and Memnon Colossi.",
-      "germanGuide": "German-speaking tour guide (Egyptologist).",
-      "lunch": "Lunch with Egyptian specialties",
-      "drinks": "Drinks on the bus."
-    },
-    "notIncluded": {
-      "title": "Not included",
-      "extras": "Any additional costs not mentioned in the itinerary",
-      "restaurantDrinks": "Drinks in the restaurant",
-      "personalExpenses": "Personal expenses"
-    },
-    "dontForget": {
-      "title": "Please don't forget",
-      "alarm": "Set an alarm at reception or set the alarm yourself.",
-      "breakfast": "Order your breakfast package one day before the start of the trip at reception.",
-      "camera": "Take your camera and video camera with you.",
-      "shoes": "Wear sturdy shoes.",
-      "headwear": "Think of a head covering (cap, hat).",
-      "sunProtection": "Don't forget your sunglasses and sunscreen.",
-      "documents": "Please send us a copy of the passport or ID of all fellow travelers after booking. We need this for approval of the tour by the Egyptian authorities. Share with us after your arrival at the hotel your room number via SMS or WhatsApp so that we can organize your excursion."
-    },
-    "additionalInfo": {
-      "title": "Additional Information",
-      "categoryLabel": "Tour category",
-      "category": "Privately guided tour",
-      "departureLabel": "Departure",
-      "departure": "Around 05:00",
-      "arrivalLuxorLabel": "Arrival in Luxor",
-      "arrivalLuxor": "Around 09:00",
-      "returnTimeLabel": "Return",
-      "returnTime": "Around 20:00",
-      "meetingPointLabel": "Meeting and end point",
-      "meetingPoint": "Your hotel"
-    },
+    "cancel": "Cancel",
+    "highlights": "Highlights",
+    "included": "Included",
+    "notIncluded": "Not included",
+    "dontForget": "Please don't forget",
+    "additionalInfo": "Additional Information",
     "priceFrom": "Price from",
     "bookNow": "Book now"
   }

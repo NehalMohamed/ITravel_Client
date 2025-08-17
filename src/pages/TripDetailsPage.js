@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Gallery from "../components/Gallery";
 import BookingInfo from "../components/BookingInfo";
 import FlightItinerary from "../components/FlightItinerary";

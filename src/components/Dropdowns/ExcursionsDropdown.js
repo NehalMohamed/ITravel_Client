@@ -1,17 +1,27 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import { FaChevronDown } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDestinations } from '../../redux/Slices/destinationsSlice';
 
 const ExcursionsDropdown = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const timeoutRef = useRef(null);
 
-    const handleLocationClick = (location) => {
-        navigate(`/excursions/${location}`);
+    const { items: destinations, loading } = useSelector((state) => state.destinations);
+    const currentLang = useSelector((state) => state.language.currentLang) || "en";
+
+    useEffect(() => {
+        dispatch(fetchDestinations(currentLang));
+    }, [dispatch, currentLang]);
+
+    const handleLocationClick = (route) => {
+        navigate(`/excursions/${route.toLowerCase().replace(/\s+/g, '-')}`);
         setShow(false); // Close dropdown after navigation
     };
 
@@ -45,14 +55,14 @@ const ExcursionsDropdown = () => {
     }, []);
 
     return (
-        <div 
+        <div
             className="nav-dropdown-hover"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <Dropdown show={show} onToggle={() => {}} className="nav-dropdown">
-                <Dropdown.Toggle 
-                    as="a" 
+            <Dropdown show={show} onToggle={() => { }} className="nav-dropdown">
+                <Dropdown.Toggle
+                    as="a"
                     className="nav-item dropdown-toggle"
                     onClick={handleMainExcursionsClick}
                     href="#"
@@ -60,34 +70,22 @@ const ExcursionsDropdown = () => {
                     {t('main_navbar.egypt_excursions')}
                     <FaChevronDown className="dropdown-icon" />
                 </Dropdown.Toggle>
-                <Dropdown.Menu 
+                <Dropdown.Menu
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <Dropdown.Item onClick={() => handleLocationClick('hurghada')}>
-                        {t('main_navbar.hurghada')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('makadi-bay')}>
-                        {t('main_navbar.makadi_bay')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('el-gouna')}>
-                        {t('main_navbar.el_gouna')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('soma-bay')}>
-                        {t('main_navbar.soma_bay')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('sahl-hashesh')}>
-                        {t('main_navbar.sahl_hashesh')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('el-quseir')}>
-                        {t('main_navbar.el_quseir')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('marsa-alam')}>
-                        {t('main_navbar.marsa_alam')}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleLocationClick('egypt-roundtrips')}>
-                        {t('main_navbar.egypt_roundtrips')}
-                    </Dropdown.Item>
+                    {loading ? (
+                        <Dropdown.Item disabled>Loading...</Dropdown.Item>
+                    ) : (
+                        destinations.map(destination => (
+                            <Dropdown.Item
+                                key={destination.destination_id}
+                                onClick={() => handleLocationClick(destination.route)}
+                            >
+                                {destination.dest_name}
+                            </Dropdown.Item>
+                        ))
+                    )}
                 </Dropdown.Menu>
             </Dropdown>
         </div>

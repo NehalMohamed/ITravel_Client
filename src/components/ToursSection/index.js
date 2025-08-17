@@ -1,12 +1,26 @@
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import {
+  fetchTripsAll,
+  selectTopTrips,   // we can also use selectAllTrips if you want
+} from "../../redux/Slices/tripsSlice";
 import TourCard from "../TourCard";
 
 const ToursSection = () => {
-  const { tours, loading } = useSelector((state) => state.tours);
-    const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const trips = useSelector(selectTopTrips); // top tours for home
+  const loading = useSelector((s) => s.trips.loading);
+  const error = useSelector((s) => s.trips.error);
+
+  useEffect(() => {
+    dispatch(fetchTripsAll()); // load trips once
+  }, [dispatch]);
+
+
+  const { t } = useTranslation();
 
   if (loading) {
     return (
@@ -23,7 +37,7 @@ const ToursSection = () => {
     );
   }
 
-  if (tours.length === 0) {
+  if (trips.length === 0) {
     return (
       <section className="tours-section">
         <Container>
@@ -47,9 +61,9 @@ const ToursSection = () => {
 
         <div className="tours-grid">
           <Row>
-            {tours.map((tour) => (
-              <Col key={tour.id} lg={4} md={6} className="d-flex">
-                <TourCard tour={tour} />
+            {trips.map((trip) => (
+              <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
+                <TourCard trip={trip} />
               </Col>
             ))}
           </Row>

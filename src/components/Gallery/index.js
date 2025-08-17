@@ -3,14 +3,16 @@ import { IoHeart, IoHeartOutline, IoShareSocial } from 'react-icons/io5';
 import { CiExport } from "react-icons/ci";
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
+import { useTranslation } from "react-i18next";
 import 'react-image-lightbox/style.css';
+import { useSelector } from 'react-redux';
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { t } = useTranslation();
 
-  // Sample images - replace with your actual images
   const images = [
     {
       id: 1,
@@ -64,7 +66,7 @@ const Gallery = () => {
                 <span className="star">★</span>
               </div>
               <span className="rating-text">4.0</span>
-              <a href="#reviews" className="reviews-link">68,650 reviews</a>
+              <a href="#reviews" className="reviews-link">68,650 {t("tripDetails.reviews")}</a>
             </div>
             <div className="actions">
               <button 
@@ -72,11 +74,11 @@ const Gallery = () => {
                 onClick={toggleWishlist}
               >
                 {isWishlisted ? <IoHeart size={24} /> : <IoHeartOutline size={24} />}
-                <span className="btn-text">Add to wishlist</span>
+                <span className="btn-text">{t("tripDetails.addToWishlist")}</span>
               </button>
               <button className="action-btn share-btn">
                 <CiExport size={24} />
-                <span className="btn-text">Share</span>
+                <span className="btn-text">{t("tripDetails.share")}</span>
               </button>
             </div>
           </div>

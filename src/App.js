@@ -34,7 +34,7 @@ function App() {
             <Route path="/VerifyEmail" element={<OTPInput />} />
             <Route path="/excursions" element={<Excursions />} />
             <Route path="/excursions/:location" element={<DestinationExcursionsPage />} />
-            <Route path="/tripDetails" element={<TripDetailsPage />} />
+            <Route path="/trip/:tripName" element={<TripDetailsPage />} />
         
 
             <Route path="/ComingSoon" element={<ComingSoon />} />
