@@ -4,20 +4,27 @@ import { useSelector ,useDispatch} from "react-redux";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import {
-  fetchTripsAll,
-  selectTopTrips,   // we can also use selectAllTrips if you want
+  fetchTripsAll
 } from "../../redux/Slices/tripsSlice";
 import TourCard from "../TourCard";
 
 const ToursSection = () => {
-  const dispatch = useDispatch();
-  const trips = useSelector(selectTopTrips); // top tours for home
-  const loading = useSelector((s) => s.trips.loading);
-  const error = useSelector((s) => s.trips.error);
+const dispatch = useDispatch();
+ const { trips, loading, error } = useSelector((state) => state.trips);
+const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
-  useEffect(() => {
-    dispatch(fetchTripsAll()); // load trips once
-  }, [dispatch]);
+
+ useEffect(() => {
+   console.log("Dispatching fetchTripsAll"); 
+   const params = {
+     lang_code: currentLang,
+     show_in_slider: true,
+     show_in_top: false,
+     destination_id: 0,
+     currency_code: "USD"
+   };
+   dispatch(fetchTripsAll(params));
+ }, [dispatch, currentLang]);
 
 
   const { t } = useTranslation();

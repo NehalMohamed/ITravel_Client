@@ -24,7 +24,7 @@ const TourCard = ({ trip }) => {
       <div className="card-img-container">
         <Card.Img variant="top" src={trip.default_img} alt={trip.trip_name} />
         <button
-          className={`wishlist-heart ${trip.isfavourite == "TRUE" ? "liked" : ""}`}
+          className={`wishlist-heart ${trip.isfavourite ? "liked" : ""}`}
           onClick={handleWishlistToggle}
           aria-label="Add to wishlist"
         >
@@ -46,7 +46,13 @@ const TourCard = ({ trip }) => {
         </ul>
 
         <div className="card-footer-content">
-          <Button variant="outline-primary" onClick={() => navigate(`/trip/${trip.route}`)} className="book-btn">
+          <Button 
+          variant="outline-primary"  
+          className="book-btn"
+          onClick={() => navigate(`/trip/${trip.route}`, { 
+                      state: { tripData: trip } 
+          })}>
+        
             {t("general.show_more")}
           </Button>
           <div className="price-section">

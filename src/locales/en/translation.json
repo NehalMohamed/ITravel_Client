@@ -194,7 +194,9 @@
     "notIncluded": "Not included",
     "dontForget": "Please don't forget",
     "additionalInfo": "Additional Information",
-    "priceFrom": "Price from",
-    "bookNow": "Book now"
+    "priceFrom": "Price",
+    "bookNow": "Book now",
+    "notRated":"Not Rated Yet",
+    "stars":"Star"
   }
 }

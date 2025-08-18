@@ -1,16 +1,19 @@
 import React from 'react';
 import { IoCalendarOutline, IoCashOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { Container } from 'react-bootstrap';
+import { useTripData } from '../../contexts/TripContext';
 import { useTranslation } from "react-i18next";
 
 const BookingInfo = () => {
     const { t } = useTranslation();
+    const tripData = useTripData();
+
   return (
     <div className="booking-info-section">
       <Container>
         <div className="booking-info-content">
           <p className="intro-text">
-            Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen.
+           {tripData.trip_description}
           </p>
           
           <h2 className="section-title">{t("tripDetails.aboutTrip")}</h2>

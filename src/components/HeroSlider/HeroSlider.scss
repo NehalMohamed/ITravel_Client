@@ -270,21 +270,21 @@
   }
   
   // Progress Bar
-//   .slider-progress {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 4px;
-//     background-color: rgba(255, 255, 255, 0.2);
-//     z-index: 10;
+  .slider-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 10;
     
-//     .progress-bar {
-//       height: 100%;
-//       background-color: $secondary-color;
-//       transition: width 0.5s ease; // Faster transition for progress bar
-//     }
-//   }
+    .progress-bar {
+      height: 100%;
+      background-color: $secondary-color;
+      transition: width 0.5s ease; // Faster transition for progress bar
+    }
+  }
 }
 
 // Animations - Updated for faster transitions

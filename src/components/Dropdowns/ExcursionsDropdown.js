@@ -12,6 +12,7 @@ const ExcursionsDropdown = () => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const timeoutRef = useRef(null);
+    const dropdownRef = useRef(null); // Add ref for dropdown
 
     const { items: destinations, loading } = useSelector((state) => state.destinations);
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
@@ -20,9 +21,11 @@ const ExcursionsDropdown = () => {
         dispatch(fetchDestinations(currentLang));
     }, [dispatch, currentLang]);
 
-    const handleLocationClick = (route) => {
-        navigate(`/excursions/${route.toLowerCase().replace(/\s+/g, '-')}`);
-        setShow(false); // Close dropdown after navigation
+    const handleLocationClick = (route, id) => {
+        navigate(`/excursions/${route.toLowerCase().replace(/\s+/g, '-')}`, { 
+            state: { DestinationId: id } 
+        });
+        setShow(false);
     };
 
     const handleMainExcursionsClick = (e) => {
@@ -31,26 +34,27 @@ const ExcursionsDropdown = () => {
     };
 
     const handleMouseEnter = () => {
-        // Clear any existing timeout
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
+        clearTimeout(timeoutRef.current);
         setShow(true);
     };
 
     const handleMouseLeave = () => {
-        // Add a small delay before closing
         timeoutRef.current = setTimeout(() => {
-            setShow(false);
+            if (!dropdownRef.current?.contains(document.activeElement)) {
+                setShow(false);
+            }
         }, 150);
     };
 
-    // Clear timeout on component unmount
-    React.useEffect(() => {
+    const handleItemClick = (e, route, id) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleLocationClick(route, id);
+    };
+
+    useEffect(() => {
         return () => {
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
+            clearTimeout(timeoutRef.current);
         };
     }, []);
 
@@ -59,6 +63,7 @@ const ExcursionsDropdown = () => {
             className="nav-dropdown-hover"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            ref={dropdownRef}
         >
             <Dropdown show={show} onToggle={() => { }} className="nav-dropdown">
                 <Dropdown.Toggle
@@ -80,7 +85,7 @@ const ExcursionsDropdown = () => {
                         destinations.map(destination => (
                             <Dropdown.Item
                                 key={destination.destination_id}
-                                onClick={() => handleLocationClick(destination.route)}
+                                onClick={(e) => handleItemClick(e, destination.route, destination.destination_id)}
                             >
                                 {destination.dest_name}
                             </Dropdown.Item>

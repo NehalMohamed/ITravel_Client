@@ -1,33 +1,41 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { fetchTripsAll, selectSliderTrips } from '../../redux/Slices/tripsSlice';
+import { fetchTripsAll } from '../../redux/Slices/tripsSlice';
 
 const HeroSlider = () => {
   const { t } = useTranslation();   
   const dispatch = useDispatch();
+   const navigate = useNavigate(); 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
-  const slides = useSelector(selectSliderTrips);
-  const loading = useSelector((s) => s.trips.loading);
-  const error = useSelector((s) => s.trips.error);
+  const { trips: slides = [], loading, error } = useSelector((state) => state.trips);
 
   useEffect(() => {
-    dispatch(fetchTripsAll(currentLang));
-  }, [dispatch, currentLang]);
+  console.log("Dispatching fetchTripsAll"); 
+  const params = {
+    lang_code: currentLang,
+    show_in_slider: true,
+    show_in_top: false,
+    destination_id: 0,
+    currency_code: "USD"
+  };
+  dispatch(fetchTripsAll(params));
+}, [dispatch, currentLang]);
   
   useEffect(() => {
-    if (!isAutoPlaying || slides.length === 0) return;
-
+    if (!isAutoPlaying || !slides || slides.length === 0) return;
+    
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide(prev => (prev + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
+  }, [isAutoPlaying, slides]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -48,11 +56,20 @@ const HeroSlider = () => {
   };
 
    if (loading) return <div>Loading...</div>;
-   if (error) return <div>Error: {error}</div>;
-   if (slides.length === 0) return <div>No slides available</div>;
+   if (error) return <div>Error: {error.message || error}</div>;
+   if (!slides || slides.length === 0) return <div>No slides available</div>;
 
   return (
     <section className="hero-slider">
+       {/* Progress Bar */}
+      <div className="slider-progress">
+        <div
+          className="progress-bar"
+          style={{
+            width: `${((currentSlide + 1) / slides.length) * 100}%`,
+          }}
+        />
+      </div>
       <div className="slider-container">
         {slides.map((slide, index) => (
           <div
@@ -66,7 +83,12 @@ const HeroSlider = () => {
                 <h1 className="slide-title">{slide.trip_name}</h1>
                 <h2 className="slide-subtitle">{slide.trip_description}</h2>
                 <div className="slide-actions">
-                  <button className="btn-primary">{t('general.more')}</button>
+                  <button className="btn-primary"
+                  onClick={() => navigate(`/trip/${slide.route}`, { 
+                      state: { tripData: slide } 
+                    })}>
+                      {t('general.more')}
+                      </button>
                 </div>
               </div>
             </Container>
@@ -92,16 +114,6 @@ const HeroSlider = () => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
-
-      {/* Progress Bar */}
-      <div className="slider-progress">
-        <div
-          className="progress-bar"
-          style={{
-            width: `${((currentSlide + 1) / slides.length) * 100}%`,
-          }}
-        />
       </div>
     </section>
   );

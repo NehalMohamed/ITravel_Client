@@ -44,12 +44,12 @@
   // Review Header
   .review-header {
     .stars-container {
-      @include flex-center;
+      display:inline-flex;
       gap: 2px;
       justify-content: flex-start;
 
       .star {
-        color: #ffd700;
+        color: #ddd;
         font-size: 1.15rem;
         cursor: default;
 
@@ -62,6 +62,7 @@
         }
 
         &.interactive {
+          color:#ffd700;
           cursor: pointer;
           transition: $transition-base;
 
@@ -185,7 +186,7 @@
     }
 
     .rating-section {
-        display:flex;
+        display:inline-flex;
         justify-content: flex-start;
         gap: 5px;
         .rating-text{
@@ -197,6 +198,7 @@
         justify-content: flex-start;
 
         .star.interactive {
+            color:#ffd700;
           font-size: 1.5rem;
           margin-right: $spacer-xs;
 

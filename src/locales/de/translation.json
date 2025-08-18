@@ -194,7 +194,9 @@
     "notIncluded": "Nicht inbegriffen",
     "dontForget": "Bitte nicht vergessen",
     "additionalInfo": "Zusätzliche Informationen",
-    "priceFrom": "Preis ab",
-    "bookNow": "Jetzt buchen"
+    "priceFrom": "Preis",
+    "bookNow": "Jetzt buchen",
+    "notRated": "Noch nicht bewertet",
+    "stars": "Stern"
   }
 }

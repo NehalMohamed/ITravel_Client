@@ -19,7 +19,9 @@ const TopDestinations = () => {
   }, [dispatch, currentLang]);
 
   const handleDestinationClick = (destination) => {
-    navigate(`/excursions/${destination.route.toLowerCase().replace(/\s+/g, '-')}`);
+    navigate(`/excursions/${destination.route.toLowerCase().replace(/\s+/g, '-')}`, { 
+                      state: { DestinationId: destination.destination_id } 
+                    });
   };
 
   const handleImageError = (destinationId) => {
