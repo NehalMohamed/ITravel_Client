@@ -16,7 +16,6 @@ const HeroSlider = () => {
   const { trips: slides = [], loading, error } = useSelector((state) => state.trips);
 
   useEffect(() => {
-  console.log("Dispatching fetchTripsAll"); 
   const params = {
     lang_code: currentLang,
     show_in_slider: true,

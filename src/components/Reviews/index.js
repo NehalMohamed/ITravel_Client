@@ -14,7 +14,7 @@ const Reviews = () => {
     const tripData = useTripData();
     const tripId = tripData.trip_id;
     const dispatch = useDispatch();
-    const { reviewsByTrip, loading, error } = useSelector((state) => state.trips);
+    const { reviewsByTrip = [], loading, error } = useSelector((state) => state.trips);
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
     console.log(reviewsByTrip)
