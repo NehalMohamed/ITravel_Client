@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
+import { useAuthModal } from '../AuthComp/AuthModal';
+
 
 const ProfileDropdown = () => {
     const { t } = useTranslation();
+    const { openAuthModal } = useAuthModal();
 
     return (
         <Dropdown className="icon-dropdown">
@@ -11,9 +14,12 @@ const ProfileDropdown = () => {
                 <FaUser />
             </Dropdown.Toggle>
             <Dropdown.Menu align="end">
+                <Dropdown.Item
+                 onClick={() => openAuthModal("login")}>
+                    {t('main_navbar.login_signup')}
+                </Dropdown.Item>
+                <Dropdown.Divider />
                 <Dropdown.Item href="#profile">{t('main_navbar.my_profile')}</Dropdown.Item>
-                {/* <Dropdown.Item href="#bookings">Meine Buchungen</Dropdown.Item>
-                  <Dropdown.Item href="#settings">Einstellungen</Dropdown.Item> */}
                 <Dropdown.Divider />
                 <Dropdown.Item href="#logout">{t('main_navbar.logout')}</Dropdown.Item>
             </Dropdown.Menu>
