@@ -1,83 +1,80 @@
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { FaMapMarkerAlt , FaRegHeart } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { getToken, isTokenExpired } from '../../utils/tokenUtils';
+import { FaMapMarkerAlt, FaRegHeart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { fetchWishlist, clearAuthError } from '../../redux/Slices/wishlistSlice';
 import WishlistCard from "../WishlistCard";
+import LoadingPage from "../Loader/LoadingPage";
+import PopUp from "../Shared/popup/PopUp";
+import { useAuthModal } from '../AuthComp/AuthModal';
 
 const WishlistSection = () => {
-  const wishList = [
-    {
-      id: 1,
-      title: "Ausflüge ab Hurghada",
-      description:
-        "Erleben Sie einen unvergesslichen Tagesausflug nach Luxor – privat und ohne Verkaufsveranstaltungen",
-      image: "/images/Cities/makadi bay.jpg",
-      features: [
-        "Online buchen und vor Ort bezahlen",
-        "Abholung von der Lobby Ihres Hotels",
-        "Inklusive Versicherung",
-        "Keine Verkaufsveranstaltungen",
-      ],
-      price: "187",
-      date: "21/07/2025",
-      isLiked:true
-    },
-    {
-      id: 2,
-      title: "DOLPHIN WATCH und Schnorcheln",
-      description: "Erlebe Sie hautnah die faszinierende Welt der Delfine bei einem Schnorchelausflug ab Hurghada",
-      image: "/images/Cities/el guna.jpg",
-      features: [
-        "Kostenlose Stornierung",
-        "Dauer 7 Stunden",
-        "jetzt buchen und vor Ort bezahlen",
-        "Abholung von der Lobby Ihres Hotels",
-      ],
-      price: "187",
-      date: "21/07/2025",
-      isLiked:true
-    },
-    {
-      id: 3,
-      title: "DOLPHIN WATCH und Schnorcheln",
-      description: "Erlebe Sie hautnah die faszinierende Welt der Delfine bei einem Schnorchelausflug ab Hurghada",
-      image: "/images/Cities/el guna.jpg",
-      features: [
-        "Kostenlose Stornierung",
-        "Dauer 7 Stunden",
-        "jetzt buchen und vor Ort bezahlen",
-        "Abholung von der Lobby Ihres Hotels",
-      ],
-      price: "187",
-      date: "21/07/2025",
-      isLiked:true
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [popupType, setPopupType] = useState('success');
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+  const { openAuthModal } = useAuthModal();
+  const { items, loading, error, operation } = useSelector((state) => state.wishlist);
+  const currentLang = useSelector((state) => state.language.currentLang) || "en";
+
+  useEffect(() => {
+      const params = {
+        lang_code: currentLang,
+        currency_code: "USD",
+        trip_type: 1,
+        client_id: ""
+      };
+
+      dispatch(fetchWishlist(params));
+  }, [dispatch, currentLang]);
+
+  useEffect(() => {
+    if (error) {
+      console.log('Error detected:', error);
+      if (error.status === 401) {
+        setPopupMessage(t("auth.sessionExpired"));
+        setPopupType('error');
+        setShowPopup(true);
+        setShowLoginPrompt(true);
+      } else {
+        setPopupMessage(error.message || t("tripDetails.reviewsLoadError"));
+        setPopupType('error');
+        setShowPopup(true);
+      }
     }
-  ];
-    const { t } = useTranslation();
+  }, [error, t]);
 
-//   if (loading) {
-//     return (
-//       <section className="tours-section">
-//         <Container>
-//           <div className="tours-loading">
-//             <div>
-//               <Spinner animation="border" role="status" />
-//               <div className="loading-text">{t('tours.loading')}</div>
-//             </div>
-//           </div>
-//         </Container>
-//       </section>
-//     );
-//   }
+  // Handle login prompt action
+  const handleLoginPrompt = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
 
-  if (wishList.length === 0) {
+    // Clear auth errors from state
+    dispatch(clearAuthError());
+
+    // Open login modal
+    openAuthModal('login');
+    setShowLoginPrompt(false);
+    setShowPopup(false);
+  };
+
+  if (loading) {
+    return <LoadingPage />;
+  }
+
+  if (items.length === 0 && !loading) {
     return (
       <section className="tours-section">
         <Container>
           <div className="tours-empty">
             <FaMapMarkerAlt className="empty-icon" />
             <h3 className="empty-title">{t('tours.empty_title')}</h3>
-            <p className="empty-text">{t('tours.empty_text')}</p>
+            {/* <p className="empty-text">{t('tours.empty_text')}</p> */}
           </div>
         </Container>
       </section>
@@ -85,24 +82,45 @@ const WishlistSection = () => {
   }
 
   return (
-    <section className="tours-section" id="tours">
-      <Container>
-        <div className="section-header">
-          <h2 className="section-title">{t('wishlist.title')}</h2>
-          <div className="section-divider"></div>
-        </div>
+    <>
+      <section className="tours-section" id="tours">
+        <Container>
+          <div className="section-header">
+            <h2 className="section-title">{t('wishlist.title')}</h2>
+            <div className="section-divider"></div>
+          </div>
 
-        <div className="tours-grid">
-          <Row>
-            {wishList.map((tour) => (
-              <Col key={tour.id} lg={4} md={6} className="d-flex">
-                <WishlistCard tour={tour} />
-              </Col>
-            ))}
-          </Row>
-        </div>
-      </Container>
-    </section>
+          <div className="tours-grid">
+            <Row>
+              {items.map((trip) => (
+                <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
+                  <WishlistCard trip={trip} />
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Container>
+      </section>
+
+      {/* Show popup for messages */}
+      {showPopup && (
+        <PopUp
+          show={showPopup}
+          closeAlert={() => {
+            setShowPopup(false);
+            if (showLoginPrompt) {
+              handleLoginPrompt();
+            }
+          }}
+          msg={popupMessage}
+          type={popupType}
+          autoClose={showLoginPrompt ? false : 3000}
+          showConfirmButton={showLoginPrompt}
+          confirmButtonText={t("auth.loginNow")}
+          onConfirm={handleLoginPrompt}
+        />
+      )}
+    </>
   );
 };
 
