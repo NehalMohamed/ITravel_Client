@@ -1,14 +1,20 @@
 import { Card, Button } from "react-bootstrap";
 import { FaCheck, FaHeart } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
-import { toggleWishlist } from "../../redux/store/toursSlice";
+import { addToWishlist } from "../../redux/Slices/wishlistSlice";
+import { useAuthModal } from '../AuthComp/AuthModal';
+import { checkAUTH } from '../../helper/helperFN';
 
 const TourCard = ({ trip }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { openAuthModal } = useAuthModal();
+
+  const { operation } = useSelector((state) => state.wishlist);
+  const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
   const handleBooking = () => {
     alert(`Tour "${trip.trip_name}" wurde gebucht!`);
@@ -16,7 +22,29 @@ const TourCard = ({ trip }) => {
 
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
-    dispatch(toggleWishlist(trip.trip_id));
+    
+    // Check if user is authenticated using the new helper
+    if (!checkAUTH()) {
+      // Open login modal if not authenticated
+      openAuthModal('login');
+      return;
+    }
+
+    // Dispatch addToWishlist action
+    const wishlistData = {
+      trip_id: trip.trip_id,
+      lang_code: currentLang, 
+      currency_code: "USD",
+      trip_type: 1 
+    };
+
+    dispatch(addToWishlist(wishlistData));
+  };
+
+  const handleCardClick = () => {
+    navigate(`/trip/${trip.route}`, { 
+      state: { tripData: trip } 
+    });
   };
 
   return (
@@ -37,7 +65,7 @@ const TourCard = ({ trip }) => {
         <Card.Text className="tour-description">{trip.trip_description}</Card.Text>
 
         <ul className="feature-list flex-grow-1">
-          {trip.facilities.map((facility, index) => (
+          {trip.facilities?.map((facility, index) => (
             <li key={index} className="feature-item">
               <FaCheck className="check-icon" />
               <span>{facility.facility_name}</span>

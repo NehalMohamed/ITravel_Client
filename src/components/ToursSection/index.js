@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import { useSelector ,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import {
@@ -11,8 +11,11 @@ import TourCard from "../TourCard";
 const ToursSection = () => {
 const dispatch = useDispatch();
  const { trips, loading, error } = useSelector((state) => state.trips);
+ const { operation } = useSelector((state) => state.wishlist);
 const currentLang = useSelector((state) => state.language.currentLang) || "en";
+ const [refreshTrigger, setRefreshTrigger] = useState(0);
 
+ const { t } = useTranslation();
 
  useEffect(() => {
    console.log("Dispatching fetchTripsAll"); 
@@ -24,10 +27,15 @@ const currentLang = useSelector((state) => state.language.currentLang) || "en";
      currency_code: "USD"
    };
    dispatch(fetchTripsAll(params));
- }, [dispatch, currentLang]);
+ }, [dispatch, currentLang, refreshTrigger]);
 
 
-  const { t } = useTranslation();
+   useEffect(() => {
+     if (operation.success) {
+       // Refetch trips after successful wishlist operation
+       setRefreshTrigger(prev => prev + 1);
+     }
+   }, [operation.success]);
 
   if (loading) {
     return (

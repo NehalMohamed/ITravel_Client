@@ -60,6 +60,7 @@ const Features = () => {
                                         <img
                                             src={feature.icon || "/placeholder.svg"}
                                             alt="logo alt"
+                                            
                                         />
                                     </div>
                                     <h4 className="feature-title">{feature.title}</h4>

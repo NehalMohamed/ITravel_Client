@@ -7,15 +7,58 @@ import GoogleLoginButton from "./googleLoginButton";
 import { LoginUser, RegisterUser } from "../../redux/Slices/AuthSlice";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
-function AuthComp() {
+
+// Create a context for the auth modal
+export const AuthModalContext = React.createContext();
+
+// Provider component to wrap your app with
+export const AuthModalProvider = ({ children }) => {
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authModalType, setAuthModalType] = useState("login");
+
+  const openAuthModal = (type = "login") => {
+    setAuthModalType(type);
+    setShowAuthModal(true);
+  };
+  
+  const closeAuthModal = () => {
+    setShowAuthModal(false);
+  };
+
+  const navigateTo = (path) => {
+    window.location.href = path;
+  };
+  
+  return (
+    <AuthModalContext.Provider value={{ openAuthModal, closeAuthModal }}>
+      {children}
+      <AuthModal 
+        show={showAuthModal} 
+        onHide={closeAuthModal} 
+        type={authModalType}
+        setType={setAuthModalType}
+        navigateTo={navigateTo}
+      />
+    </AuthModalContext.Provider>
+  );
+};
+
+// Custom hook to use the auth modal
+export const useAuthModal = () => {
+  const context = React.useContext(AuthModalContext);
+  if (!context) {
+    throw new Error("useAuthModal must be used within an AuthModalProvider");
+  }
+  return context;
+};
+
+// Main AuthModal component
+function AuthModal({ show, onHide, type, setType, navigateTo }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const [type, setType] = useState("login");
   const [errorsLst, seterrorsLst] = useState({});
   const [validated, setvalidated] = useState(false);
-  const [showPopup, setShowPopup] = useState(false); // State for popup visibility
+  const [showPopup, setShowPopup] = useState(false);
   const [formData, setformData] = useState({
     FirstName: "",
     LastName: "",
@@ -27,12 +70,7 @@ function AuthComp() {
   });
 
   const { loading, success, message } = useSelector((state) => state.auth);
-  const handleClose = () => {
-    setShow(false);
-  };
-  const handleShow = () => {
-    setShow(true);
-  };
+ 
   //validate form inputs
   const validate = () => {
     if (type == "register") {
@@ -78,6 +116,7 @@ function AuthComp() {
 
     return true;
   };
+
   const signin = (event) => {
     event.preventDefault();
     // validation
@@ -98,12 +137,13 @@ function AuthComp() {
         let data = { payload: formData, path: "/RegisterUser" };
         dispatch(RegisterUser(data)).then((result) => {
           if (result.payload && result.payload.isSuccessed) {
-            //if user register successfully so navigate to  verify email first
+            //if user register successfully so navigate to verify email first
             setShowPopup(false);
-            navigate("/verifyEmail", {
-              replace: true,
-              state: { path: "/" },
-            });
+            navigateTo("/verifyEmail"); 
+            // ("/verifyEmail", {
+            //   replace: true,
+            //   state: { path: "/" },
+            // });
           } else {
             setShowPopup(true);
           }
@@ -111,40 +151,50 @@ function AuthComp() {
       }
     }
   };
+
   const fillFormData = (e) => {
     setvalidated(false);
     seterrorsLst({});
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setformData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
-  // useEffect(() => {
-  //   let path = type == "login" ? "/" : "/VerifyEmail";
-  //   if (success == true) {
-  //     setShow(false);
-  //     setShowPopup(false);
 
-  //     navigate(path);
-  //   } else {
-  //     setShowPopup(true);
-  //   }
-  //   return () => {};
-  // }, [success]);
+// Reset form when modal is closed or type changes
+  useEffect(() => {
+    if (!show) {
+      setformData({
+        FirstName: "",
+        LastName: "",
+        email: "",
+        password: "",
+        ConfirmPassword: "",
+        Role: "User",
+        sendOffers: false,
+      });
+      seterrorsLst({});
+    }
+  }, [show, type]);
+
+  // Handle success after login/register
+  useEffect(() => {
+    if (success && type === "login") {
+      onHide();
+      setShowPopup(false);
+      navigateTo("/");
+    }
+  }, [success, type, navigateTo, onHide]);
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
-
+    <> 
       <Modal
         size="lg"
         show={show}
-        onHide={handleClose}
+        onHide={onHide}
         backdrop="static"
         keyboard={false}
-        // centered
         className="auth_modal"
       >
         <Modal.Header closeButton></Modal.Header>
@@ -199,6 +249,7 @@ function AuthComp() {
                 type="checkbox"
                 name="sendOffers"
                 onChange={fillFormData}
+                checked={formData.sendOffers}
                 label={
                   <span
                     dangerouslySetInnerHTML={{
@@ -218,6 +269,7 @@ function AuthComp() {
                       className="formInput"
                       required
                       name="FirstName"
+                      value={formData.FirstName}
                       onChange={fillFormData}
                     />
                     {errorsLst.firstname && (
@@ -235,6 +287,7 @@ function AuthComp() {
                       className="formInput"
                       required
                       name="LastName"
+                      value={formData.LastName}
                       onChange={fillFormData}
                     />
                     {errorsLst.lastname && (
@@ -256,6 +309,7 @@ function AuthComp() {
                     required
                     name="email"
                     className="formInput"
+                    value={formData.email}
                     onChange={fillFormData}
                   />
                   {errorsLst.email && (
@@ -277,6 +331,7 @@ function AuthComp() {
                       name="password"
                       className="formInput"
                       minLength={6}
+                      value={formData.password}
                       onChange={fillFormData}
                     />
                     {errorsLst.password && (
@@ -298,6 +353,7 @@ function AuthComp() {
                       name="ConfirmPassword"
                       className="formInput"
                       minLength={6}
+                      value={formData.ConfirmPassword}
                       onChange={fillFormData}
                     />
                     {errorsLst.ConfirmPassword && (
@@ -319,6 +375,7 @@ function AuthComp() {
                       name="password"
                       className="formInput"
                       minLength={6}
+                      value={formData.password}
                       onChange={fillFormData}
                     />
                     {errorsLst.password && (
@@ -341,13 +398,11 @@ function AuthComp() {
           <GoogleLoginButton
             login={type == "login" ? true : false}
             sendOffers={formData.sendOffers}
-            // isAuthRedirect={props.isAuthRedirect}
-            // redirectPath={props.redirectPath}
           />
         </Modal.Body>
       </Modal>
       {loading && <LoadingPage />}
-      {showPopup == true ? (
+      {showPopup && (
         <PopUp
           show={showPopup}
           closeAlert={() => setShowPopup(false)}
@@ -355,9 +410,9 @@ function AuthComp() {
           type={success ? "success" : "error"}
           autoClose={3000}
         />
-      ) : null}
+      )}
     </>
   );
 }
 
-export default AuthComp;
+export default AuthModal;

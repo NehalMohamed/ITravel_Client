@@ -5,6 +5,9 @@ import languageReducer from '../Slices/languageSlice';
 import sliderReducer from '../Slices/sliderSlice';
 import destinationReducer from '../Slices/destinationsSlice';
 import tripsReducer from "../Slices/tripsSlice";
+import reviewReducer from '../Slices/reviewSlice';
+import wishListReducer from '../Slices/wishlistSlice';
+import { authMiddleware } from '../../middleware/authMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +16,10 @@ export const store = configureStore({
     language: languageReducer,
     slider: sliderReducer,
     destinations:destinationReducer,
-    trips:tripsReducer
+    trips:tripsReducer,
+    reviews: reviewReducer,
+    wishlist: wishListReducer
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware().concat(authMiddleware),
 });
