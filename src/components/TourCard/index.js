@@ -1,11 +1,11 @@
 import { Card, Button } from "react-bootstrap";
 import { FaCheck, FaHeart } from "react-icons/fa";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
-import { addToWishlist } from "../../redux/Slices/wishlistSlice"; // Import from wishlist slice
-import { getToken } from "../../utils/tokenUtils";
+import { addToWishlist } from "../../redux/Slices/wishlistSlice";
 import { useAuthModal } from '../AuthComp/AuthModal';
+import { checkAUTH } from '../../helper/helperFN';
 
 const TourCard = ({ trip }) => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const TourCard = ({ trip }) => {
   const { openAuthModal } = useAuthModal();
 
   const { operation } = useSelector((state) => state.wishlist);
+  const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
   const handleBooking = () => {
     alert(`Tour "${trip.trip_name}" wurde gebucht!`);
@@ -22,30 +23,29 @@ const TourCard = ({ trip }) => {
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
     
-        // Check if user is authenticated
-        const token = getToken();
-        if (!token) {
-          // Open login modal if not authenticated
-          openAuthModal('login');
-          return;
-        }
-    
-        // Dispatch addToWishlist action
-        const wishlistData = {
-          trip_id: trip.trip_id,
-          lang_code: "en", // You might want to get this from state
-          currency_code: "USD", // You might want to get this from state
-          trip_type: 1 // Adjust as needed
-        };
-    
-        dispatch(addToWishlist(wishlistData));
-      };
-    
-      const handleCardClick = () => {
-        navigate(`/trip/${trip.route}`, { 
-          state: { tripData: trip } 
-        });
-      };
+    // Check if user is authenticated using the new helper
+    if (!checkAUTH()) {
+      // Open login modal if not authenticated
+      openAuthModal('login');
+      return;
+    }
+
+    // Dispatch addToWishlist action
+    const wishlistData = {
+      trip_id: trip.trip_id,
+      lang_code: currentLang, 
+      currency_code: "USD",
+      trip_type: 1 
+    };
+
+    dispatch(addToWishlist(wishlistData));
+  };
+
+  const handleCardClick = () => {
+    navigate(`/trip/${trip.route}`, { 
+      state: { tripData: trip } 
+    });
+  };
 
   return (
     <Card className="tour-card h-100">

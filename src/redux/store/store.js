@@ -7,6 +7,7 @@ import destinationReducer from '../Slices/destinationsSlice';
 import tripsReducer from "../Slices/tripsSlice";
 import reviewReducer from '../Slices/reviewSlice';
 import wishListReducer from '../Slices/wishlistSlice';
+import { authMiddleware } from '../../middleware/authMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -19,4 +20,6 @@ export const store = configureStore({
     reviews: reviewReducer,
     wishlist: wishListReducer
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware().concat(authMiddleware),
 });

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { getToken, isTokenExpired } from '../../utils/tokenUtils'; 
 import { Container, Spinner, Modal } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { useTripData } from '../../contexts/TripContext';
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
-import { fetchClientsReviews, submitReview, resetReviewSubmission, clearAuthError } from "../../redux/Slices/reviewSlice";
+import { fetchClientsReviews, submitReview, resetReviewSubmission } from "../../redux/Slices/reviewSlice";
 import { useAuthModal } from '../AuthComp/AuthModal';
+import { checkAUTH } from '../../helper/helperFN';
 
 const Reviews = () => {
     const { t } = useTranslation();
@@ -30,21 +30,12 @@ const Reviews = () => {
     const { reviewsByTrip, loading, error, submission } = useSelector((state) => state.reviews);
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
-    // Get user data from localStorage with token validation
+    // Get user data from localStorage
     const [user, setUser] = useState({});
     
     useEffect(() => {
-        // Check token validity on component mount and when user changes
         const userData = JSON.parse(localStorage.getItem('user') || '{}');
-        const token = getToken(); // This automatically clears expired tokens
-        
-        if (!token && userData.id) {
-            // Token was cleared because it's expired
-            localStorage.removeItem('user');
-            setUser({});
-        } else {
-            setUser(userData);
-        }
+        setUser(userData);
     }, []);
 
     useEffect(() => {
@@ -60,9 +51,9 @@ const Reviews = () => {
     // Handle errors from fetching reviews
     useEffect(() => {
         if (error) {
-            // Check if it's a 401 unauthorized error
-            if (error.status === 401) {
-                setPopupMessage(t("auth.sessionExpired"));
+            // Check if it's an authentication error
+            if (error.isAuthError) {
+                setPopupMessage(error.message || t("auth.sessionExpired"));
                 setPopupType('error');
                 setShowPopup(true);
                 setShowLoginPrompt(true);
@@ -76,7 +67,6 @@ const Reviews = () => {
 
     // Handle submission results
     useEffect(() => {
-        console.log(submission)
         if (submission.success) {
             setPopupMessage(t("tripDetails.reviewSubmittedSuccess"));
             setPopupType('success');
@@ -104,9 +94,9 @@ const Reviews = () => {
         }
 
         if (submission.error) {
-            // Check if it's a 401 unauthorized error
-            if (submission.error.status === 401) {
-                setPopupMessage(t("auth.sessionExpired"));
+            // Check if it's an authentication error
+            if (submission.error.isAuthError) {
+                setPopupMessage(submission.error.message || t("auth.sessionExpired"));
                 setPopupType('error');
                 setShowPopup(true);
                 setShowLoginPrompt(true);
@@ -122,30 +112,12 @@ const Reviews = () => {
     useEffect(() => {
         return () => {
             dispatch(resetReviewSubmission());
-            dispatch(clearAuthError());
         };
     }, [dispatch]);
 
-    // Add event listener for auth errors from other components
-    useEffect(() => {
-        const handleAuthError = () => {
-            setPopupMessage(t("auth.sessionExpired"));
-            setPopupType('error');
-            setShowPopup(true);
-            setShowLoginPrompt(true);
-        };
-
-        window.addEventListener('authError', handleAuthError);
-        
-        return () => {
-            window.removeEventListener('authError', handleAuthError);
-        };
-    }, [t]);
-
     // Check authentication status
     const checkAuth = () => {
-        const token = getToken();
-        if (!token) {
+        if (!checkAUTH()) {
             setPopupMessage(t("auth.sessionExpired"));
             setPopupType('error');
             setShowPopup(true);
@@ -160,9 +132,6 @@ const Reviews = () => {
         // Clear user data from localStorage
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        
-        // Clear auth errors from state
-        dispatch(clearAuthError());
         
         // Open login modal
         openAuthModal('login');

@@ -179,6 +179,10 @@
       "waitAndRefresh": "Warten Sie einige Minuten und aktualisieren Sie Ihren Posteingang"
     }
   },
+  "PopUp": {
+    "Header": "Fehlermeldung",
+    "Close": "Schließen"
+  },
   "auth": {
     "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.",
     "loginNow": "Jetzt einloggen"

@@ -179,6 +179,10 @@
       "waitAndRefresh": "Wait a few minutes and refresh your inbox"
     }
   },
+  "PopUp": {
+    "Header": "Error Message",
+    "Close": "Close"
+  },
   "auth": {
     "sessionExpired": "Your session has expired. Please log in again.",
     "loginNow": "Log in now"
