@@ -22,7 +22,11 @@ const MainNavbar = () => {
     <Navbar expand="lg" className="main-navbar" sticky="top">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="brand-logo">
-          <img src="/ItravelLogo.png" alt={t('main_navbar.travel')} className="logo-img" />
+          <img
+            src="/ItravelLogo.png"
+            alt={t("main_navbar.travel")}
+            className="logo-img"
+          />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="main-navbar-nav" />
@@ -32,56 +36,64 @@ const MainNavbar = () => {
             <Nav.Link
               as={NavLink}
               to="/"
-              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
               end
             >
-              {t('main_navbar.home')}
+              {t("main_navbar.home")}
             </Nav.Link>
 
-           <ExcursionsDropdown />
+            {/* <ExcursionsDropdown /> */}
 
             <Nav.Link
               as={NavLink}
               to="/ComingSoon"
-              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
             >
-              {t('main_navbar.transfer_services')}
+              {t("main_navbar.transfer_services")}
             </Nav.Link>
 
-                        <Nav.Link
+            <Nav.Link
               as={NavLink}
               to="/AboutUs"
-              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
             >
-              {t('main_navbar.about_us')}
+              {t("main_navbar.about_us")}
             </Nav.Link>
 
             <Nav.Link
               as={NavLink}
               to="/Contact"
-              className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
             >
-              {t('main_navbar.contact')}
+              {t("main_navbar.contact")}
             </Nav.Link>
 
             {/* Icon Actions Section */}
             <div className="navbar-icons">
               {/* Search Icon */}
               <div className="search-container">
-                <button 
-                className="icon-btn search-btn" 
-                onClick={() => setShowSearch(!showSearch)} 
-                aria-label="search"
+                <button
+                  className="icon-btn search-btn"
+                  onClick={() => setShowSearch(!showSearch)}
+                  aria-label="search"
                 >
                   <FaSearch />
                 </button>
                 {showSearch && (
                   <div className="search-dropdown">
-                    <input 
-                    type="text" 
-                    placeholder={t('main_navbar.search_placeholder')} 
-                    className="search-input" 
-                    autoFocus 
+                    <input
+                      type="text"
+                      placeholder={t("main_navbar.search_placeholder")}
+                      className="search-input"
+                      autoFocus
                     />
                   </div>
                 )}
@@ -90,23 +102,27 @@ const MainNavbar = () => {
               <LanguageDropdown />
 
               {/* Wishlist/Heart Icon */}
-              <button 
-              className="icon-btn wishlist-btn" 
-              aria-label="wishlist" 
-              onClick={handleWishlistClick}
+              <button
+                className="icon-btn wishlist-btn"
+                aria-label="wishlist"
+                onClick={handleWishlistClick}
               >
                 <FaHeart />
-                {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
+                {wishlistCount > 0 && (
+                  <span className="badge">{wishlistCount}</span>
+                )}
               </button>
 
               {/* Shopping Basket */}
-              <button className="icon-btn basket-btn" aria-label="shopping_basket">
+              <button
+                className="icon-btn basket-btn"
+                aria-label="shopping_basket"
+              >
                 <FaShoppingBasket />
                 {/* <span className="badge">2</span> */}
               </button>
 
               <ProfileDropdown />
-              
             </div>
           </Nav>
         </Navbar.Collapse>
