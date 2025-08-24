@@ -12,7 +12,7 @@ export const authMiddleware = (store) => (next) => (action) => {
         error.message || 'Authentication failed',
         () => {
           // This callback only executes when user confirms
-          history.push('/login');
+          history.push('/');
         }
       );
 

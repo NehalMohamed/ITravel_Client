@@ -20,6 +20,16 @@ const getAuthHeaders = () => {
   };
 };
 
+const getNonAuthHeaders = () => {
+  let lang = localStorage.getItem("lang") || "en";
+  return {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Language": lang,
+    },
+  };
+};
+
 // Async thunk for fetching reviews
 export const fetchClientsReviews = createAsyncThunk(
   "reviews/fetchClientsReviews",
@@ -32,7 +42,7 @@ export const fetchClientsReviews = createAsyncThunk(
       const response = await axios.post(
         `${BASE_URL}/GetClientsReviews`,
         params,
-        getAuthHeaders()
+        getNonAuthHeaders()
       );
       
       if (response.data.success === false) {

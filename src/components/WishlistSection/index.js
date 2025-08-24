@@ -22,15 +22,6 @@ const WishlistSection = () => {
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
   useEffect(() => {
-    // Check authentication before fetching wishlist
-    if (!checkAUTH()) {
-      console.log(!checkAUTH())
-      setPopupMessage(t("auth.sessionExpired"));
-      setPopupType('error');
-      setShowPopup(true);
-      setShowLoginPrompt(true);
-      // return;
-    }
 
     const params = {
       lang_code: currentLang,
