@@ -184,7 +184,7 @@
     "Close": "Schließen"
   },
   "auth": {
-    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.",
+    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich aus und erneut ein.",
     "loginNow": "Jetzt einloggen"
   },
   "tripDetails": {
@@ -199,6 +199,7 @@
     "pleaseSelectRating": "Bitte wählen Sie eine Bewertung aus",
     "pleaseWriteReview": "Bitte schreiben Sie eine Bewertung",
     "addToWishlist": "Zur Wunschliste hinzufügen",
+    "addedToWishlist":"Zur Wunschliste hinzugefügt",
     "share": "Teilen",
     "aboutTrip": "Über diese Reise",
     "bookNowPayLater": "Jetzt reservieren, später zahlen: Bleiben Sie flexibel – buchen Sie jetzt und zahlen Sie später.",

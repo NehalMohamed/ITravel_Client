@@ -16,8 +16,7 @@ const getAuthHeaders = () => {
 // ---------- Thunks ----------
 export const fetchTripsAll = createAsyncThunk(
   "trips/fetchTripsAll",
-  async (params,{ rejectWithValue }
-  ) => {
+  async (params, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
         `${BASE_URL}/GetTripsAll`, 
@@ -82,7 +81,7 @@ const tripsSlice = createSlice({
     .addCase(fetchPickupsForTrip.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    })
+    });
   },
 });
 

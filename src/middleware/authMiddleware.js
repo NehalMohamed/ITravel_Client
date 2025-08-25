@@ -10,10 +10,10 @@ export const authMiddleware = (store) => (next) => (action) => {
       // Show popup and only redirect when user clicks OK
       showAuthPopup(
         error.message || 'Authentication failed',
-        () => {
-          // This callback only executes when user confirms
-          history.push('/');
-        }
+        // () => {
+        //   // This callback only executes when user confirms
+        //   // history.push('/');
+        // }
       );
 
       // Clear the error state

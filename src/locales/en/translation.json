@@ -184,7 +184,7 @@
     "Close": "Close"
   },
   "auth": {
-    "sessionExpired": "Your session has expired. Please log in again.",
+    "sessionExpired": "Your session has expired. Please log out & log in again.",
     "loginNow": "Log in now"
   },
   "tripDetails": {
@@ -199,6 +199,7 @@
     "pleaseSelectRating": "Please select a rating",
     "pleaseWriteReview": "Please write a review",
     "addToWishlist": "Add to wishlist",
+    "addedToWishlist":"Added to wishlist",
     "share": "Share",
     "aboutTrip": "About this trip",
     "bookNowPayLater": "Book now, pay later: Stay flexible - book now and pay later.",

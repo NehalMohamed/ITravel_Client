@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { FaMapMarkerAlt, FaRegHeart } from "react-icons/fa";
+import { BiSolidCard } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
-import { fetchWishlist } from '../../redux/Slices/wishlistSlice';
+import { fetchWishlist, resetWishlistOperation } from '../../redux/Slices/wishlistSlice';
 import WishlistCard from "../WishlistCard";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
-import { useAuthModal } from '../AuthComp/AuthModal';
-import { checkAUTH } from '../../helper/helperFN';
 
 const WishlistSection = () => {
   const { t } = useTranslation();
@@ -16,13 +14,10 @@ const WishlistSection = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [popupType, setPopupType] = useState('success');
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-  const { openAuthModal } = useAuthModal();
-  const { items, loading, error, operation } = useSelector((state) => state.wishlist);
+  const { items, loading, error } = useSelector((state) => state.wishlist);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
   useEffect(() => {
-
     const params = {
       lang_code: currentLang,
       currency_code: "USD",
@@ -31,36 +26,24 @@ const WishlistSection = () => {
     };
 
     dispatch(fetchWishlist(params));
-  }, [dispatch, currentLang, t]);
+  }, [dispatch, currentLang]);
 
   useEffect(() => {
     if (error) {
       console.log('Error detected:', error);
-      // Check if it's an authentication error
-      if (error.isAuthError) {
-        setPopupMessage(error.message || t("auth.sessionExpired"));
-        setPopupType('error');
-        setShowPopup(true);
-        setShowLoginPrompt(true);
-      } else {
         setPopupMessage(error.message || t("wishlist.loadError"));
         setPopupType('error');
         setShowPopup(true);
-      }
+
+        dispatch(resetWishlistOperation());
     }
-  }, [error, t]);
+  }, [error, t, dispatch]);
 
-  // Handle login prompt action
-  const handleLoginPrompt = () => {
-    // Clear user data from localStorage
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-
-    // Open login modal
-    openAuthModal('login');
-    setShowLoginPrompt(false);
-    setShowPopup(false);
-  };
+   useEffect(() => {
+    return () => {
+      dispatch(resetWishlistOperation());
+      };
+  }, [dispatch]);
 
   if (loading) {
     return <LoadingPage />;
@@ -71,7 +54,7 @@ const WishlistSection = () => {
       <section className="tours-section">
         <Container>
           <div className="tours-empty">
-            <FaMapMarkerAlt className="empty-icon" />
+            <BiSolidCard className="empty-icon" />
             <h3 className="empty-title">{t('tours.empty_title')}</h3>
             {/* <p className="empty-text">{t('tours.empty_text')}</p> */}
           </div>
@@ -105,18 +88,11 @@ const WishlistSection = () => {
       {showPopup && (
         <PopUp
           show={showPopup}
-          closeAlert={() => {
-            setShowPopup(false);
-            if (showLoginPrompt) {
-              handleLoginPrompt();
-            }
-          }}
+          closeAlert={() => setShowPopup(false)}
           msg={popupMessage}
           type={popupType}
-          autoClose={showLoginPrompt ? false : 3000}
-          showConfirmButton={showLoginPrompt}
-          confirmButtonText={t("auth.loginNow")}
-          onConfirm={handleLoginPrompt}
+          autoClose={popupType === 'success' ? 3000 : false}
+          showConfirmButton={false}
         />
       )}
     </>

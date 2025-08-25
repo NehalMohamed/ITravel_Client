@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import MinimalLayout from "./layouts/MinimalLayout";
@@ -16,8 +16,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-popup-alert/dist/index.css";
 import "./styles/main.scss";
 import OTPInput from "./components/AuthComp/OTP/OTPInput";
+import { useAuthModal } from './components/AuthComp/AuthModal';
+import { setAuthModalFunction } from './utils/showAlert';
 
 function App() {
+  const { openAuthModal } = useAuthModal();
+
+  useEffect(() => {
+    // "Inject" the openAuthModal function into the utility file
+    setAuthModalFunction(openAuthModal);
+  }, [openAuthModal]);
+
   return (
     <div className="App">
       <Router>
