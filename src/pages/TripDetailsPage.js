@@ -11,13 +11,14 @@ import CityCarousel from "../components/CityCarousel";
 const TripDetailsPage = () => {
   const { state } = useLocation(); // Get tripData passed from navigation
   const tripData = state?.tripData;
+
   return (
    <TripContext.Provider value={tripData}>
-      <Gallery />
-      <BookingInfo />
-      <FlightItinerary />
-      <Reviews />
-      <TourDetails />
+      <Gallery tripData={tripData} />
+      <BookingInfo tripData={tripData}/>
+      <FlightItinerary tripData={tripData}/>
+      <Reviews tripData={tripData}/>
+      <TourDetails tripData={tripData}/>
       <CityCarousel />
    </TripContext.Provider>
   );

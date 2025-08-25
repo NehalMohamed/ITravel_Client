@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Spinner, Modal } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { useTripData } from '../../contexts/TripContext';
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
 import { fetchClientsReviews, submitReview, resetReviewSubmission } from "../../redux/Slices/reviewSlice";
 
-const Reviews = () => {
+const Reviews = ({ tripData }) => {
     const { t } = useTranslation();
     const [showReviewForm, setShowReviewForm] = useState(false);
     const [userRating, setUserRating] = useState(0);
@@ -17,9 +16,8 @@ const Reviews = () => {
     const [popupMessage, setPopupMessage] = useState('');
     const [popupType, setPopupType] = useState('error');
     const [showAllReviewsModal, setShowAllReviewsModal] = useState(false);
-    
-    const tripData = useTripData();
-    const tripId = tripData.trip_id;
+
+    const tripId = tripData?.trip_id;
     const dispatch = useDispatch();
 
     // Get state from the review slice
