@@ -1,7 +1,7 @@
 // src/redux/Slices/reviewSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { checkAUTH } from "../../helper/helperFN";
+import { checkAUTH, isUserNotLoggedIn, isTokenExpiredOnly } from "../../helper/helperFN";
 import { createAuthError } from "../../utils/authError";
 
 const BASE_URL = process.env.REACT_APP_CLIENT_API_URL;
@@ -34,7 +34,6 @@ const getNonAuthHeaders = () => {
 export const fetchClientsReviews = createAsyncThunk(
   "reviews/fetchClientsReviews",
   async (params, { rejectWithValue }) => {
-
     try {
       const response = await axios.post(
         `${BASE_URL}/GetClientsReviews`,
@@ -57,8 +56,17 @@ export const fetchClientsReviews = createAsyncThunk(
 export const submitReview = createAsyncThunk(
   "reviews/submitReview",
   async (reviewData, { rejectWithValue }) => {
+    // Check authentication with proper scenario detection
+    if (isUserNotLoggedIn()) {
+      return rejectWithValue(createAuthError('notLoggedIn'));
+    }
+    
+    if (isTokenExpiredOnly()) {
+      return rejectWithValue(createAuthError('expired'));
+    }
+    
     if (!checkAUTH()) {
-      return rejectWithValue(createAuthError());
+      return rejectWithValue(createAuthError('expired'));
     }
 
     try {
@@ -81,7 +89,7 @@ export const submitReview = createAsyncThunk(
       return response.data;
     } catch (error) {
       if (error.response?.status === 401) {
-        return rejectWithValue(createAuthError());
+        return rejectWithValue(createAuthError('expired'));
       }
       
       // Handle case where server returns error with success: false in response data

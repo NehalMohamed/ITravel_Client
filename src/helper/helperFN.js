@@ -11,14 +11,36 @@ const isTokenExpired = (token) => {
 
 export const checkAUTH = () => {
   const authToken = localStorage.getItem("token");
-  if (authToken && !isTokenExpired(authToken)) {
-  // if (authToken) {
+  const user = localStorage.getItem("user");
+  
+  // Check if user exists and has a valid token
+  if (authToken && user && !isTokenExpired(authToken)) {
     return true;
   } else {
-    console.log("token is null Or expired");
+    console.log("User not logged in or token expired");
     return false;
   }
 };
+
+export const isTokenExpiredOnly = () => {
+  const authToken = localStorage.getItem("token");
+  const user = localStorage.getItem("user");
+  
+  // If user exists but token is expired
+  if (authToken && user && isTokenExpired(authToken)) {
+    return true;
+  }
+  return false;
+};
+
+export const isUserNotLoggedIn = () => {
+  const authToken = localStorage.getItem("token");
+  const user = localStorage.getItem("user");
+  
+  // If no user data exists at all
+  return !authToken && !user;
+};
+
 
 export const checkIsLogin = () => {
   const authToken = localStorage.getItem("token");

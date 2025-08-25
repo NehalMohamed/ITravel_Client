@@ -28,7 +28,7 @@ const PopupMsg = ({ text, show, closeAlert, onConfirm , openAuthModal }) => {
   return (
     <Alert
       header={t("PopUp.Header")}
-      btnText={t("PopUp.Close")}
+      btnText={t("auth.ok")}
       text={text}
       type={"error"}
       show={show}

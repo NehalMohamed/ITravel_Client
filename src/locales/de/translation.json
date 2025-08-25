@@ -21,7 +21,7 @@
     "wishlist": "Wunschliste",
     "shopping_basket": "Warenkorb",
     "profile": "Profil",
-    "login_signup":"Anmelden oder Registrieren",
+    "login_signup": "Anmelden oder Registrieren",
     "my_profile": "Mein Profil",
     "logout": "Abmelden",
     "Welcome": "Willkommen"
@@ -184,8 +184,10 @@
     "Close": "Schließen"
   },
   "auth": {
-    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich aus und erneut ein.",
-    "loginNow": "Jetzt einloggen"
+    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+    "loginRequired": "Bitte melden Sie sich zunächst an.",
+    "loginNow": "Jetzt anmelden",
+    "ok":"OK"
   },
   "tripDetails": {
     "reviews": "Bewertungen",
@@ -199,7 +201,7 @@
     "pleaseSelectRating": "Bitte wählen Sie eine Bewertung aus",
     "pleaseWriteReview": "Bitte schreiben Sie eine Bewertung",
     "addToWishlist": "Zur Wunschliste hinzufügen",
-    "addedToWishlist":"Zur Wunschliste hinzugefügt",
+    "addedToWishlist": "Zur Wunschliste hinzugefügt",
     "share": "Teilen",
     "aboutTrip": "Über diese Reise",
     "bookNowPayLater": "Jetzt reservieren, später zahlen: Bleiben Sie flexibel – buchen Sie jetzt und zahlen Sie später.",

@@ -13,7 +13,7 @@ export const setAuthModalFunction = (func) => {
   authModalFunction = func;
 };
 
-export const showAuthPopup = (message, callback) => {
+export const showAuthPopup = (message, callback, scenario = 'expired') => {
   // Clean up any existing popup first
   if (root) {
     try {
@@ -44,13 +44,15 @@ export const showAuthPopup = (message, callback) => {
       if (!isMounted) return; // Prevent updates after unmount
       
       setShow(false);
-      if (currentCallback) {
-        currentCallback();
-        currentCallback = null;
-      }
       
-       // Open login modal if function is available
-      if (authModalFunction) {
+      // Only call currentCallback if it's a function
+       if (typeof currentCallback === 'function') {
+        currentCallback();
+      }
+      currentCallback = null;
+      
+      // Always open login modal in both scenarios
+      if (typeof authModalFunction === 'function') {
         setTimeout(() => {
           authModalFunction("login");
         }, 300);

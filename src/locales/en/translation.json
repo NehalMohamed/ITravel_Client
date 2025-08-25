@@ -184,8 +184,10 @@
     "Close": "Close"
   },
   "auth": {
-    "sessionExpired": "Your session has expired. Please log out & log in again.",
-    "loginNow": "Log in now"
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "loginRequired": "Please log in first.",
+    "loginNow": "Log in now",
+    "ok":"OK"
   },
   "tripDetails": {
     "reviews": "reviews",

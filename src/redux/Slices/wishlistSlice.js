@@ -1,7 +1,7 @@
 // src/redux/Slices/wishlistSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { checkAUTH } from "../../helper/helperFN";
+import { checkAUTH, isUserNotLoggedIn, isTokenExpiredOnly } from "../../helper/helperFN";
 import { createAuthError } from "../../utils/authError";
 
 const BOOKING_URL = process.env.REACT_APP_BOOKING_API_URL;
@@ -23,8 +23,17 @@ const getAuthHeaders = () => {
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
   async (params, { rejectWithValue }) => {
+    // Check authentication with proper scenario detection
+    if (isUserNotLoggedIn()) {
+      return rejectWithValue(createAuthError('notLoggedIn'));
+    }
+    
+    if (isTokenExpiredOnly()) {
+      return rejectWithValue(createAuthError('expired'));
+    }
+    
     if (!checkAUTH()) {
-      return rejectWithValue(createAuthError());
+      return rejectWithValue(createAuthError('expired'));
     }
 
     try {
@@ -41,7 +50,7 @@ export const fetchWishlist = createAsyncThunk(
       return response.data;
     } catch (error) {
       if (error.response?.status === 401) {
-        return rejectWithValue(createAuthError());
+        return rejectWithValue(createAuthError('expired'));
       }
       return rejectWithValue(error.response?.data?.errors || error.message);
     }
@@ -52,8 +61,17 @@ export const fetchWishlist = createAsyncThunk(
 export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
   async (wishlistData, { rejectWithValue }) => {
+    // Check authentication with proper scenario detection
+    if (isUserNotLoggedIn()) {
+      return rejectWithValue(createAuthError('notLoggedIn'));
+    }
+    
+    if (isTokenExpiredOnly()) {
+      return rejectWithValue(createAuthError('expired'));
+    }
+    
     if (!checkAUTH()) {
-      return rejectWithValue(createAuthError());
+      return rejectWithValue(createAuthError('expired'));
     }
 
     try {
@@ -82,7 +100,7 @@ export const addToWishlist = createAsyncThunk(
       };
     } catch (error) {
       if (error.response?.status === 401) {
-        return rejectWithValue(createAuthError());
+        return rejectWithValue(createAuthError('expired'));
       }
       return rejectWithValue(error.response?.data?.errors || error.message);
     }
