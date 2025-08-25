@@ -63,11 +63,23 @@ export const addToWishlist = createAsyncThunk(
         getAuthHeaders()
       );
       
+      console.log("Add to wishlist response:", response.data);
+      
+      // Check if the operation was successful
       if (response.data.success === false) {
-        return rejectWithValue(response.data.errors || "Failed to add to wishlist");
+        // Return the error message but don't reject - so we can show the popup
+        return {
+          success: false,
+          error: response.data.errors || "Failed to add to wishlist",
+          trip_id: wishlistData.trip_id
+        };
       }
       
-      return { ...response.data, trip_id: wishlistData.trip_id };
+      return { 
+        success: true,
+        ...response.data, 
+        trip_id: wishlistData.trip_id 
+      };
     } catch (error) {
       if (error.response?.status === 401) {
         return rejectWithValue(createAuthError());
@@ -118,20 +130,28 @@ const wishlistSlice = createSlice({
       })
       // Add to wishlist
       .addCase(addToWishlist.pending, (state) => {
-        state.operation.loading = true;
-        state.operation.error = null;
-        state.operation.success = false;
-      })
-      .addCase(addToWishlist.fulfilled, (state, action) => {
-        state.operation.loading = false;
+      state.operation.loading = true;
+      state.operation.error = null;
+      state.operation.success = false;
+    })
+    .addCase(addToWishlist.fulfilled, (state, action) => {
+      state.operation.loading = false;
+      
+      if (action.payload.success) {
         state.operation.error = null;
         state.operation.success = true;
-      })
-      .addCase(addToWishlist.rejected, (state, action) => {
-        state.operation.loading = false;
-        state.operation.error = action.payload;
+      } else {
+        // Handle successful response but operation failed
+        console.log(action.payload.error)
+        state.operation.error = action.payload.error;
         state.operation.success = false;
-      });
+      }
+    })
+    .addCase(addToWishlist.rejected, (state, action) => {
+      state.operation.loading = false;
+      state.operation.error = action.payload;
+      state.operation.success = false;
+    });
   }
 });
 

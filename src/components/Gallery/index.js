@@ -1,31 +1,89 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoHeart, IoHeartOutline, IoShareSocial } from 'react-icons/io5';
 import { CiExport } from "react-icons/ci";
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-image-lightbox/style.css';
 import { useTripData } from '../../contexts/TripContext';
-import { useSelector } from 'react-redux';
+import { addToWishlist, resetWishlistOperation } from '../../redux/Slices/wishlistSlice';
+import LoadingPage from "../Loader/LoadingPage";
+import PopUp from "../Shared/popup/PopUp";
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [isWishlisted, setIsWishlisted] = useState(false);
+const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [popupType, setPopupType] = useState('error');
+  
+  const dispatch = useDispatch();
   const tripData = useTripData();
   const { t } = useTranslation();
+  const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const { operation } = useSelector((state) => state.wishlist);
 
   const images = tripData.imgs;
+
+  // Handle operation errors and successes
+    useEffect(() => {
+      if (operation.error) {
+        setPopupMessage(operation.error);
+        setPopupType('error');
+        setShowPopup(true);
+        
+        // Reset operation error after showing
+        setTimeout(() => {
+          dispatch(resetWishlistOperation());
+        }, 100);
+      }
+    }, [operation.error, dispatch]);
+  
+    // Handle successful addition silently (no popup, just visual feedback)
+    useEffect(() => {
+      if (operation.success) {
+        // You could add a subtle visual feedback here instead of a popup
+        // For example: show a checkmark icon temporarily
+        
+        // Reset operation success after a delay
+        setTimeout(() => {
+          dispatch(resetWishlistOperation());
+        }, 100);
+      }
+    }, [operation.success, dispatch]);
+  
+    // Cleanup on unmount
+    useEffect(() => {
+      return () => {
+        dispatch(resetWishlistOperation());
+      };
+    }, [dispatch]);
 
   const openLightbox = (index) => {
     setPhotoIndex(index);
     setIsOpen(true);
   };
-
-  const toggleWishlist = () => {
-    setIsWishlisted(!isWishlisted);
-  };
   
+  const handleWishlistToggle = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // If already in wishlist, don't do anything
+      if (tripData.isfavourite) {
+        return;
+      }
+  
+      const wishlistData = {
+        trip_id: tripData.trip_id,
+        lang_code: currentLang,
+        currency_code: "USD",
+        trip_type: 1
+      };
+  
+      dispatch(addToWishlist(wishlistData));
+    };
+
   // Create dynamic star rating
   const renderStars = (rating) => {
     const stars = [];
@@ -52,6 +110,7 @@ const Gallery = () => {
   };
 
   return (
+    <>
     <div className="gallery-section">
       <Container>
         {/* Header */}
@@ -69,11 +128,19 @@ const Gallery = () => {
             </div>
             <div className="actions">
               <button 
-                className={`action-btn wishlist-btn ${isWishlisted ? 'active' : ''}`}
-                onClick={toggleWishlist}
+                className={`action-btn wishlist-btn ${tripData.isfavourite ? 'active' : ''}`}
+                 onClick={handleWishlistToggle}
+                  disabled={tripData.isfavourite || operation.loading}
               >
-                {isWishlisted ? <IoHeart size={24} /> : <IoHeartOutline size={24} />}
+                {tripData.isfavourite ? 
+                <IoHeart size={24} /> : 
+                <IoHeartOutline size={24} 
+                />}
+                {tripData.isfavourite ? 
+                <span className="btn-text">{t("tripDetails.addedToWishlist")}</span> : 
                 <span className="btn-text">{t("tripDetails.addToWishlist")}</span>
+                }
+                {operation.loading && <Spinner animation="border" size="sm" className="ms-2" />}
               </button>
               <button className="action-btn share-btn">
                 <CiExport size={24} />
@@ -132,21 +199,26 @@ const Gallery = () => {
                 zIndex: 9999
               }
             }}
-            // toolbarButtons={[
-            //   <button
-            //     key="wishlist"
-            //     type="button"
-            //     className="ril-toolbar__item__child lightbox-wishlist"
-            //     onClick={toggleWishlist}
-            //     title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-            //   >
-            //     {isWishlisted ? <IoHeart size={20} /> : <IoHeartOutline size={20} />}
-            //   </button>
-            // ]}
           />
         )}
       </Container>
     </div>
+
+    {/* Show loading page during wishlist operation */}
+      {operation.loading && <LoadingPage />}
+
+      {/* Show popup for error messages */}
+      {showPopup && (
+        <PopUp
+          show={showPopup}
+          closeAlert={() => setShowPopup(false)}
+          msg={popupMessage}
+          type={popupType}
+          autoClose={false}
+          showConfirmButton={false}
+        />
+      )}
+    </>
   );
 };
 

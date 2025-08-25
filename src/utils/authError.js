@@ -1,6 +1,8 @@
-export const createAuthError = (message = 'Session expired. Please logout and Login again.') => {
+import i18n from '../i18n';
+
+export const createAuthError = (message = 'auth.sessionExpired') => {
   return {
-    message,
+    message: i18n.t(message),
     isAuthError: true // Flag to identify auth errors
   };
 };

@@ -16,7 +16,11 @@ const DestinationExcursions = () => {
     const dispatch = useDispatch();
     const { trips, loading, error } = useSelector((state) => state.trips);
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
+    const { user: stateUser } = useSelector((state) => state.auth); // Get user from auth state
 
+    // Get user from localStorage as fallback
+    const localStorageUser = JSON.parse(localStorage.getItem("user") || "null");
+    const user = stateUser || localStorageUser;
 
     useEffect(() => {
         console.log("Dispatching fetchTripsAll");
@@ -25,7 +29,8 @@ const DestinationExcursions = () => {
             show_in_slider: false,
             show_in_top: false,
             destination_id: destinationId,
-            currency_code: "USD"
+            currency_code: "USD",
+            client_id: user?.id || ""
         };
         dispatch(fetchTripsAll(params));
     }, [dispatch, currentLang]);

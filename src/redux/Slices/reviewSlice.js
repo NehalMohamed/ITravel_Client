@@ -34,9 +34,6 @@ const getNonAuthHeaders = () => {
 export const fetchClientsReviews = createAsyncThunk(
   "reviews/fetchClientsReviews",
   async (params, { rejectWithValue }) => {
-    if (!checkAUTH()) {
-      return rejectWithValue(createAuthError());
-    }
 
     try {
       const response = await axios.post(
@@ -51,9 +48,6 @@ export const fetchClientsReviews = createAsyncThunk(
       
       return response.data;
     } catch (error) {
-      if (error.response?.status === 401) {
-        return rejectWithValue(createAuthError());
-      }
       return rejectWithValue(error.response?.data?.errors || error.message);
     }
   }
