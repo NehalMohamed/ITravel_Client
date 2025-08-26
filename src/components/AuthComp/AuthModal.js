@@ -131,11 +131,7 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
           },
           path: "/LoginUser",
         };
-        dispatch(LoginUser(data));
-      } else {
-        formData["lang"] = lang;
-        let data = { payload: formData, path: "/RegisterUser" };
-        dispatch(RegisterUser(data)).then((result) => {
+        dispatch(LoginUser(data)).then((result) => {
           if (result.payload && result.payload.isSuccessed) {
             //if user register successfully so navigate to verify email first
             setShowPopup(false);
@@ -147,6 +143,14 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
           } else {
             setShowPopup(true);
           }
+        });
+      } else {
+        formData["lang"] = lang;
+        let data = { payload: formData, path: "/RegisterUser" };
+        dispatch(RegisterUser(data)).then((result) => {
+          if (result.payload && !result.payload.isSuccessed) {
+            setShowPopup(true);
+          } 
         });
       }
     }

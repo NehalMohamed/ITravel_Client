@@ -24,6 +24,7 @@ const TourCard = ({ trip }) => {
   };
 
   const handleCardClick = () => {
+    localStorage.setItem('currentTripData', JSON.stringify(trip));
     navigate(`/trip/${trip.route}`, {
       state: { tripData: trip }
     });

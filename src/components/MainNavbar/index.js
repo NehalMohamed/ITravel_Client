@@ -44,7 +44,7 @@ const MainNavbar = () => {
               {t("main_navbar.home")}
             </Nav.Link>
 
-            {/* <ExcursionsDropdown /> */}
+            <ExcursionsDropdown />
 
             <Nav.Link
               as={NavLink}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TripContext } from '../contexts/TripContext';
 import Gallery from "../components/Gallery";
@@ -10,7 +10,26 @@ import CityCarousel from "../components/CityCarousel";
 
 const TripDetailsPage = () => {
   const { state } = useLocation(); // Get tripData passed from navigation
-  const tripData = state?.tripData;
+  const [tripData, setTripData] = useState(null);
+
+  useEffect(() => {
+    if (state?.tripData) {
+      setTripData(state.tripData);
+    } else {
+      // Fallback to localStorage if state is lost
+      const savedTripData = localStorage.getItem('currentTripData');
+      if (savedTripData) {
+        setTripData(JSON.parse(savedTripData));
+      }
+    }
+  }, [state]);
+
+  // Clean up localStorage when component unmounts
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem('currentTripData');
+    };
+  }, []);
 
   return (
    <TripContext.Provider value={tripData}>
