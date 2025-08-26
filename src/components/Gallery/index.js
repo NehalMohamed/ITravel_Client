@@ -40,12 +40,9 @@ const [showPopup, setShowPopup] = useState(false);
       }
     }, [operation.error, dispatch]);
   
-    // Handle successful addition silently (no popup, just visual feedback)
+    // Handle successful operation silently
     useEffect(() => {
       if (operation.success) {
-        // You could add a subtle visual feedback here instead of a popup
-        // For example: show a checkmark icon temporarily
-        
         // Reset operation success after a delay
         setTimeout(() => {
           dispatch(resetWishlistOperation());
@@ -69,17 +66,17 @@ const [showPopup, setShowPopup] = useState(false);
       e.preventDefault();
       e.stopPropagation();
       
-      // If already in wishlist, don't do anything
-      if (!tripData || tripData.isfavourite) {
-      return;
-    }
+      if (!tripData) return;
   
-      const wishlistData = {
-        trip_id: tripData.trip_id,
-        lang_code: currentLang,
-        currency_code: "USD",
-        trip_type: 1
-      };
+        const user = JSON.parse(localStorage.getItem("user"));
+        const wishlistData = {
+          id:tripData.wish_id,
+          trip_id: tripData.trip_id,
+          client_id: user.id,
+          created_at: tripData.wsh_created_at,
+          trip_type: 1,
+          delete: tripData.isfavourite // true to remove, false to add
+        };
   
       dispatch(addToWishlist(wishlistData));
     };
@@ -130,13 +127,13 @@ const [showPopup, setShowPopup] = useState(false);
               <button 
                 className={`action-btn wishlist-btn ${tripData?.isfavourite ? 'active' : ''}`}
                  onClick={handleWishlistToggle}
-                  disabled={tripData?.isfavourite || operation.loading}
+                  disabled={operation.loading}
               >
                 {tripData?.isfavourite ? 
                 <IoHeart size={24} /> : 
                 <IoHeartOutline size={24} />}
                 {tripData?.isfavourite ? 
-                <span className="btn-text">{t("tripDetails.addedToWishlist")}</span> : 
+                <span className="btn-text">{t("tripDetails.removeFromWishlist")}</span> : 
                 <span className="btn-text">{t("tripDetails.addToWishlist")}</span>
                 }
                 {operation.loading && <Spinner animation="border" size="sm" className="ms-2" />}

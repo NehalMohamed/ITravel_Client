@@ -11,14 +11,18 @@ const TourCard = ({ trip }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
-
+ 
+  console.log(trip)
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
+    const user = JSON.parse(localStorage.getItem("user"));
     const wishlistData = {
+      id:trip.wish_id,
       trip_id: trip.trip_id,
-      lang_code: currentLang,
-      currency_code: "USD",
-      trip_type: 1
+      client_id: user.id,
+      created_at: trip.wsh_created_at,
+      trip_type: 1,
+      delete: trip.isfavourite // true to remove, false to add
     };
     dispatch(addToWishlist(wishlistData));
   };
@@ -37,7 +41,7 @@ const TourCard = ({ trip }) => {
           <button
             className={`wishlist-heart ${trip.isfavourite ? "liked" : ""}`}
             onClick={handleWishlistToggle}
-            aria-label="Add to wishlist"
+            aria-label={trip.isfavourite ? t("tripDetails.removeFromWishlist"): t("tripDetails.addToWishlist")}
           >
             <FaHeart />
           </button>
