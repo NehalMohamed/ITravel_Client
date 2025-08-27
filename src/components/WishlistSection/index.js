@@ -14,35 +14,54 @@ const WishlistSection = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [popupType, setPopupType] = useState('success');
-  const { items, loading, error } = useSelector((state) => state.wishlist);
+  const { items, loading, error, operation } = useSelector((state) => state.wishlist);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
-  useEffect(() => {
+  // Function to refresh wishlist
+  const refreshWishlist = () => {
     const params = {
       lang_code: currentLang,
       currency_code: "USD",
       trip_type: 1,
       client_id: ""
     };
-
     dispatch(fetchWishlist(params));
-  }, [dispatch, currentLang]);
+  };
 
   useEffect(() => {
-    if (error) {
-      console.log('Error detected:', error);
-        setPopupMessage(error.message || t("wishlist.loadError"));
-        setPopupType('error');
-        setShowPopup(true);
+    refreshWishlist();
+  }, [dispatch, currentLang]);
 
-        dispatch(resetWishlistOperation());
+  // Handle fetch errors
+  useEffect(() => {
+    if (error) {
+      setPopupMessage(error.message || t("wishlist.loadError"));
+      setPopupType('error');
+      setShowPopup(true);
+      dispatch(resetWishlistOperation());
     }
   }, [error, t, dispatch]);
 
-   useEffect(() => {
+  // Handle operation errors/success (add/remove from wishlist)
+  useEffect(() => {
+    if (operation.error) {
+      setPopupMessage(operation.error);
+      setPopupType('error');
+      setShowPopup(true);
+      dispatch(resetWishlistOperation());
+    } else if (operation.success) {
+      // Success message if needed
+      // setPopupMessage(t("wishlist.operationSuccess"));
+      // setPopupType('success');
+      // setShowPopup(true);
+      dispatch(resetWishlistOperation());
+    }
+  }, [operation, t, dispatch]);
+
+  useEffect(() => {
     return () => {
       dispatch(resetWishlistOperation());
-      };
+    };
   }, [dispatch]);
 
   if (loading) {
@@ -76,7 +95,10 @@ const WishlistSection = () => {
             <Row>
               {items.map((trip) => (
                 <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
-                  <WishlistCard trip={trip} />
+                  <WishlistCard
+                    trip={trip}
+                    onWishlistUpdate={refreshWishlist}
+                  />
                 </Col>
               ))}
             </Row>
@@ -91,7 +113,7 @@ const WishlistSection = () => {
           closeAlert={() => setShowPopup(false)}
           msg={popupMessage}
           type={popupType}
-          autoClose={popupType === 'success' ? 3000 : false}
+          autoClose={false}
           showConfirmButton={false}
         />
       )}

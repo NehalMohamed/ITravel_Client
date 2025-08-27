@@ -27,7 +27,6 @@ const ToursSection = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    console.log("Dispatching fetchTripsAll",user);
     const params = {
       lang_code: currentLang,
       show_in_slider: true,
@@ -66,14 +65,14 @@ const ToursSection = () => {
     return <LoadingPage />;
   }
 
-  if (trips.length === 0) {
+  if (trips.length === 0&& !loading) {
     return (
       <section className="tours-section">
         <Container>
           <div className="tours-empty">
             <BiSolidCard className="empty-icon" />
             <h3 className="empty-title">{t('tours.empty_title')}</h3>
-            <p className="empty-text">{t('tours.empty_text')}</p>
+            {/* <p className="empty-text">{t('tours.empty_text')}</p> */}
           </div>
         </Container>
       </section>
