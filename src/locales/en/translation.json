@@ -56,6 +56,10 @@
     "title": "Something gone wrong!",
     "backBtn": "GO BACK"
   },
+  "ComingSoon": {
+    "title": "Coming Soon!",
+    "backBtn": "GO BACK"
+  },
   "NoResults": {
     "title": "Ups!... no results found",
     "subTitle": "Please try another search"

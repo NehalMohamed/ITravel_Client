@@ -12,15 +12,16 @@ const TourCard = ({ trip }) => {
   const { t } = useTranslation();
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
  
-  console.log(trip)
+
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
     const user = JSON.parse(localStorage.getItem("user"));
+
     const wishlistData = {
       id:trip.wish_id,
       trip_id: trip.trip_id,
-      client_id: user.id,
-      created_at: trip.wsh_created_at,
+      client_id: user? user.id : 0,
+      created_at: null,
       trip_type: 1,
       delete: trip.isfavourite // true to remove, false to add
     };
@@ -30,7 +31,7 @@ const TourCard = ({ trip }) => {
   const handleCardClick = () => {
     localStorage.setItem('currentTripData', JSON.stringify(trip));
     navigate(`/trip/${trip.route}`, {
-      state: { tripData: trip }
+      state: { tripId: trip.trip_id }
     });
   };
 

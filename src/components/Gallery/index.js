@@ -10,10 +10,10 @@ import { addToWishlist, resetWishlistOperation } from '../../redux/Slices/wishli
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
 
-const Gallery = ({ tripData }) => {
+const Gallery = ({ tripData , refreshTripDetails }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [popupType, setPopupType] = useState('error');
   
@@ -44,11 +44,13 @@ const [showPopup, setShowPopup] = useState(false);
     useEffect(() => {
       if (operation.success) {
         // Reset operation success after a delay
+        refreshTripDetails();
+
         setTimeout(() => {
           dispatch(resetWishlistOperation());
         }, 100);
       }
-    }, [operation.success, dispatch]);
+    }, [operation.success, dispatch, refreshTripDetails]);
   
     // Cleanup on unmount
     useEffect(() => {
@@ -70,10 +72,10 @@ const [showPopup, setShowPopup] = useState(false);
   
         const user = JSON.parse(localStorage.getItem("user"));
         const wishlistData = {
-          id:tripData.wish_id,
+          id: tripData.wish_id,
           trip_id: tripData.trip_id,
-          client_id: user.id,
-          created_at: tripData.wsh_created_at,
+          client_id: user?.id || 0,
+          created_at: null,
           trip_type: 1,
           delete: tripData.isfavourite // true to remove, false to add
         };
@@ -136,7 +138,6 @@ const [showPopup, setShowPopup] = useState(false);
                 <span className="btn-text">{t("tripDetails.removeFromWishlist")}</span> : 
                 <span className="btn-text">{t("tripDetails.addToWishlist")}</span>
                 }
-                {operation.loading && <Spinner animation="border" size="sm" className="ms-2" />}
               </button>
               <button className="action-btn share-btn">
                 <CiExport size={24} />

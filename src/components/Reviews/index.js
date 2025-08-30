@@ -6,7 +6,7 @@ import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
 import { fetchClientsReviews, submitReview, resetReviewSubmission } from "../../redux/Slices/reviewSlice";
 
-const Reviews = ({ tripData }) => {
+const Reviews = ({ tripData , refreshTripDetails}) => {
     const { t } = useTranslation();
     const [showReviewForm, setShowReviewForm] = useState(false);
     const [userRating, setUserRating] = useState(0);
@@ -33,6 +33,7 @@ const Reviews = ({ tripData }) => {
     }, []);
 
     useEffect(() => {
+        if (tripId) {
         const params = {
             trip_id: tripId,
             trip_type: 1,
@@ -40,6 +41,7 @@ const Reviews = ({ tripData }) => {
             pageSize: 10 
         };
         dispatch(fetchClientsReviews(params));
+    }
     }, [dispatch, tripId]);
 
     // Handle errors from fetching reviews
@@ -69,26 +71,29 @@ const Reviews = ({ tripData }) => {
     useEffect(() => {
         if (submission.success) {
             // Refetch reviews to include the new one
-            const params = {
-                trip_id: tripId,
-                trip_type: 1,
-                pageNumber: 1,
-                pageSize: 10
-            };
-            dispatch(fetchClientsReviews(params));
+           refreshTripDetails();
+      
+      // Reset form and fetch reviews
+      setShowReviewForm(false);
+      setUserRating(0);
+      setHoverRating(0);
+      setReviewText('');
 
-            // Reset form
-            setShowReviewForm(false);
-            setUserRating(0);
-            setHoverRating(0);
-            setReviewText('');
+      if (tripId) {
+        const params = {
+          trip_id: tripId,
+          trip_type: 1,
+          pageNumber: 1,
+          pageSize: 10
+        };
+        dispatch(fetchClientsReviews(params));
+      }
 
-            // Reset submission state
-            setTimeout(() => {
-                dispatch(resetReviewSubmission());
-            }, 100);
-        }
-    }, [submission.success, dispatch, tripId]);
+      setTimeout(() => {
+        dispatch(resetReviewSubmission());
+      }, 100);
+    }
+  }, [submission.success, dispatch, tripId, refreshTripDetails]);
 
     // Reset review submission state when component unmounts
     useEffect(() => {

@@ -14,10 +14,7 @@ const FlightItinerary = ({ tripData }) => {
     const { pickupsByTrip, loading, error } = useSelector((state) => state.trips);
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
-   console.log(pickupsByTrip)
-
     useEffect(() => {
-        console.log("Dispatching fetchPickupsForTrip");
         const params = {
             trip_id: tripId,
             trip_type: 1,

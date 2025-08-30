@@ -7,6 +7,7 @@ import destinationReducer from '../Slices/destinationsSlice';
 import tripsReducer from "../Slices/tripsSlice";
 import reviewReducer from '../Slices/reviewSlice';
 import wishListReducer from '../Slices/wishlistSlice';
+import tripDetailsReducer from "../Slices/tripDetailsSlice";
 import { authMiddleware } from '../../middleware/authMiddleware';
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
     destinations:destinationReducer,
     trips:tripsReducer,
     reviews: reviewReducer,
-    wishlist: wishListReducer
+    wishlist: wishListReducer,
+    tripDetails: tripDetailsReducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware().concat(authMiddleware),

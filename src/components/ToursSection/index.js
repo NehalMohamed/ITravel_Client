@@ -3,7 +3,7 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { BiSolidCard } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
-import { fetchTripsAll } from "../../redux/Slices/tripsSlice";
+import { fetchToursSectionTrips } from "../../redux/Slices/tripsSlice";
 import { resetWishlistOperation } from "../../redux/Slices/wishlistSlice";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
@@ -11,7 +11,7 @@ import TourCard from "../TourCard";
 
 const ToursSection = () => {
   const dispatch = useDispatch();
-  const { trips, loading, error } = useSelector((state) => state.trips);
+  const { toursSectionTrips: trips, loading, error } = useSelector((state) => state.trips);
   const { operation } = useSelector((state) => state.wishlist);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
   const { user: stateUser } = useSelector((state) => state.auth); // Get user from auth state
@@ -29,13 +29,11 @@ const ToursSection = () => {
   useEffect(() => {
     const params = {
       lang_code: currentLang,
-      show_in_slider: true,
       show_in_top: false,
-      destination_id: 0,
       currency_code: "USD",
       client_id: user?.id || ""
     };
-    dispatch(fetchTripsAll(params));
+    dispatch(fetchToursSectionTrips(params));
   }, [dispatch, currentLang, refreshTrigger]);
 
   useEffect(() => {
@@ -49,7 +47,6 @@ const ToursSection = () => {
   useEffect(() => {
     // Handle errors in the parent component only
     if (operation.error) {
-      console.log('Wishlist operation error:', operation.error);
       setPopupMessage(operation.error);
       setPopupType('error');
       setShowPopup(true);

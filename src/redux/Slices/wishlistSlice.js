@@ -8,6 +8,7 @@ const BOOKING_URL = process.env.REACT_APP_BOOKING_API_URL;
 
 const getAuthHeaders = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+  // console.log(user)
   const accessToken = user?.accessToken;
   let lang = localStorage.getItem("lang") || "en";
   return {

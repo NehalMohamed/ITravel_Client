@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { fetchTripsAll } from '../../redux/Slices/tripsSlice';
+import { fetchSliderTrips } from '../../redux/Slices/tripsSlice';
 
 const HeroSlider = () => {
   const { t } = useTranslation();
@@ -13,18 +13,18 @@ const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
-  const { trips: slides = [], loading, error } = useSelector((state) => state.trips);
 
   useEffect(() => {
     const params = {
       lang_code: currentLang,
-      show_in_slider: true,
       show_in_top: false,
-      destination_id: 0,
       currency_code: "USD"
     };
-    dispatch(fetchTripsAll(params));
+    dispatch(fetchSliderTrips(params));
   }, [dispatch, currentLang]);
+
+  // Use sliderTrips from Redux state
+  const { sliderTrips: slides = [], loading, error } = useSelector((state) => state.trips);
 
   useEffect(() => {
     if (!isAutoPlaying || !slides || slides.length === 0) return;
@@ -57,7 +57,7 @@ const HeroSlider = () => {
   const handleCardClick = (slide) => {
     localStorage.setItem('currentTripData', JSON.stringify(slide));
     navigate(`/trip/${slide.route}`, {
-      state: { tripData: slide }
+      state: { tripId: slide.trip_id}
     });
   };
 

@@ -16,7 +16,7 @@ const WishlistCard = ({ trip, onWishlistUpdate }) => {
       const wishlistData = {
         id:trip.wish_id,
         trip_id: trip.trip_id,
-        client_id: user.id,
+        client_id: user? user.id : 0,
         created_at: null,
         trip_type: 1,
         delete: trip.isfavourite // true to remove, false to add
@@ -37,7 +37,7 @@ const WishlistCard = ({ trip, onWishlistUpdate }) => {
   const handleCardClick = () => {
     localStorage.setItem('currentTripData', JSON.stringify(trip));
     navigate(`/trip/${trip.route}`, {
-      state: { tripData: trip }
+      state: { tripId: trip.trip_id }
     });
   };
 

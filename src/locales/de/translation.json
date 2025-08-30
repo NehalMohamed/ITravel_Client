@@ -56,6 +56,10 @@
     "title": "Etwas ist schiefgelaufen!",
     "backBtn": "ZURÜCK"
   },
+  "ComingSoon": {
+    "title": "Demnächst verfügbar!",
+    "backBtn": "ZURÜCK"
+  },
   "NoResults": {
     "title": "Hoppla!... keine Ergebnisse gefunden",
     "subTitle": "Bitte versuchen Sie eine andere Suche"
