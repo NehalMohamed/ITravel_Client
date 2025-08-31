@@ -32,7 +32,8 @@ const DestinationExcursions = () => {
             show_in_top: false,
             destination_id: destinationId,
             currency_code: "USD",
-            client_id: user?.id || ""
+            client_id: user?.id || "",
+            trip_type: 1
         };
         dispatch(fetchDestinationTrips(params));
     }, [dispatch, currentLang, destinationId]);

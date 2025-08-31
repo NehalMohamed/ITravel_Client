@@ -31,7 +31,8 @@ const ToursSection = () => {
       lang_code: currentLang,
       show_in_top: false,
       currency_code: "USD",
-      client_id: user?.id || ""
+      client_id: user?.id || "",
+      trip_type: 1
     };
     dispatch(fetchToursSectionTrips(params));
   }, [dispatch, currentLang, refreshTrigger]);
