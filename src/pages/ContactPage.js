@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import Contact from "../components/Contact";
 import ContactMap from "../components/ContactMap";
 import Testimonial from "../components/Testimonial";
@@ -8,8 +8,8 @@ import Newsletter from "../components/Newsletter";
 const ContactPage = () => {
 
   useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <>

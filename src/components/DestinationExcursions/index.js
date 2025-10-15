@@ -15,13 +15,14 @@ import PopUp from "../Shared/popup/PopUp";
 const DestinationExcursions = () => {
     const { state } = useLocation(); // Get tripData passed from navigation
     const destinationId = state?.DestinationId;
+    const tripType = state?.tripType || 1;
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const currentLang = useSelector((state) => state.language.currentLang) || "en";
     const { user: stateUser } = useSelector((state) => state.auth); // Get user from auth state
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
-    const [popupType, setPopupType] = useState('error');
+    const [popupType, setPopupType] = useState('alert');
     // Get user from localStorage as fallback
     const localStorageUser = JSON.parse(localStorage.getItem("user") || "null");
     const user = stateUser || localStorageUser;
@@ -31,19 +32,19 @@ const DestinationExcursions = () => {
             lang_code: currentLang,
             show_in_top: false,
             destination_id: destinationId,
-            currency_code: "USD",
+            currency_code: "EUR",
             client_id: user?.id || "",
-            trip_type: 1
+            trip_type: tripType
         };
         dispatch(fetchDestinationTrips(params));
-    }, [dispatch, currentLang, destinationId]);
+    }, [dispatch, currentLang, destinationId, tripType]);
 
     const { destinationTrips: trips, loading, error } = useSelector((state) => state.trips);
 
     useEffect(() => {
         if (error) {
           setPopupMessage(error);
-          setPopupType('error');
+          setPopupType('alert');
           setShowPopup(true);    
         }
       }, [error]);

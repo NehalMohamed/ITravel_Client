@@ -53,6 +53,7 @@
 .reviews-text {
   font-size: 0.85rem; // Slightly smaller
   color: $gray-color; // Lighter gray
+  font-weight: 400;
 }
 
 .star-rating {
@@ -79,7 +80,7 @@
   width: 53px;
   height: 2px;
   background-color: $secondary-color;
-  top: 81%;
+  top: 82.5%;
   right: 10px;
   transform: translateY(-50%);
 }

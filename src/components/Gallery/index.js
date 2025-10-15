@@ -15,7 +15,7 @@ const Gallery = ({ tripData , refreshTripDetails }) => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
-  const [popupType, setPopupType] = useState('error');
+  const [popupType, setPopupType] = useState('alert');
   
   const dispatch = useDispatch();
   // const tripData = useTripData();
@@ -30,7 +30,7 @@ const Gallery = ({ tripData , refreshTripDetails }) => {
     useEffect(() => {
       if (operation.error) {
         setPopupMessage(operation.error);
-        setPopupType('error');
+        setPopupType('alert');
         setShowPopup(true);
         
         // Reset operation error after showing
@@ -76,7 +76,7 @@ const Gallery = ({ tripData , refreshTripDetails }) => {
           trip_id: tripData.trip_id,
           client_id: user?.id || 0,
           created_at: null,
-          trip_type: tripData.trip_type,
+          trip_type: tripData?.trip_type,
           delete: tripData.isfavourite // true to remove, false to add
         };
   

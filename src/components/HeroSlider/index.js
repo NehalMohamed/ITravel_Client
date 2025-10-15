@@ -18,7 +18,7 @@ const HeroSlider = () => {
     const params = {
       lang_code: currentLang,
       show_in_top: false,
-      currency_code: "USD",
+      currency_code: "EUR",
       trip_type: 1
     };
     dispatch(fetchSliderTrips(params));
@@ -56,10 +56,21 @@ const HeroSlider = () => {
   };
 
   const handleCardClick = (slide) => {
-    localStorage.setItem('currentTripData', JSON.stringify(slide));
-    navigate(`/trip/${slide.route}`, {
-      state: { tripId: slide.trip_id}
-    });
+    if (!slide.is_comm_soon) {
+      navigate(`/trip/${slide.route}`, {
+        state: {
+          tripId: slide.trip_id,
+          trip_type: slide.trip_type
+        }
+      });
+    } else {
+      navigate('/trip/ComingSoon', {
+        state: {
+          tripId: slide.trip_id,
+          trip_type: slide.trip_type
+        }
+      });
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -88,7 +99,7 @@ const HeroSlider = () => {
             <Container>
               <div className="slide-content">
                 <h1 className="slide-title">{slide.trip_name}</h1>
-                <h2 className="slide-subtitle">{slide.trip_description}</h2>
+                {/* <h2 className="slide-subtitle">{slide.trip_description}</h2> */}
                 <div className="slide-actions">
                   <button className="btn-primary"
                     onClick={(e) => {

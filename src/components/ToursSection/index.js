@@ -9,8 +9,9 @@ import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
 import TourCard from "../TourCard";
 
-const ToursSection = () => {
+const ToursSection = (props) => {
   const dispatch = useDispatch();
+  const tripType = props.tripType || 1;
   const { toursSectionTrips: trips, loading, error } = useSelector((state) => state.trips);
   const { operation } = useSelector((state) => state.wishlist);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
@@ -23,19 +24,19 @@ const ToursSection = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
-  const [popupType, setPopupType] = useState('error');
+  const [popupType, setPopupType] = useState('alert');
   const { t } = useTranslation();
 
   useEffect(() => {
     const params = {
       lang_code: currentLang,
       show_in_top: false,
-      currency_code: "USD",
+      currency_code: "EUR",
       client_id: user?.id || "",
-      trip_type: 1
+      trip_type: tripType
     };
     dispatch(fetchToursSectionTrips(params));
-  }, [dispatch, currentLang, refreshTrigger]);
+  }, [dispatch, currentLang, refreshTrigger ,tripType]);
 
   useEffect(() => {
     if (operation.success) {
@@ -49,7 +50,7 @@ const ToursSection = () => {
     // Handle errors in the parent component only
     if (operation.error) {
       setPopupMessage(operation.error);
-      setPopupType('error');
+      setPopupType('alert');
       setShowPopup(true);
 
       // Reset operation error after showing

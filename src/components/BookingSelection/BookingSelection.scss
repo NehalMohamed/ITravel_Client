@@ -1,0 +1,535 @@
+.booking-selection {
+  padding: $spacer-xl 0;
+  background-color: $light-bg;
+  font-family: $font-family-base;
+
+  .booking-selection-content {
+    max-width: 800px;
+    background-color: #2c3e50;
+    border-radius: 24px;
+    padding: $spacer-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    @include media-breakpoint-down(lg) {
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    color: white;
+    font-size: 28px;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacer-lg;
+
+    @include media-breakpoint-down(md) {
+      font-size: 24px;
+      margin-bottom: $spacer-md;
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 20px;
+    }
+  }
+
+  // Override Bootstrap button styles
+  &__button {
+    height: 44px !important;
+    background-color: white !important;
+    border: none !important;
+    border-radius: $spacer-md !important;
+    font-size: $spacer-md !important;
+    font-weight: $font-weight-medium !important;
+    color: $primary-color !important;
+    box-shadow: $box-shadow-sm !important;
+    transition: $transition-base !important;
+    @include flex-between;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: white !important;
+      border: none !important;
+      box-shadow: $box-shadow !important;
+      transform: translateY(-2px);
+      color: $primary-color !important;
+    }
+
+    // Remove Bootstrap focus outline
+    &:focus-visible {
+      box-shadow: $box-shadow, 0 0 0 0.25rem rgba($secondary-color, 0.25) !important;
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: 48px !important;
+      font-size: 14px !important;
+    }
+  }
+
+  &__icon {
+    color: $gray-color;
+    font-size: 18px;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 16px;
+    }
+  }
+
+  &__chevron {
+    color: $gray-color;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 12px;
+    }
+  }
+
+  // Override Bootstrap dropdown menu styles
+  &__dropdown {
+    border-radius: $spacer-md !important;
+    border: none !important;
+    box-shadow: $box-shadow-lg !important;
+    padding: $spacer-md !important;
+
+    @include media-breakpoint-down(sm) {
+      padding: $spacer-sm !important;
+    }
+  }
+
+  &__counter {
+    @include flex-between;
+    margin-bottom: $spacer-md;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: $spacer-sm;
+    }
+  }
+
+  &__counter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__counter-title {
+    font-weight: $font-weight-medium;
+    color: $primary-color;
+    font-size: $spacer-md;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+  }
+
+  &__counter-subtitle {
+    font-size: 14px;
+    color: $gray-color;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 12px;
+    }
+  }
+
+  &__counter-controls {
+    @include flex-center;
+    gap: $spacer-sm;
+  }
+
+  // Override Bootstrap button styles for counter buttons
+  &__counter-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    @include flex-center;
+    padding: 0 !important;
+    font-size: 12px !important;
+    transition: $transition-base !important;
+
+    &:hover:not(:disabled) {
+      transform: scale(1.1) !important;
+    }
+
+    &:disabled {
+      opacity: 0.5 !important;
+      cursor: not-allowed !important;
+    }
+
+    // Primary variant (active buttons)
+    &.btn-primary {
+      background-color: $secondary-color !important;
+      border-color: $secondary-color !important;
+
+      &:hover:not(:disabled) {
+        background-color: darken($secondary-color, 10%) !important;
+        border-color: darken($secondary-color, 10%) !important;
+      }
+    }
+
+    // Outline variant (inactive buttons)
+    &.btn-outline-primary {
+      border-color: $secondary-color !important;
+      color: $secondary-color !important;
+
+      &:hover:not(:disabled) {
+        background-color: $secondary-color !important;
+        border-color: $secondary-color !important;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 28px !important;
+      height: 28px !important;
+      font-size: 10px !important;
+    }
+  }
+
+  &__counter-value {
+    min-width: 24px;
+    text-align: center;
+    font-size: $spacer-md;
+    font-weight: $font-weight-medium;
+    color: $primary-color;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+  }
+
+  // Override Bootstrap dropdown item styles
+  &__dropdown-item {
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+    font-size: $spacer-md !important;
+    color: $primary-color !important;
+    transition: $transition-base !important;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    &:hover {
+      background-color: $light-bg !important;
+      color: $primary-color !important;
+    }
+
+    &.active {
+      background-color: $light-bg !important;
+      color: $primary-color !important;
+      font-weight: $font-weight-medium !important;
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 14px !important;
+    }
+  }
+
+  &__age-inputs {
+    padding: $spacer-sm 0;
+  }
+
+  &__age-input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__age-input {
+    border: 1px solid $gray-light !important;
+    border-radius: 8px !important;
+    padding: $spacer-sm $spacer-md !important;
+    font-size: 14px !important;
+    height: 40px !important;
+
+    &:focus {
+      border-color: $secondary-color !important;
+      box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25) !important;
+    }
+
+    &.is-invalid {
+      border-color: $danger-color !important;
+    }
+  }
+
+  // Add this to make the dropdown menu scrollable if there are many children
+  &__dropdown {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  // Custom check availability button
+  &__check-btn {
+    height: 44px !important;
+    background-color: $secondary-color !important;
+    border: none !important;
+    border-radius: $spacer-md !important;
+    font-size: 18px !important;
+    font-weight: $font-weight-medium !important;
+    color: white !important;
+    transition: $transition-base !important;
+    // box-shadow: 0 4px 16px rgba($secondary-color, 0.3) !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($secondary-color, 10%) !important;
+      border: none !important;
+      transform: translateY(-2px);
+      // box-shadow: 0 6px 20px rgba($secondary-color, 0.4) !important;
+      color: white !important;
+    }
+
+    // &:focus-visible {
+    //   box-shadow: 0 6px 20px rgba($secondary-color, 0.4), 0 0 0 0.25rem rgba($secondary-color, 0.25) !important;
+    // }
+
+    @include media-breakpoint-down(sm) {
+      height: 48px !important;
+      font-size: 16px !important;
+    }
+  }
+
+  // Bootstrap Grid overrides for better responsive behavior
+  .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  // Custom datepicker styles
+  .react-datepicker-wrapper {
+    display: block !important;
+  }
+
+  .custom-datepicker-popper {
+    z-index: 9999 !important;
+
+    .react-datepicker {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      font-family: $font-family-base;
+    }
+
+    .react-datepicker__header {
+      background-color: white;
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      padding: 0;
+    }
+
+    .react-datepicker__month-container {
+      margin: 8px;
+    }
+
+    .react-datepicker__day-names {
+      margin-top: 8px;
+    }
+
+    .react-datepicker__day-name {
+      color: $gray-color;
+      font-weight: $font-weight-medium;
+      font-size: 12px;
+      width: 32px;
+      line-height: 32px;
+    }
+
+    .react-datepicker__day {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 50%;
+      margin: 2px;
+      font-size: 14px;
+      color: $primary-color;
+
+      &:hover {
+        background-color: $light-bg;
+        border-radius: 50%;
+      }
+
+      &.react-datepicker__day--selected {
+        background-color: $secondary-color;
+        color: white;
+      }
+
+      &.react-datepicker__day--keyboard-selected {
+        background-color: $secondary-color;
+        color: white;
+      }
+    }
+
+    .react-datepicker__time-container {
+      border-left: 1px solid $light-bg;
+      
+      .react-datepicker__time {
+        background: white;
+        
+        .react-datepicker__time-box {
+          width: 100% !important;
+          
+          ul.react-datepicker__time-list {
+            padding: 0;
+            
+            li.react-datepicker__time-list-item {
+              height: 40px;
+              line-height: 40px;
+              padding: 0 10px;
+              font-size: 14px;
+              color: $primary-color;
+              
+              &:hover {
+                background-color: $light-bg;
+              }
+              
+              &.react-datepicker__time-list-item--selected {
+                background-color: $secondary-color;
+                color: white;
+                font-weight: $font-weight-medium;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .react-datepicker__navigation {
+      top: 16px;
+    }
+
+    .react-datepicker__current-month {
+      font-weight: $font-weight-medium;
+      color: $primary-color;
+      margin-bottom: 8px;
+    }
+
+    .react-datepicker-time__header {
+      font-weight: $font-weight-medium;
+      color: $primary-color;
+      font-size: 14px;
+    }
+  }
+
+  // For two-month view with time
+  .react-datepicker__month-container:first-child {
+    border-right: 1px solid $light-bg;
+  }
+
+  // Custom responsive behavior
+  @include media-breakpoint-down(lg) {
+    padding: $spacer-lg;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: $spacer-md;
+    border-radius: 20px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: $spacer-sm;
+    border-radius: 16px;
+    margin: $spacer-sm 0;
+  }
+}
+
+
+// Price Breakdown Styles
+.booking-selection__price-breakdown {
+  background: rgba(white, 0.1);
+  border-radius: 12px;
+  padding: $spacer-lg;
+  border: 1px solid rgba(white, 0.2);
+}
+
+.booking-selection__final-price {
+  font-size: 32px;
+  font-weight: $font-weight-bold;
+  color: white;
+  line-height: 1;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 28px;
+  }
+}
+// Two-way transfer section styles
+.booking-selection__two-way-section {
+  margin-top: $spacer-md;
+  padding: $spacer-md;
+  background: rgba(white, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(white, 0.1);
+}
+
+.booking-selection__return-date-title {
+  color: white;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacer-sm;
+}
+
+.booking-selection__return-date-note {
+  color: rgba(white, 0.7);
+  font-size: 14px;
+  margin-bottom: $spacer-md;
+}
+
+.booking-selection__checkbox {
+  margin: $spacer-md 0;
+  
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-right: $spacer-sm;
+    border: 2px solid $secondary-color;
+    
+    &:checked {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+    }
+  }
+  
+  .form-check-label {
+    color: white;
+    font-size: 16px;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+  }
+}
+
+.booking-selection__price-note {
+  color: rgba(white, 0.8) !important;
+  margin-top: 4px;
+}
+
+.booking-selection__price-details {
+  background: rgba(white, 0.05);
+  border-radius: 8px;
+  padding: $spacer-md;
+}
+
+.booking-selection__price-line {
+  color: white;
+  font-size: 14px;
+  padding: 4px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(white, 0.1);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 13px;
+  }
+}

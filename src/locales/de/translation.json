@@ -1,8 +1,18 @@
 {
   "general": {
     "more": "Mehr",
+    "yes": "Ja",
+    "no": "Nein",
+    "cancel": "Stornieren",
     "top_offers": "Top Angebote",
-    "show_more": "Mehr anzeigen"
+    "show_more": "Mehr anzeigen",
+    "show_less": "Weniger anzeigen",
+    "from": "Ab",
+    "to": "bis zu",
+    "perGroupUpTo": "pro Gruppe bis zu",
+    "perPerson": "pro person",
+    "loading": "Laden...",
+    "loadingMore": "Lade mehr..."
   },
   "language": {
     "language": "Sprache",
@@ -12,10 +22,11 @@
   "main_navbar": {
     "travel": "Reisen",
     "home": "Startseite",
-    "egypt_excursions": "Ägypten Ausflüge",
-    "transfer_services": "Transfer Services",
-    "about_us": "Über uns",
-    "contact": "Kontakt",
+    "egypt_excursions": "Ausflüge",
+    "transfer_services": "Transfers",
+    "egypt_diving": "Tauchen",
+    "about_us": "Über Uns",
+    "contact": "Kontakt Uns",
     "search": "Suche",
     "search_placeholder": "Suchen...",
     "wishlist": "Wunschliste",
@@ -36,15 +47,15 @@
     "title": "Ihre Wunschliste",
     "saved": "Gespeichert",
     "remove": "Von Wunschliste entfernen",
-    "topCities": "Top Städte, die man besuchen sollte",
-    "topCitiesDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
+    "topDestinations": "Die besten zu besuchenden Reiseziele",
+    "topDestinationsDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
   },
   "footer": {
     "travel": "Reisen",
     "footer_description": "Ein Reiseunternehmen für Transport und Reisen nach Ägypten, das sich durch Vertrauen, Sicherheit und Pünktlichkeit auszeichnet.",
     "home": "Startseite",
     "about_us": "Über uns",
-    "contact": "Kontakt",
+    "contact": "Kontakt Uns",
     "company": "Unternehmen",
     "privacy": "Datenschutz",
     "support": "Support",
@@ -67,7 +78,7 @@
   "Login": {
     "LoginTitle": "Anmelden",
     "SignUpTitle": "Registrieren",
-    "LoginSubTitle": "Melden Sie sich mit Ihrem <strong>I Travel Pro</strong>-Konto an, um einfacher einzuchecken und auf jedem Gerät auf Ihre Tickets zuzugreifen.",
+    "LoginSubTitle": "Melden Sie sich mit Ihrem <strong>I Travel Pro </strong>-Konto an, um einfacher einzuchecken und auf jedem Gerät auf Ihre Tickets zuzugreifen.",
     "LoginCheckBoxTitle": "Senden Sie mir Rabatte und andere Angebote per E-Mail.<br/>Sie können sich jederzeit in Ihren Einstellungen abmelden.",
     "LoginCheckBoxSubTitle": "Sie können sich jederzeit in Ihren Einstellungen abmelden.",
     "firstname": "Vorname",
@@ -115,7 +126,9 @@
     "namePlaceholder": "Name",
     "emailPlaceholder": "E-Mail-Adresse",
     "subscribeButton": "ABONNIEREN",
-    "successMessage": "Vielen Dank für das Abonnieren unseres Newsletters!"
+    "subscribing": "Wird abonniert...",
+    "successMessage": "Vielen Dank für Ihr Abonnement unseres Newsletters!",
+    "errorMessage": "Abonnement fehlgeschlagen. Bitte versuchen Sie es erneut."
   },
   "contactInfo": {
     "visitUs": "BESUCHEN SIE UNS",
@@ -163,14 +176,17 @@
     "subText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisl ut aliquip. Nemo enim ipsam voluptatem quia voluptas",
     "namePlaceholder": "Name",
     "emailPlaceholder": "E-Mail-Adresse",
-    "phonePlaceholder": "Telefon",
+    "phonePlaceholder": "Ihre Telefonnummer",
+    "subjectPlaceholder": "Betreff",
     "messagePlaceholder": "Nachricht",
     "sendButton": "Nachricht Senden",
-    "successMessage": "Nachricht erfolgreich gesendet!",
     "HaveAccount": "Sie haben bereits ein Konto?",
     "CodeVerifyTitle": "Geben Sie den an gesendeten Code ein",
     "CodeVerifyTitle2": "Um Ihre E-Mail zu bestätigen",
     "SendCode": "Code senden",
+    "sending": "Wird gesendet...",
+    "successMessage": "Ihre Nachricht wurde erfolgreich gesendet!",
+    "errorMessage": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
     "fillField": "Bitte füllen Sie dieses Feld aus",
     "spamAlert": {
       "title": "E-Mail nicht gefunden?",
@@ -184,14 +200,14 @@
     }
   },
   "PopUp": {
-    "Header": "Fehlermeldung",
+    "Header": "Benachrichtigung",
     "Close": "Schließen"
   },
   "auth": {
     "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
     "loginRequired": "Bitte melden Sie sich zunächst an.",
     "loginNow": "Jetzt anmelden",
-    "ok":"OK"
+    "ok": "OK"
   },
   "tripDetails": {
     "reviews": "Bewertungen",
@@ -210,7 +226,7 @@
     "share": "Teilen",
     "aboutTrip": "Über diese Reise",
     "bookNowPayLater": "Jetzt reservieren, später zahlen: Bleiben Sie flexibel – buchen Sie jetzt und zahlen Sie später.",
-    "duration": "Dauer \"14 Stunden\"",
+    "duration": "Dauer",
     "paymentMethods": "Die Zahlung erfolgt vor Ort in bar in Euro, US-Dollar, Schweizer Franken, Ägyptischen Pfund oder per PayPal.",
     "paymentNote": "Die Bezahlung erfolgt bei der Abholung.",
     "linkCopied": "Link in die Zwischenablage kopiert!",
@@ -231,5 +247,233 @@
     "bookNow": "Jetzt buchen",
     "notRated": "Noch nicht bewertet",
     "stars": "Stern"
+  },
+"booking": {
+  "returnDate": {
+      "title": "Rückfahrt-Datum & Uhrzeit auswählen",
+      "note": "Bitte wählen Sie Ihr gewünschtes Rückfahrt-Datum und Uhrzeit"
+    },
+    "returnDateTimeRequired": "Bitte wählen Sie Datum und Uhrzeit für die Rückfahrt",
+    "returnDateAfterDeparture": "Das Rückfahrt-Datum muss nach dem Abfahrtsdatum liegen",
+    "date": {
+      "selectReturnDateTime": "Rückfahrt-Datum & Uhrzeit auswählen",
+      "selectDateTime": "Datum & Uhrzeit auswählen",
+      "time": "Uhrzeit"
+    },
+    "dateTimeRequired": "Bitte wählen Sie sowohl Datum als auch Uhrzeit aus",
+    "invalidDateTime": "Bitte wählen Sie ein Datum mindestens {{releaseDays}} Tage ab jetzt",
+    "availabilityError": "Verfügbarkeitsprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "availabilitySuccess": "Verfügbarkeit erfolgreich geprüft!",
+    "checkingAvailability": "Verfügbarkeit wird geprüft...",
+    "title": "Teilnehmer und Datum auswählen",
+    "checkAvailability": "Verfügbarkeit prüfen",
+    "maxCapacityExceeded": "Bitte wählen Sie maximal {{maxCapacity}} Teilnehmer für diese Aktivität.",
+    "invalidChildAges": "Bitte geben Sie gültige Alter für alle Kinder ein (0-{{maxAge}} Jahre)",
+    "continue": "Weiter",
+    "allTaxesIncluded": "Alle Steuern und Gebühren inklusive",
+    "twoWayTransfer": "Hin- und Rücktransfer",
+    "included": "Inklusive",
+    "participants": {
+      "adult": "Erwachsener",
+      "child": "Kind",
+      "adultSingle": "Erwachsener x 1",
+      "adults": "Erwachsene x {{count}}",
+      "children": "Kinder x {{count}}",
+      "mixed": "Erwachsene x {{adults}}, Kinder x {{children}}",
+      "ageRangeAdults": "Alter 12-99",
+      "enterChildAges": "Alter der Kinder eingeben",
+      "childAge": "Alter Kind {{number}}",
+      "invalidAge": "Alter muss zwischen 0 und {{maxAge}} liegen",
+      "ageRangeChildren": "0-{{maxAge}} Jahre"
+    },
+    "language": {
+      "english": "Englisch",
+      "spanish": "Spanisch",
+      "french": "Französisch",
+      "german": "Deutsch",
+      "italian": "Italienisch"
+    }
+  },
+  "bookings": {
+    "tripDate": "Reisedatum",
+    "returnDate": "Rückreisedatum",
+    "myBookings": "Deine Buchungen",
+    "noBookings": "Noch keine Buchungen",
+    "noBookingsText": "Sie haben noch keine Buchungen getätigt. Entdecken Sie unsere Ausflüge und machen Sie Ihre erste Reservierung!",
+    "fetchError": "Fehler beim Laden Ihrer Buchungen. Bitte versuchen Sie es später erneut.",
+    "dateToBeConfirmed": "Datum muss noch bestätigt werden",
+    "timeToBeConfirmed": "Uhrzeit muss noch bestätigt werden",
+    "bookingCode": "Buchungscode",
+    "priceToBeConfirmed": "Preis muss noch bestätigt werden",
+    "totalBookings": "Gesamtbuchungen",
+    "allBookingsLoaded": "Alle Buchungen geladen",
+    "adults": "Erwachsene",
+    "children": "Kinder",
+    "infants": "Säuglinge",
+    "resevePay": "Jetzt reservieren & später bezahlen",
+    "steps": {
+      "pickup": "Abholung",
+      "agreement": "Vereinbarung",
+      "contact": "Kontakt",
+      "payment": "Zahlung",
+      "confirm": "Bestätigung"
+    },
+    "pickup": {
+      "addPickUp": "Wissen Sie, wo Sie abgeholt werden möchten?",
+      "canAddNow": "Ja, ich kann es jetzt hinzufügen",
+      "dontKnow": "Ich weiß es noch nicht",
+      "addExtras": "Möchten Sie Extras hinzufügen?",
+      "adultsOnly": "Nur für Erwachsene",
+      "continue": "Weiter",
+      "nextBtn": "Weiter: Persönliche Daten",
+      "nextBtnAgree": "Weiter : Vereinbarung",
+      "selectLocation": "Abholort auf der Karte auswählen",
+      "searchPlaceholder": "Nach Hotel, Adresse usw. suchen",
+      "confirmLocation": "Ort bestätigen",
+      "locationInstructions": "Bitte geben Sie den Namen oder die Adresse des Ortes ein oder klicken Sie auf einen Punkt innerhalb des markierten Bereichs, um einen Ort auszuwählen."
+    },
+    "agreement": {
+      "title": "Tauchvereinbarung",
+      "confirm": "Ich habe die Tauchvereinbarung gelesen und stimme den Bedingungen zu",
+      "continueButton": "Weiter zu Kontaktdetails"
+    },
+    "contact": {
+      "title": "Geben Sie Ihre persönlichen Daten ein",
+      "requiredFields": "Pflichtfelder*",
+      "fullNamePlaceholder": "Vollständiger Name*",
+      "emailPlaceholder": "E-Mail*",
+      "phonePlaceholder": "Handynummer*",
+      "nationalityPlaceholder": "Staatsangehörigkeit*",
+      "notesLabel": "Zusätzliche Hinweise",
+      "notesPlaceholder": "Besondere Wünsche oder zusätzliche Informationen...",
+      "confirmButton": "Buchung bestätigen",
+      "disclaimer": "Wir kontaktieren Sie bei wichtigen Updates oder Änderungen Ihrer Buchung",
+      "nextButton": "Weiter: Zur Zahlung",
+      "bookingConfirmed": "Buchung erfolgreich bestätigt!",
+      "bookingConfirmationFailed": "Buchungsbestätigung fehlgeschlagen",
+      "processing": "Wird verarbeitet...",
+      "saveError": "Kontaktinformationen konnten nicht gespeichert werden",
+      "errors": {
+        "required": "Dieses Feld ist erforderlich",
+        "invalidEmail": "Ungültiges E-Mail-Format"
+      }
+    },
+    "payment": {
+      "title": "Wählen Sie Ihre Zahlungsmethode",
+      "countryOfBank": "Bankland",
+      "iban": "IBAN",
+      "swift": "SWIFT/BIC",
+      "beneficiaryName": "Name des Begünstigten",
+      "selectBeneficiary": "Begünstigten auswählen",
+      "disclaimer": "Sie erhalten eine Bestätigungs-E-Mail für die Zahlung",
+      "checkoutWith": "Bezahlen mit",
+      "payNow": "Jetzt bezahlen",
+      "countries": {
+        "egypt": "Ägypten",
+        "unitedStates": "Vereinigte Staaten",
+        "unitedKingdom": "Vereinigtes Königreich",
+        "germany": "Deutschland",
+        "france": "Frankreich"
+      }
+    },
+    "confirmation": {
+      "title": "Ihre Buchung für die Reise wurde bestätigt",
+      "subtitle": "Bitte überprüfen Sie Ihre E-Mail für weitere Details",
+      "bookAnother": "Weitere Reise buchen"
+    },
+    "orderSummary": {
+      "title": "Bestellübersicht",
+      "total": "Gesamt"
+    },
+    "giftCode": {
+      "enterCode": "Gutschein- oder Geschenkcode eingeben",
+      "redeem": "Einlösen",
+      "placeholder": "Code eingeben"
+    },
+    "cancel":{
+      "cancelConfirmation1": "Sie erhalten eine E-Mail mit den Stornogebühren",
+      "cancelConfirmation2": "oder kontaktieren Sie booking@ITravel-pro.de.de",
+      "cancelConfirmation3": "Sind Sie sicher, dass Sie stornieren möchten?",
+      "cancelSuccess": "Buchung erfolgreich storniert",
+      "cancelError": "Stornierung der Buchung fehlgeschlagen"
+    }
+  },
+  "profile": {
+    "profile": {
+      "title": "Profil Details",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "contactDetails": "Kontakt Details",
+      "email": "E-Mail",
+      "phone": "+49 100 0000 0000",
+      "address": "Adresse",
+      "nationality": "Nationalität",
+      "gender": "Geschlecht",
+      "genderOptions": {
+        "male": "Männlich",
+        "female": "Weiblich",
+        "other": "Andere"
+      },
+      "dateOfBirth": "Geburtsdatum",
+      "day": "Tag",
+      "month": "Monat",
+      "year": "Jahr",
+      "save": "Speichern",
+      "update": "aktualisieren"
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "email": "E-Mail",
+      "save": "Speichern",
+      "update": "aktualisieren",
+      "disclaimer": "Durch die Aktivierung von Empfehlungen, Reisetipps und anderen Angeboten stimmen Sie dem Erhalt von Werbemitteilungen zu. Sie können sich jederzeit abmelden. Weitere Informationen zur Verwendung Ihrer Daten finden Sie in unserer Datenschutzerklärung.",
+      "types": {
+        "reviews": {
+          "title": "Bewertungen",
+          "description": "Erhalten Sie Erinnerungen, eine Bewertung für kürzlich durchgeführte Aktivitäten zu schreiben."
+        },
+        "recommendations": {
+          "title": "Empfehlungen",
+          "description": "Erhalten Sie Empfehlungen inspiriert von Aktivitäten und Zielen, die Sie sich angesehen haben."
+        },
+        "deals": {
+          "title": "Angebote und Belohnungen",
+          "description": "Exklusive Reiseangebote, neueste Aktionen und spezielle Belohnungen."
+        },
+        "inspiration": {
+          "title": "Reisetipps und Inspiration",
+          "description": "Erhalten Sie Reise-Newsletter und andere praktische Inspiration, um das Beste aus Ihren Zielen zu machen."
+        },
+        "guides": {
+          "title": "Reiseführer",
+          "description": "Ratschläge von Einheimischen, Experten und anderen Reisenden - damit Sie das Beste aus Ihren Zielen herausholen."
+        }
+      }
+    },
+    "password": {
+      "title": "Passwort zurücksetzen",
+      "description": "Geben Sie die E-Mail-Adresse ein, die mit Ihrem Konto verknüpft ist, und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+      "oldPassword": "Altes Passwort",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Neues Passwort bestätigen",
+      "resetPassword": "Jetzt zurücksetzen",
+      "passwordRules": "Passwörter müssen mindestens ein nicht alphanumerisches Zeichen enthalten. Passwörter müssen mindestens einen Großbuchstaben („A“–„Z“) enthalten.",
+      "errors": {
+        "oldPasswordRequired": "Altes Passwort ist erforderlich",
+        "newPasswordRequired": "Neues Passwort ist erforderlich",
+        "passwordLength": "Passwort muss mindestens 8 Zeichen lang sein",
+        "confirmPasswordRequired": "Bitte bestätigen Sie Ihr neues Passwort",
+        "passwordsDontMatch": "Passwörter stimmen nicht überein",
+        "userIdNotFound": "Benutzer-ID nicht gefunden. Bitte melden Sie sich erneut an.",
+        "PasswordIsRequired": "Passwort ist erforderlich",
+        "passwordUpper": "Das Passwort muss mindestens einen Großbuchstaben enthalten",
+        "passwordSpecial": "Das Passwort muss mindestens ein Sonderzeichen enthalten"
+      }
+    },
+    "nav": {
+      "profile": "Profil",
+      "notifications": "Benachrichtigungen",
+      "password": "Passwort"
+    }
   }
 }

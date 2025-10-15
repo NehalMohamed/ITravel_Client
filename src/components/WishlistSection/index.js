@@ -13,7 +13,7 @@ const WishlistSection = () => {
   const dispatch = useDispatch();
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
-  const [popupType, setPopupType] = useState('success');
+  const [popupType, setPopupType] = useState('alert');
   const { items, loading, error, operation } = useSelector((state) => state.wishlist);
   const currentLang = useSelector((state) => state.language.currentLang) || "en";
 
@@ -21,7 +21,7 @@ const WishlistSection = () => {
   const refreshWishlist = () => {
     const params = {
       lang_code: currentLang,
-      currency_code: "USD",
+      currency_code: "EUR",
       trip_type: 0,
       client_id: ""
     };
@@ -36,7 +36,7 @@ const WishlistSection = () => {
   useEffect(() => {
     if (error) {
       setPopupMessage(error.message || t("wishlist.loadError"));
-      setPopupType('error');
+      setPopupType('alert');
       setShowPopup(true);
       dispatch(resetWishlistOperation());
     }
@@ -46,7 +46,7 @@ const WishlistSection = () => {
   useEffect(() => {
     if (operation.error) {
       setPopupMessage(operation.error);
-      setPopupType('error');
+      setPopupType('alert');
       setShowPopup(true);
       dispatch(resetWishlistOperation());
     } else if (operation.success) {

@@ -5,6 +5,7 @@ import { checkAUTH, isUserNotLoggedIn, isTokenExpiredOnly } from "../../helper/h
 import { createAuthError } from "../../utils/authError";
 
 const BOOKING_URL = process.env.REACT_APP_BOOKING_API_URL;
+const BASE_URL = process.env.REACT_APP_CLIENT_API_URL;
 
 const getAuthHeaders = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -19,6 +20,48 @@ const getAuthHeaders = () => {
     },
   };
 };
+
+const getNoTokenAuthHeaders = () => {
+  let lang = localStorage.getItem("lang") || "en";
+  return {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Language": lang
+    },
+  };
+};
+
+// Helper function to get client ID from localStorage
+const getClientId = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user?.id || null;
+};
+
+// Async thunk for fetching wishlist count
+export const fetchWishlistCount = createAsyncThunk(
+  "wishlist/fetchWishlistCount",
+  async (clientId, { rejectWithValue }) => {
+
+    if (!clientId) {
+      return 0;
+    }
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/GetWishListCount?clientId=` + clientId,
+        {},
+        getNoTokenAuthHeaders()
+      );
+       
+      // Assuming the API returns a simple number like in your example
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching wishlist count:", error);
+      // Return 0 on error but don't show error to user for count
+      return 0;
+    }
+  }
+);
 
 // Async thunk for fetching wishlist items
 export const fetchWishlist = createAsyncThunk(
@@ -61,7 +104,7 @@ export const fetchWishlist = createAsyncThunk(
 // Async thunk for adding item to wishlist
 export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
-  async (wishlistData, { rejectWithValue }) => {
+  async (wishlistData, { rejectWithValue, dispatch }) => {
     // Check authentication with proper scenario detection
     if (isUserNotLoggedIn()) {
       return rejectWithValue(createAuthError('notLoggedIn'));
@@ -83,6 +126,12 @@ export const addToWishlist = createAsyncThunk(
       );
       
       console.log("Add to wishlist response:", response.data);
+
+      // Refresh wishlist count after adding
+      const clientId = getClientId();
+            if (clientId) {
+              dispatch(fetchWishlistCount(clientId));
+            }
       
       // Check if the operation was successful
       if (response.data.success === false) {
@@ -112,6 +161,7 @@ const wishlistSlice = createSlice({
   name: "wishlist",
   initialState: {
     items: [],
+    count: 0,
     loading: false,
     error: null,
     operation: {
@@ -128,13 +178,36 @@ const wishlistSlice = createSlice({
     },
     clearWishlist: (state) => {
       state.items = [];
+      state.count = 0; 
       state.loading = false;
       state.error = null;
-    }
+    },
+
+    updateWishlistCount: (state, action) => {
+          state.count = action.payload;
+     },
+        // Reset count when user logs out
+        resetWishlistCount: (state) => {
+          state.count = 0;
+        }
   },
   extraReducers: (builder) => {
     builder
-      // Fetch wishlist
+    // Fetch wishlist count
+          .addCase(fetchWishlistCount.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+          })
+          .addCase(fetchWishlistCount.fulfilled, (state, action) => {
+            state.loading = false;
+            state.count = action.payload; // Store the count
+          })
+          .addCase(fetchWishlistCount.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+            state.count = 0; // Reset count on error
+          })
+      // Fetch wishlist items
       .addCase(fetchWishlist.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -174,5 +247,5 @@ const wishlistSlice = createSlice({
   }
 });
 
-export const { resetWishlistOperation, clearWishlist } = wishlistSlice.actions;
+export const { resetWishlistOperation, clearWishlist, updateWishlistCount, resetWishlistCount } = wishlistSlice.actions;
 export default wishlistSlice.reducer;
