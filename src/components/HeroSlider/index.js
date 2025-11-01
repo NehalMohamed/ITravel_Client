@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { fetchSliderTrips } from '../../redux/Slices/tripsSlice';
+import { fetchSliderTrips } from "../../redux/Slices/tripsSlice";
 
 const HeroSlider = () => {
   const { t } = useTranslation();
@@ -12,26 +12,30 @@ const HeroSlider = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const currentLang = useSelector((state) => state.language.currentLang) || "en";
-
+  //const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   useEffect(() => {
     const params = {
       lang_code: currentLang,
       show_in_top: false,
       currency_code: "EUR",
-      trip_type: 1
+      trip_type: 1,
     };
     dispatch(fetchSliderTrips(params));
   }, [dispatch, currentLang]);
 
   // Use sliderTrips from Redux state
-  const { sliderTrips: slides = [], loading, error } = useSelector((state) => state.trips);
+  const {
+    sliderTrips: slides = [],
+    loading,
+    error,
+  } = useSelector((state) => state.trips);
 
   useEffect(() => {
     if (!isAutoPlaying || !slides || slides.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -60,15 +64,15 @@ const HeroSlider = () => {
       navigate(`/trip/${slide.route}`, {
         state: {
           tripId: slide.trip_id,
-          trip_type: slide.trip_type
-        }
+          trip_type: slide.trip_type,
+        },
       });
     } else {
-      navigate('/trip/ComingSoon', {
+      navigate("/trip/ComingSoon", {
         state: {
           tripId: slide.trip_id,
-          trip_type: slide.trip_type
-        }
+          trip_type: slide.trip_type,
+        },
       });
     }
   };
@@ -101,13 +105,14 @@ const HeroSlider = () => {
                 <h1 className="slide-title">{slide.trip_name}</h1>
                 {/* <h2 className="slide-subtitle">{slide.trip_description}</h2> */}
                 <div className="slide-actions">
-                  <button className="btn-primary"
+                  <button
+                    className="btn-primary"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleCardClick(slide);
-                    }}>
-
-                    {t('general.more')}
+                    }}
+                  >
+                    {t("general.more")}
                   </button>
                 </div>
               </div>
@@ -117,10 +122,18 @@ const HeroSlider = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button className="slider-nav prev" onClick={goToPrevious} aria-label="Previous slide">
+      <button
+        className="slider-nav prev"
+        onClick={goToPrevious}
+        aria-label="Previous slide"
+      >
         <FaChevronLeft />
       </button>
-      <button className="slider-nav next" onClick={goToNext} aria-label="Next slide">
+      <button
+        className="slider-nav next"
+        onClick={goToNext}
+        aria-label="Next slide"
+      >
         <FaChevronRight />
       </button>
 

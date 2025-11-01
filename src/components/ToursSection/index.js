@@ -11,37 +11,42 @@ import TourCard from "../TourCard";
 
 const ToursSection = (props) => {
   const dispatch = useDispatch();
-  const tripType = props.tripType || 1;
-  const { toursSectionTrips: trips, loading, error } = useSelector((state) => state.trips);
+  const tripType = props.tripType || 0;
+  const {
+    toursSectionTrips: trips,
+    loading,
+    error,
+  } = useSelector((state) => state.trips);
   const { operation } = useSelector((state) => state.wishlist);
-  const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  // const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   const { user: stateUser } = useSelector((state) => state.auth); // Get user from auth state
-  
+
   // Get user from localStorage as fallback
   const localStorageUser = JSON.parse(localStorage.getItem("user") || "null");
   const user = stateUser || localStorageUser;
 
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-  const [popupType, setPopupType] = useState('alert');
+  const [popupMessage, setPopupMessage] = useState("");
+  const [popupType, setPopupType] = useState("alert");
   const { t } = useTranslation();
 
   useEffect(() => {
     const params = {
       lang_code: currentLang,
-      show_in_top: false,
+      show_in_top: true,
       currency_code: "EUR",
       client_id: user?.id || "",
-      trip_type: tripType
+      trip_type: tripType,
     };
     dispatch(fetchToursSectionTrips(params));
-  }, [dispatch, currentLang, refreshTrigger ,tripType]);
+  }, [dispatch, currentLang, refreshTrigger, tripType]);
 
   useEffect(() => {
     if (operation.success) {
       // Refetch trips after successful wishlist operation
-      setRefreshTrigger(prev => prev + 1);
+      setRefreshTrigger((prev) => prev + 1);
       dispatch(resetWishlistOperation());
     }
   }, [operation.success, dispatch]);
@@ -50,7 +55,7 @@ const ToursSection = (props) => {
     // Handle errors in the parent component only
     if (operation.error) {
       setPopupMessage(operation.error);
-      setPopupType('alert');
+      setPopupType("alert");
       setShowPopup(true);
 
       // Reset operation error after showing
@@ -64,13 +69,13 @@ const ToursSection = (props) => {
     return <LoadingPage />;
   }
 
-  if (trips.length === 0&& !loading) {
+  if (trips.length === 0 && !loading) {
     return (
       <section className="tours-section">
         <Container>
           <div className="tours-empty">
             <BiSolidCard className="empty-icon" />
-            <h3 className="empty-title">{t('tours.empty_title')}</h3>
+            <h3 className="empty-title">{t("tours.empty_title")}</h3>
             {/* <p className="empty-text">{t('tours.empty_text')}</p> */}
           </div>
         </Container>
@@ -83,7 +88,7 @@ const ToursSection = (props) => {
       <section className="tours-section" id="tours">
         <Container>
           <div className="section-header">
-            <h2 className="section-title">{t('tours.top_offers')}</h2>
+            <h2 className="section-title">{t("tours.top_offers")}</h2>
             <div className="section-divider"></div>
           </div>
 

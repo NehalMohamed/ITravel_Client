@@ -3,14 +3,15 @@ import { Card, Button } from "react-bootstrap";
 import { FaCheck, FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { addToWishlist } from "../../redux/Slices/wishlistSlice";
 
 const TourCard = ({ trip }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  // const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [needsTruncation, setNeedsTruncation] = useState(false);
 
@@ -23,7 +24,7 @@ const TourCard = ({ trip }) => {
 
   // Get truncated text
   const truncatedText = needsTruncation
-    ? trip?.trip_description?.slice(0, 70) + '...'
+    ? trip?.trip_description?.slice(0, 70) + "..."
     : trip?.trip_description;
 
   const handleWishlistToggle = (e) => {
@@ -36,7 +37,7 @@ const TourCard = ({ trip }) => {
       client_id: user ? user.id : 0,
       created_at: null,
       trip_type: trip?.trip_type,
-      delete: trip?.isfavourite // true to remove, false to add
+      delete: trip?.isfavourite, // true to remove, false to add
     };
     dispatch(addToWishlist(wishlistData));
   };
@@ -46,27 +47,34 @@ const TourCard = ({ trip }) => {
       navigate(`/trip/${trip.route}`, {
         state: {
           tripId: trip?.trip_id,
-          trip_type: trip?.trip_type
-        }
+          trip_type: trip?.trip_type,
+        },
       });
     } else {
-      navigate('/trip/ComingSoon', {
+      navigate("/trip/ComingSoon", {
         state: {
           tripId: trip.trip_id,
-          trip_type: trip.trip_type
-        }
+          trip_type: trip.trip_type,
+        },
       });
     }
   };
 
   // Function to format price display based on trip type
   const renderPrice = () => {
-    const currencySymbol = trip?.currency_code.toUpperCase() === "EUR" ? "€" : trip?.currency_code;
+    const currencySymbol =
+      trip?.currency_code.toUpperCase() === "EUR" ? "€" : trip?.currency_code;
 
     return (
       <div className="price-section">
         <div className="price-range">
-          <span className="price-label">{t("general.from")}   <span className="price"> {trip?.trip_min_price} {currencySymbol}</span> </span>
+          <span className="price-label">
+            {t("general.from")}{" "}
+            <span className="price">
+              {" "}
+              {trip?.trip_min_price} {currencySymbol}
+            </span>{" "}
+          </span>
         </div>
         {/* <div className="price-range">
           <span className="price-label">{t("general.to")}  <span className="price"> {trip?.trip_max_price} {currencySymbol}</span> </span>
@@ -82,7 +90,11 @@ const TourCard = ({ trip }) => {
         <button
           className={`wishlist-heart ${trip?.isfavourite ? "liked" : ""}`}
           onClick={handleWishlistToggle}
-          aria-label={trip?.isfavourite ? t("tripDetails.removeFromWishlist") : t("tripDetails.addToWishlist")}
+          aria-label={
+            trip?.isfavourite
+              ? t("tripDetails.removeFromWishlist")
+              : t("tripDetails.addToWishlist")
+          }
         >
           <FaHeart />
         </button>
@@ -102,7 +114,9 @@ const TourCard = ({ trip }) => {
                 setShowFullDescription(!showFullDescription);
               }}
             >
-              {showFullDescription ? t("general.show_less") : t("general.show_more")}
+              {showFullDescription
+                ? t("general.show_less")
+                : t("general.show_more")}
             </button>
           )}
         </Card.Text>

@@ -26,8 +26,10 @@ const TripDetailsPage = () => {
   const { tripData, loading, error } = useSelector(
     (state) => state.tripDetails
   );
-  const currentLang =
-    useSelector((state) => state.language.currentLang) || "en";
+
+  const currentLang = localStorage.getItem("lang") || "de";
+  // const currentLang =
+  //   useSelector((state) => state.language.currentLang) || "en";
 
   const [user, setUser] = useState({});
   const [tripState, setTripState] = useState(null);
@@ -37,30 +39,30 @@ const TripDetailsPage = () => {
     setUser(userData);
   }, []);
 
-    // Store location state in localStorage when component mounts
-    useEffect(() => {
-      if (state) {
-        localStorage.setItem("tripDetailsState", JSON.stringify(state));
-        setTripState(state);
-      } else {
-        // If no state from location, try to get from localStorage
-        const savedState = localStorage.getItem("tripDetailsState");
-        if (savedState) {
-          setTripState(JSON.parse(savedState));
-        }
+  // Store location state in localStorage when component mounts
+  useEffect(() => {
+    if (state) {
+      localStorage.setItem("tripDetailsState", JSON.stringify(state));
+      setTripState(state);
+    } else {
+      // If no state from location, try to get from localStorage
+      const savedState = localStorage.getItem("tripDetailsState");
+      if (savedState) {
+        setTripState(JSON.parse(savedState));
       }
-    }, [state]);
-  
-    // Clean up localStorage when component unmounts
-    useEffect(() => {
-      return () => {
-        localStorage.removeItem("tripDetailsState");
-      };
-    }, []);
-  
-    useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [tripState]);
+    }
+  }, [state]);
+
+  // Clean up localStorage when component unmounts
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("tripDetailsState");
+    };
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [tripState]);
 
   useEffect(() => {
     if (error) {
@@ -82,7 +84,7 @@ const TripDetailsPage = () => {
     if (!tripState) return;
 
     const params = {
-      trip_id: tripState?.tripId, 
+      trip_id: tripState?.tripId,
       lang_code: currentLang,
       currency_code: "EUR",
       client_id: user?.id || "",
@@ -103,8 +105,9 @@ const TripDetailsPage = () => {
       <BookingInfo tripData={tripData} />
       <BookingSelection tripData={tripData} />
       <FlightItinerary tripData={tripData} />
-      <Reviews tripData={tripData} refreshTripDetails={refreshTripDetails} />
+
       <TourDetails tripData={tripData} />
+      <Reviews tripData={tripData} refreshTripDetails={refreshTripDetails} />
       <CityCarousel />
 
       {/* Show loading page during wishlist operation */}

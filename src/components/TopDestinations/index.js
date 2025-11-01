@@ -14,9 +14,9 @@ const TopDestinations = () => {
     (state) => state.destinations
   );
 
-  const currentLang =
-    useSelector((state) => state.language.currentLang) || "en";
-
+  // const currentLang =
+  //   useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   useEffect(() => {
     dispatch(fetchDestinations(currentLang));
   }, [dispatch, currentLang]);

@@ -10,8 +10,9 @@ const CityCarousel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const scrollContainerRef = useRef(null);
-  const currentLang =
-    useSelector((state) => state.language.currentLang) || "en";
+  // const currentLang =
+  //   useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   const {
     carouselTrips: slides = [],
     loading,
@@ -21,9 +22,9 @@ const CityCarousel = () => {
   useEffect(() => {
     const params = {
       lang_code: currentLang,
-      show_in_top: false,
+      show_in_top: true,
       currency_code: "EUR",
-      trip_type: 1,
+      trip_type: 0,
     };
     dispatch(fetchCarouselTrips(params));
   }, [dispatch, currentLang]);

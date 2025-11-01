@@ -3,7 +3,10 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { BiSolidCard } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
-import { fetchWishlist, resetWishlistOperation } from '../../redux/Slices/wishlistSlice';
+import {
+  fetchWishlist,
+  resetWishlistOperation,
+} from "../../redux/Slices/wishlistSlice";
 import WishlistCard from "../WishlistCard";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
@@ -12,18 +15,20 @@ const WishlistSection = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-  const [popupType, setPopupType] = useState('alert');
-  const { items, loading, error, operation } = useSelector((state) => state.wishlist);
-  const currentLang = useSelector((state) => state.language.currentLang) || "en";
-
+  const [popupMessage, setPopupMessage] = useState("");
+  const [popupType, setPopupType] = useState("alert");
+  const { items, loading, error, operation } = useSelector(
+    (state) => state.wishlist
+  );
+  // const currentLang = useSelector((state) => state.language.currentLang) || "en";
+  const currentLang = localStorage.getItem("lang") || "de";
   // Function to refresh wishlist
   const refreshWishlist = () => {
     const params = {
       lang_code: currentLang,
       currency_code: "EUR",
       trip_type: 0,
-      client_id: ""
+      client_id: "",
     };
     dispatch(fetchWishlist(params));
   };
@@ -36,7 +41,7 @@ const WishlistSection = () => {
   useEffect(() => {
     if (error) {
       setPopupMessage(error.message || t("wishlist.loadError"));
-      setPopupType('alert');
+      setPopupType("alert");
       setShowPopup(true);
       dispatch(resetWishlistOperation());
     }
@@ -46,7 +51,7 @@ const WishlistSection = () => {
   useEffect(() => {
     if (operation.error) {
       setPopupMessage(operation.error);
-      setPopupType('alert');
+      setPopupType("alert");
       setShowPopup(true);
       dispatch(resetWishlistOperation());
     } else if (operation.success) {
@@ -74,7 +79,7 @@ const WishlistSection = () => {
         <Container>
           <div className="tours-empty">
             <BiSolidCard className="empty-icon" />
-            <h3 className="empty-title">{t('tours.empty_title')}</h3>
+            <h3 className="empty-title">{t("tours.empty_title")}</h3>
             {/* <p className="empty-text">{t('tours.empty_text')}</p> */}
           </div>
         </Container>
@@ -87,7 +92,7 @@ const WishlistSection = () => {
       <section className="tours-section" id="tours">
         <Container>
           <div className="section-header">
-            <h2 className="section-title">{t('wishlist.title')}</h2>
+            <h2 className="section-title">{t("wishlist.title")}</h2>
             <div className="section-divider"></div>
           </div>
 

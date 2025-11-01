@@ -1,18 +1,15 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 const TourDetails = ({ tripData }) => {
   const { t } = useTranslation();
 
   const renderHtmlContent = (htmlString) => {
+    console.log("htmlString ", htmlString);
     if (!htmlString) return null;
-    return (
-      <div className="html-content">
-        {parse(htmlString)}
-      </div>
-    );
+    return <div className="html-content">{parse(htmlString)}</div>;
   };
 
   const renderSection = (title, content) => {
@@ -25,17 +22,15 @@ const TourDetails = ({ tripData }) => {
             <span>{title}</span>
           </Col>
           <Col md={9}>
-            {typeof content === 'string' ? (
+            {typeof content === "string" ? (
               renderHtmlContent(content)
             ) : (
               <ul className="detail-list">
-                {Array.isArray(content) ? (
-                  content.map((item, index) => (
-                    <li key={index}>{renderHtmlContent(item)}</li>
-                  ))
-                ) : (
-                  renderHtmlContent(content)
-                )}
+                {Array.isArray(content)
+                  ? content.map((item, index) => (
+                      <li key={index}>{renderHtmlContent(item)}</li>
+                    ))
+                  : renderHtmlContent(content)}
               </ul>
             )}
           </Col>
@@ -51,7 +46,10 @@ const TourDetails = ({ tripData }) => {
         <hr />
         {renderSection(t("tripDetails.highlights"), tripData?.trip_highlight)}
         {renderSection(t("tripDetails.included"), tripData?.trip_includes)}
-        {renderSection(t("tripDetails.notIncluded"), tripData?.trip_not_includes)}
+        {renderSection(
+          t("tripDetails.notIncluded"),
+          tripData?.trip_not_includes
+        )}
         {renderSection(t("tripDetails.dontForget"), tripData?.important_info)}
         {renderSection(t("tripDetails.additionalInfo"), tripData?.trip_details)}
 
