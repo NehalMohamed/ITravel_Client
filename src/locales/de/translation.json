@@ -7,7 +7,7 @@
     "top_offers": "Top Angebote",
     "show_more": "Mehr anzeigen",
     "show_less": "Weniger anzeigen",
-    "from": "Ab",
+    "from": "From",
     "to": "bis zu",
     "perGroupUpTo": "pro Gruppe bis zu",
     "perPerson": "pro person",
@@ -41,7 +41,8 @@
     "loading": "Touren werden geladen...",
     "empty_title": "Keine Touren verfügbar",
     "empty_text": "Schauen Sie später wieder vorbei für neue Angebote.",
-    "top_offers": "Top Angebote"
+    "top_offers": "Top Angebote",
+    "ShowAll": "Alle anzeigen"
   },
   "wishlist": {
     "title": "Ihre Wunschliste",
@@ -207,7 +208,10 @@
     "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
     "loginRequired": "Bitte melden Sie sich zunächst an.",
     "loginNow": "Jetzt anmelden",
-    "ok": "OK"
+    "ok": "OK",
+    "loginRequiredTitle": "Anmeldung erforderlich",
+    "loginRequiredMessage": "Sie müssen sich anmelden, um fortzufahren.",
+    "goToLogin": "Zur Anmeldung"
   },
   "tripDetails": {
     "reviews": "Bewertungen",
@@ -248,8 +252,8 @@
     "notRated": "Noch nicht bewertet",
     "stars": "Stern"
   },
-"booking": {
-  "returnDate": {
+  "booking": {
+    "returnDate": {
       "title": "Rückfahrt-Datum & Uhrzeit auswählen",
       "note": "Bitte wählen Sie Ihr gewünschtes Rückfahrt-Datum und Uhrzeit"
     },
@@ -390,7 +394,7 @@
       "redeem": "Einlösen",
       "placeholder": "Code eingeben"
     },
-    "cancel":{
+    "cancel": {
       "cancelConfirmation1": "Sie erhalten eine E-Mail mit den Stornogebühren",
       "cancelConfirmation2": "oder kontaktieren Sie booking@ITravel-pro.de.de",
       "cancelConfirmation3": "Sind Sie sicher, dass Sie stornieren möchten?",

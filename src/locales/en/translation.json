@@ -1,7 +1,7 @@
 {
   "general": {
     "more": "More",
-   "yes": "Yes",
+    "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
     "top_offers": "Top Offers",
@@ -41,7 +41,8 @@
     "loading": "Loading tours...",
     "empty_title": "No tours available",
     "empty_text": "Please check back later for new offers.",
-    "top_offers": "Top Offers"
+    "top_offers": "Top Offers",
+    "ShowAll": "Show All"
   },
   "wishlist": {
     "title": "Your wishlist",
@@ -97,7 +98,7 @@
     "PrivacyText": "By signing in or creating an account, you accept our Terms and Conditions and Privacy Policy.",
     "Or": "Or Continue With",
     "HaveAccount": "Already have an account?",
-     "CodeVerifyTitle": "Enter The Code sent To",
+    "CodeVerifyTitle": "Enter The Code sent To",
     "CodeVerifyTitle2": "To Verify your mail",
     "SendCode": "Send Code",
     "fillField": "Please fill this field",
@@ -207,12 +208,15 @@
     "sessionExpired": "Your session has expired. Please log in again.",
     "loginRequired": "Please log in first.",
     "loginNow": "Log in now",
-    "ok": "OK"
+    "ok": "OK",
+    "loginRequiredTitle": "Login Required",
+    "loginRequiredMessage": "You need to log in to continue.",
+    "goToLogin": "Go to Login"
   },
   "tripDetails": {
     "reviews": "reviews",
     "allReviews": "All Reviews",
-   "pleaseLoginToReview": "Please log in to submit a review",
+    "pleaseLoginToReview": "Please log in to submit a review",
     "reviewSubmittedSuccess": "Thank you for your review!",
     "reviewSubmissionError": "Error submitting the review. Please try again.",
     "reviewsLoadError": "Error loading reviews",
@@ -247,7 +251,7 @@
     "bookNow": "Book now",
     "notRated": "Not Rated Yet",
     "stars": "Star"
-},
+  },
   "booking": {
     "returnDate": {
       "title": "Select Return Date & Time",
@@ -390,7 +394,7 @@
       "redeem": "Redeem",
       "placeholder": "Enter code"
     },
-    "cancel":{
+    "cancel": {
       "cancelConfirmation1": "You will receive e-mail with cancellation fees",
       "cancelConfirmation2": "or contact booking@ITravel-pro.de",
       "cancelConfirmation3": "Are you sure to cancel?",
@@ -465,9 +469,9 @@
         "confirmPasswordRequired": "Please confirm your new password",
         "passwordsDontMatch": "Passwords don't match",
         "userIdNotFound": "User ID not found. Please log in again.",
-        "PasswordIsRequired":"Password is required",
-        "passwordUpper":"Password must contain at least one uppercase letter",
-        "passwordSpecial":"Password must contain at least one special character"
+        "PasswordIsRequired": "Password is required",
+        "passwordUpper": "Password must contain at least one uppercase letter",
+        "passwordSpecial": "Password must contain at least one special character"
       }
     },
     "nav": {

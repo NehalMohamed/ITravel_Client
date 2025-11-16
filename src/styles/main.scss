@@ -45,7 +45,6 @@
 @import "../components/Profile/ProfileSidebar/ProfileSidebar.scss";
 @import "../components/Profile/ProfileTab/ProfileTab.scss";
 
-
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -57,19 +56,19 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #000000, #5599CB, #000000);
+  background: linear-gradient(180deg, #000000, #5599cb, #000000);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #5599CB, #000000, #5599CB);
+  background: linear-gradient(180deg, #5599cb, #000000, #5599cb);
 }
 // Global styles
 body {
-  font-family: 'Myriad Pro','Source Sans Pro', sans-serif !important;
+  font-family: "Tajawal", sans-serif, "Cairo" !important;
 }
 .App {
-  font-family: 'Myriad Pro','Source Sans Pro', sans-serif;
+  font-family: "Tajawal", sans-serif, "Cairo" !important;
   overflow-x: hidden;
 }
 
@@ -99,7 +98,9 @@ html {
   scroll-behavior: smooth;
 }
 
-
+a {
+  text-decoration: none;
+}
 // Remove default margins and paddings
 * {
   margin: 0;
@@ -129,7 +130,7 @@ html {
 .secondryBtn {
   background-color: $secondary-color !important;
   border-color: $secondary-color !important;
-  color: $primary-color  !important;
+  color: $primary-color !important;
 }
 .transBtn {
   background-color: transparent !important;
@@ -147,7 +148,7 @@ html {
 input:-internal-autofill-selected {
   background-color: white !important;
 }
-.end-btn{
+.end-btn {
   display: flex;
   justify-content: flex-end;
   justify-items: flex-end;
@@ -164,23 +165,23 @@ input:-internal-autofill-selected {
 }
 
 // Map
-.geoapify-autocomplete-items{
+.geoapify-autocomplete-items {
   position: relative !important;
   z-index: 9999999999 !important;
 }
 
 .geoapify-close-button {
-    position: relative !important;
-    margin-left: 8px !important;
+  position: relative !important;
+  margin-left: 8px !important;
 }
 .geoapify-close-button.visible {
-    display: inline-block !important;
+  display: inline-block !important;
 }
 
 .geoapify-autocomplete-input {
-    padding: 25px 31px 25px 7px !important;
-    border: 1px solid #eee !important;
-    border-radius: 8px !important;
+  padding: 25px 31px 25px 7px !important;
+  border: 1px solid #eee !important;
+  border-radius: 8px !important;
 }
 
 .profile-page {
@@ -197,7 +198,7 @@ input:-internal-autofill-selected {
   @include media-breakpoint-down(sm) {
     min-height: 44px !important;
     font-size: 16px !important;
-    
+
     // Prevent zoom on iOS
     @media (max-width: 767px) {
       font-size: 16px !important;
@@ -206,10 +207,11 @@ input:-internal-autofill-selected {
 }
 
 // Form control enhancements for mobile
-.form-control, .form-select {
+.form-control,
+.form-select {
   @include media-breakpoint-down(sm) {
     font-size: 16px !important; // Prevents zoom on iOS
-    
+
     // Ensure proper touch targets
     min-height: 44px;
     padding: 10px 12px !important;
@@ -221,7 +223,7 @@ input:-internal-autofill-selected {
   @include media-breakpoint-down(sm) {
     margin-left: -5px;
     margin-right: -5px;
-    
+
     > [class*="col-"] {
       padding-left: 5px;
       padding-right: 5px;

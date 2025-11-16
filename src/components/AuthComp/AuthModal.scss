@@ -1,15 +1,33 @@
+@import "../../styles/variables";
 .auth_modal {
+  .auth_sec {
+    @media only screen and (max-width: 992px) {
+      display: block !important;
+    }
+  }
+  .auth_form {
+    border-right: 1px solid #ddd;
+    padding: 0 10px;
+    flex: 1;
+    @media only screen and (max-width: 992px) {
+      border: 0;
+    }
+  }
+  .auth_other {
+    flex: 1;
+    padding: 0 10px;
+  }
   .modal-header {
     border: 0;
     text-align: center;
     padding: 10px;
   }
   .modal-body {
-    padding: 10px 20%;
+    padding: 10px 10px;
   }
   .modal-content {
     border-radius: 20px;
-    padding: 10px 30px;
+    padding: 10px;
   }
   .title {
     color: $primary-color;
@@ -17,6 +35,9 @@
     text-align: center;
     // margin-bottom: 20px;
     font-weight: bold;
+    @media only screen and (max-width: 786px) {
+      font-size: 18px;
+    }
   }
   .SubTitle,
   .form-check-label,
@@ -67,6 +88,9 @@
       font-size: 14px;
       color: #cdcdcd;
       padding: 10px;
+      @media only screen and (max-width: 786px) {
+        padding: 5px;
+      }
     }
   }
   .frmBtn {
@@ -83,6 +107,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    @media only screen and (max-width: 786px) {
+      display: block !important;
+      text-align: center;
+    }
   }
   .form_option {
     font-size: 12px;
@@ -103,9 +131,9 @@
     @media only screen and (max-width: 1200px) {
       font-size: 15px;
     }
-    @media only screen and (max-width: 992px) {
-      font-size: 20px;
-    }
+    // @media only screen and (max-width: 992px) {
+    //   font-size: 20px;
+    // }
   }
   .errorTxt {
     color: red !important;

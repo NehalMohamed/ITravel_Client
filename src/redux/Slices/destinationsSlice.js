@@ -1,10 +1,10 @@
 // features/destinations/destinationsSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+// import api from "../../api/axios";
 const BASE_URL = process.env.REACT_APP_CLIENT_API_URL;
 
-const getAuthHeaders = () => {
+const getNonAuthHeaders = () => {
   let lang = localStorage.getItem("lang");
   return {
     headers: {
@@ -27,7 +27,7 @@ export const fetchDestinations = createAsyncThunk(
           leaf: true,
           trip_type: 0,
         },
-        getAuthHeaders()
+        getNonAuthHeaders()
       );
       return response.data;
     } catch (error) {
@@ -48,7 +48,7 @@ export const fetchDestinationTree = createAsyncThunk(
           country_code: "",
           trip_type: params.trip_type,
         },
-        getAuthHeaders()
+        getNonAuthHeaders()
       );
       return {
         data: response.data,

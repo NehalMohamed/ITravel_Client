@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { BiSolidCard } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,7 @@ import { resetWishlistOperation } from "../../redux/Slices/wishlistSlice";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
 import TourCard from "../TourCard";
+import { Link } from "react-router-dom";
 
 const ToursSection = (props) => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const ToursSection = (props) => {
 
   useEffect(() => {
     // Handle errors in the parent component only
+    console.log("operation.error ", operation.error);
     if (operation.error) {
       setPopupMessage(operation.error);
       setPopupType("alert");
@@ -87,16 +89,32 @@ const ToursSection = (props) => {
     <>
       <section className="tours-section" id="tours">
         <Container>
-          <div className="section-header">
-            <h2 className="section-title">{t("tours.top_offers")}</h2>
-            <div className="section-divider"></div>
+          <div className="d-flex justify-content-between">
+            <div className="section-header">
+              <h2 className="section-title">{t("tours.top_offers")}</h2>
+              <div className="section-divider"></div>
+            </div>
+            {/* <Button className="transBtn primaryBtn">{t("tours.ShowAll")}</Button> */}
           </div>
 
           <div className="tours-grid">
             <Row>
               {trips.map((trip) => (
                 <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
-                  <TourCard trip={trip} />
+                  <Link
+                    className="w-100"
+                    to={
+                      !trip.is_comm_soon
+                        ? `/trip/${trip.route}`
+                        : "/trip/ComingSoon"
+                    }
+                    state={{
+                      tripId: trip.trip_id,
+                      trip_type: trip.trip_type,
+                    }}
+                  >
+                    <TourCard trip={trip} />
+                  </Link>
                 </Col>
               ))}
             </Row>
