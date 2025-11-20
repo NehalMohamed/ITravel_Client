@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { addToWishlist } from "../../redux/Slices/wishlistSlice";
-
+import { Rating } from "../../helper/TripHelper";
 import "./TourCard.scss";
 
 export default function TourCard({ trip }) {
@@ -79,9 +79,7 @@ export default function TourCard({ trip }) {
         <div className="info-row">
           {/* Rating */}
           <div className="rating">
-            {[...Array(5)].map((_, i) => (
-              <FaStar key={i} />
-            ))}
+            {Rating(trip?.review_rate)}
             <span>
               {trip?.review_rate} ({trip?.total_reviews})
             </span>
