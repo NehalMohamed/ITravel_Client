@@ -18,6 +18,7 @@ export default function TourCard({ trip }) {
   const [needsTruncation, setNeedsTruncation] = useState(false);
 
   const handleWishlistToggle = (e) => {
+    e.preventDefault(); // stop navigation
     e.stopPropagation();
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -50,7 +51,15 @@ export default function TourCard({ trip }) {
           alt={trip?.trip_name}
           className="tour-img"
         />
-        <button className="wishlist-btn">
+        <button
+          className={`wishlist-btn ${trip?.isfavourite ? "liked" : ""}`}
+          onClick={handleWishlistToggle}
+          aria-label={
+            trip?.isfavourite
+              ? t("tripDetails.removeFromWishlist")
+              : t("tripDetails.addToWishlist")
+          }
+        >
           <FaRegHeart />
         </button>
       </div>
@@ -59,7 +68,7 @@ export default function TourCard({ trip }) {
         {/* Location */}
         <div className="location">
           <FaMapMarkerAlt />
-          <span>{trip?.dest_default_name}</span>
+          <span>{trip?.dest_name}</span>
         </div>
 
         {/* Title */}

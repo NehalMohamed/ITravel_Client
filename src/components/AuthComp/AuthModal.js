@@ -20,7 +20,7 @@ export const AuthModalProvider = ({ children }) => {
     setAuthModalType(type);
     setShowAuthModal(true);
   };
-  
+
   const closeAuthModal = () => {
     setShowAuthModal(false);
   };
@@ -28,13 +28,13 @@ export const AuthModalProvider = ({ children }) => {
   const navigateTo = (path) => {
     window.location.href = path;
   };
-  
+
   return (
     <AuthModalContext.Provider value={{ openAuthModal, closeAuthModal }}>
       {children}
-      <AuthModal 
-        show={showAuthModal} 
-        onHide={closeAuthModal} 
+      <AuthModal
+        show={showAuthModal}
+        onHide={closeAuthModal}
         type={authModalType}
         setType={setAuthModalType}
         navigateTo={navigateTo}
@@ -70,7 +70,7 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
   });
 
   const { loading, success, message } = useSelector((state) => state.auth);
- 
+
   //validate form inputs
   const validate = () => {
     if (type == "register") {
@@ -133,11 +133,11 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
         };
         dispatch(LoginUser(data)).then((result) => {
           if (result.payload.isSuccessed) {
-             onHide();
-             setShowPopup(false);
-             navigateTo("/");
-          }else{
-             setShowPopup(true);
+            onHide();
+            setShowPopup(false);
+            navigateTo("/");
+          } else {
+            setShowPopup(true);
           }
         });
       } else {
@@ -146,11 +146,10 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
         dispatch(RegisterUser(data)).then((result) => {
           if (result.payload && result.payload.isSuccessed) {
             setShowPopup(false);
-            navigateTo("/verifyEmail"); 
-            
-          }else{
+            navigateTo("/verifyEmail");
+          } else {
             setShowPopup(true);
-          } 
+          }
         });
       }
     }
@@ -159,14 +158,15 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
   const fillFormData = (e) => {
     setvalidated(false);
     seterrorsLst({});
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setformData({
       ...formData,
       [e.target.name]: value,
     });
   };
 
-// Reset form when modal is closed or type changes
+  // Reset form when modal is closed or type changes
   useEffect(() => {
     if (!show) {
       setformData({
@@ -192,7 +192,7 @@ function AuthModal({ show, onHide, type, setType, navigateTo }) {
   // }, [success, type, navigateTo, onHide]);
 
   return (
-    <> 
+    <>
       <Modal
         size="lg"
         show={show}

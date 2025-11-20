@@ -15,8 +15,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "de",
-    lng: "de",
+    fallbackLng: localStorage.getItem("lang") || "de",
+    lng: localStorage.getItem("lang") || "de",
     interpolation: {
       escapeValue: false,
     },

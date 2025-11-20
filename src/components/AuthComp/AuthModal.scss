@@ -27,11 +27,11 @@
   }
   .modal-content {
     border-radius: 20px;
-    padding: 10px;
+    padding: 10px 0;
   }
   .title {
     color: $primary-color;
-    font-size: 28px;
+    font-size: 25px;
     text-align: center;
     // margin-bottom: 20px;
     font-weight: bold;
@@ -113,12 +113,13 @@
     }
   }
   .form_option {
-    font-size: 12px;
+    font-size: 11px;
     color: #797979;
-    line-height: 35px;
+    margin-top: 8px;
+    //line-height: 35px;
     .form_option_btn {
       color: $primary-color !important;
-      padding: 0 5px;
+      padding: 0 3px;
       background-color: transparent;
       border: 0;
       &:hover,
