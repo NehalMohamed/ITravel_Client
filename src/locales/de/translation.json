@@ -42,14 +42,15 @@
     "empty_title": "Keine Touren verfügbar",
     "empty_text": "Schauen Sie später wieder vorbei für neue Angebote.",
     "top_offers": "Top Angebote",
-    "ShowAll": "Alle anzeigen"
+    "LoadMore": "Mehr laden",
+    "ViewAllTours": "Alle Touren anzeigen"
   },
   "wishlist": {
     "title": "Ihre Wunschliste",
     "saved": "Gespeichert",
     "remove": "Von Wunschliste entfernen",
-    "topDestinations": "Die besten zu besuchenden Reiseziele",
-    "topDestinationsDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken - dein Fernweh wartet!"
+    "topDestinations": "Top-Reiseziele",
+    "topDestinationsDescription": "Erlebe den Nervenkitzel, versteckte Schätze und berühmte Sehenswürdigkeiten in den besten Reisezielen weltweit zu entdecken!"
   },
   "footer": {
     "travel": "Reisen",

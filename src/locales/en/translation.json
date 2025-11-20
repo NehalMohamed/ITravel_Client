@@ -42,14 +42,15 @@
     "empty_title": "No tours available",
     "empty_text": "Please check back later for new offers.",
     "top_offers": "Top Offers",
-    "ShowAll": "Show All"
+    "LoadMore": "Load More",
+    "ViewAllTours": "View All Tours"
   },
   "wishlist": {
     "title": "Your wishlist",
     "saved": "Saved",
     "remove": "Remove from wishlist",
-    "topDestinations": "Top Destinations to Visit",
-    "topDestinationsDescription": "Experience the thrill of discovering hidden gems and famous landmarks in the best travel destinations worldwide - your wanderlust awaits!"
+    "topDestinations": "Top Destinations",
+    "topDestinationsDescription": "Experience the thrill of discovering hidden gems and famous landmarks in the best travel destinations worldwide"
   },
   "footer": {
     "travel": "Travel",

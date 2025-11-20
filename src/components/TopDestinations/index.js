@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDestinations } from "../../redux/Slices/destinationsSlice";
-
+import { Link } from "react-router-dom";
 const TopDestinations = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -44,42 +44,37 @@ const TopDestinations = () => {
       sm={6}
       md={4}
       lg={3}
-      className={`destination-col ${index >= 4 ? "second-row" : "first-row"}`}
+      //className={`destination-col ${index >= 4 ? "second-row" : "first-row"}`}
     >
-      <Card
-        className="destination-card"
-        onClick={() => handleDestinationClick(destination)}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            handleDestinationClick(destination);
-          }
-        }}
-      >
-        <div className="card-image-wrapper">
-          {imageErrors[destination.destination_id] ? (
-            <div className="destination-fallback">
-              <span className="destination-icon">📍</span>
-            </div>
-          ) : (
-            <Card.Img
-              variant="top"
-              src={destination.img_path || "/images/default-destination.jpg"}
-              alt={destination.dest_description}
-              className="destination-image"
-              onError={() => handleImageError(destination.destination_id)}
-              loading="lazy"
-            />
-          )}
+      <div className="tour-card-wrapper">
+        <Card className="tour-card border-0">
+          <Card.Img
+            src={destination.img_path || "/images/default-destination.jpg"}
+            className="card-img"
+          />
+
+          {/* Overlay on hover */}
           <div className="card-overlay">
-            <Card.Title className="destination-name">
-              {destination.dest_name}
-            </Card.Title>
+            <h3 className="overlay-title">{destination.dest_name}</h3>
+            <Link
+              className="overlay-link"
+              to={`/excursions/${destination.route
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`}
+              state={{
+                state: { DestinationId: destination.destination_id },
+              }}
+            >
+              {t("tours.ViewAllTours")}
+            </Link>
           </div>
-        </div>
-      </Card>
+
+          {/* Title and image only (default view) */}
+          <div className="card-title-bottom">
+            <h4>{destination.dest_name}</h4>
+          </div>
+        </Card>
+      </div>
     </Col>
   );
 
@@ -106,9 +101,10 @@ const TopDestinations = () => {
       <Container>
         <div className="section-header">
           <h2 className="section-title">{t("wishlist.topDestinations")}</h2>
-          <p className="section-subtitle">
+          <div className="section-divider"></div>
+          {/* <p className="section-subtitle">
             {t("wishlist.topDestinationsDescription")}
-          </p>
+          </p> */}
         </div>
 
         <Row className="destinations-grid">

@@ -31,6 +31,8 @@ const ToursSection = (props) => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupType, setPopupType] = useState("alert");
+  //const [showAll, setShowAll] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -84,22 +86,32 @@ const ToursSection = (props) => {
       </section>
     );
   }
+  // Show only visibleCount items
+  const visibleItems = trips?.slice(0, visibleCount);
 
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 6); // load 6 more on each click
+  };
   return (
     <>
       <section className="tours-section" id="tours">
         <Container>
-          <div className="d-flex justify-content-between">
-            <div className="section-header">
-              <h2 className="section-title">{t("tours.top_offers")}</h2>
-              <div className="section-divider"></div>
-            </div>
-            {/* <Button className="transBtn primaryBtn">{t("tours.ShowAll")}</Button> */}
+          {/* <div className="d-flex justify-content-between"> */}
+          <div className="section-header">
+            <h2 className="section-title">{t("tours.top_offers")}</h2>
+            <div className="section-divider"></div>
           </div>
+          {/* <Button
+              className="transBtn primaryBtn showAll_btn"
+              onClick={setShowAll(!showAll)}
+            >
+              {t("tours.ShowAll")}
+            </Button> */}
+          {/* </div> */}
 
           <div className="tours-grid">
             <Row>
-              {trips.map((trip) => (
+              {visibleItems?.map((trip) => (
                 <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
                   <Link
                     className="w-100"
@@ -118,6 +130,15 @@ const ToursSection = (props) => {
                 </Col>
               ))}
             </Row>
+            {/* Show button only if there are more items */}
+            {visibleCount < trips.length && (
+              <Button
+                className="transBtn primaryBtn load_btn"
+                onClick={handleLoadMore}
+              >
+                {t("tours.LoadMore")}
+              </Button>
+            )}
           </div>
         </Container>
       </section>
