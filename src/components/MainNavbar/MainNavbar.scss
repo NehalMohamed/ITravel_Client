@@ -105,7 +105,7 @@
 
     @include media-breakpoint-down(md) {
       padding: 6px 8px;
-      
+
       .navbar-toggler-icon {
         width: 1.2em;
         height: 1.2em;
@@ -114,7 +114,7 @@
 
     @include media-breakpoint-down(sm) {
       padding: 5px 6px;
-      
+
       .navbar-toggler-icon {
         width: 1.1em;
         height: 1.1em;
@@ -124,7 +124,6 @@
 
   .navbar-collapse {
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
 
     @include media-breakpoint-down(md) {
       left: 10px;
@@ -186,8 +185,8 @@
         font-size: 14px;
       }
 
-      @include media-breakpoint-down(md) { 
-      padding: 14px 20px !important;
+      @include media-breakpoint-down(md) {
+        padding: 14px 20px !important;
         width: 100%;
         text-align: center;
         margin-bottom: 2px;
@@ -450,8 +449,8 @@
       gap: 6px;
       margin-left: 15px;
     }
-    @include media-breakpoint-down(md) { 
-    margin-left: 0;
+    @include media-breakpoint-down(md) {
+      margin-left: 0;
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
@@ -765,7 +764,7 @@
 
           .flag {
             font-size: 16px;
-            
+
             @include media-breakpoint-down(sm) {
               font-size: 14px;
             }
@@ -774,14 +773,14 @@
 
         .dropdown-header {
           padding: 12px 18px;
-          
+
           @include media-breakpoint-down(md) {
             padding: 10px 16px;
           }
 
           @include media-breakpoint-down(sm) {
             padding: 8px 14px;
-            
+
             small {
               font-size: 11px;
             }
@@ -1002,10 +1001,10 @@
 // Landscape orientation on mobile devices
 @media (max-height: 500px) and (orientation: landscape) {
   .main-navbar {
-    .navbar-collapse {
-      max-height: 80vh;
-      overflow-y: auto;
-    }
+    // .navbar-collapse {
+    //   max-height: 80vh;
+    //   overflow-y: auto;
+    // }
 
     .nav-dropdown .dropdown-menu {
       max-height: 200px;
@@ -1026,7 +1025,6 @@
     }
   }
 }
-
 
 // Enhanced accessibility
 @media (prefers-reduced-motion: reduce) {

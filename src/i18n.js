@@ -9,14 +9,14 @@ const resources = {
   en: { translation: translationEN },
   de: { translation: translationDE },
 };
-
+const Locallang = localStorage.getItem("lang")?.toLocaleLowerCase();
 i18n
   //.use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: localStorage.getItem("lang") || "de",
-    lng: localStorage.getItem("lang") || "de",
+    fallbackLng: (Locallang == "ar" ? "de" : Locallang) || "de",
+    lng: (Locallang == "ar" ? "de" : Locallang) || "de",
     interpolation: {
       escapeValue: false,
     },
