@@ -18,7 +18,7 @@ export const checkAUTH = () => {
   if (authToken && user && !isTokenExpired(authToken)) {
     return true;
   } else {
-    console.log("User not logged in or token expired");
+    //console.log("User not logged in or token expired");
     return false;
   }
 };
@@ -48,7 +48,7 @@ export const checkIsLogin = () => {
   if (authToken && userLocal) {
     return true;
   } else {
-    console.log("there is no login user");
+    //console.log("there is no login user");
     return false;
   }
 };

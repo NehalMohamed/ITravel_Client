@@ -1,6 +1,7 @@
 .trip-info-section {
   padding: $spacer-xxxl 0;
-  background-color: $light-bg;
+  // background-color: $light-bg;
+  background-color: white;
   min-height: 70vh;
   font-family: $font-family-base;
   display: flex;
@@ -47,10 +48,9 @@
     @include flex-center;
 
     .coming-soon-image {
-      width: 480px;
-      height: 480px;
+      // width: 480px;
+      // height: 480px;
       overflow: hidden;
-     
 
       img {
         width: 100%;

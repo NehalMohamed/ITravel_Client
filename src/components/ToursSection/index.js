@@ -56,7 +56,7 @@ const ToursSection = (props) => {
 
   useEffect(() => {
     // Handle errors in the parent component only
-    console.log("operation.error ", operation.error);
+    //console.log("operation.error ", operation.error);
     if (operation.error) {
       setPopupMessage(operation.error);
       setPopupType("alert");

@@ -103,7 +103,7 @@ const PickupLocation = ({ onChange, value }) => {
       }
       fireChange({ lat, lng }, formatted);
     } catch (err) {
-      console.log("Reverse geocoding failed", err);
+      //console.log("Reverse geocoding failed", err);
     }
   };
 

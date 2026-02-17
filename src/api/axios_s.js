@@ -66,18 +66,18 @@ api.interceptors.request.use(
     let user = JSON.parse(localStorage.getItem("user"));
     let token = user?.accessToken;
 
-    console.log("token ", token);
+   // console.log("token ", token);
     config.headers["Content-Type"] = "application/json";
 
     // ✅ Only attach token if `config.skipAuth` is NOT true
     if (token) {
-      console.log("request 1 ");
+      //console.log("request 1 ");
       config.headers.Authorization = `Bearer ${token}`;
       config.headers["Content-Type"] = "application/json";
     }
     // 🚫 If request requires auth but token is missing, show alert
     if (!token && !showingLoginAlert) {
-      console.log("request 2 ");
+      //console.log("request 2 ");
       showingLoginAlert = true;
       localStorage.setItem("redirect_after_login", window.location.pathname);
       // 🧠 Show popup for user to log in first
@@ -119,7 +119,7 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error?.config;
-    console.log("originalRequest.url ", originalRequest?.url);
+    //console.log("originalRequest.url ", originalRequest?.url);
     // Skip refresh for login/register endpoints
     if (
       originalRequest?.url.includes("/api/LoginUser") ||
@@ -130,7 +130,7 @@ api.interceptors.response.use(
     ) {
       return Promise.reject(error);
     }
-    console.log("error.response?.status", error.response?.status);
+    //console.log("error.response?.status", error.response?.status);
     // Handle unauthorized
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
@@ -149,7 +149,7 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        console.log("start get refresh");
+        //console.log("start get refresh");
         // token refresh
         // const refreshResponse = await authApi.post("/refresh");
         // console.log("refreshResponse ", refreshResponse);

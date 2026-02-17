@@ -83,7 +83,7 @@ function AuthComp() {
   const signin = (event) => {
     event.preventDefault();
     const redirectUrl = localStorage.getItem("redirect_after_login");
-    console.log("redirectUrl ", redirectUrl);
+    //console.log("redirectUrl ", redirectUrl);
     // validation
     if (validate()) {
       let lang = localStorage.getItem("lang") || "en";

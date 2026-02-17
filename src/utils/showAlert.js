@@ -22,7 +22,7 @@ export const showAuthPopup = (message, callback, scenario = 'expired') => {
         document.body.removeChild(popupRoot);
       }
     } catch (error) {
-      console.warn('Cleanup error:', error);
+      //console.warn('Cleanup error:', error);
     }
     popupRoot = null;
     root = null;

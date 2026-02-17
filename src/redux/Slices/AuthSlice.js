@@ -285,7 +285,7 @@ const authSlice = createSlice({
       })
       // Password change successful
       .addCase(changePassword.fulfilled, (state, action) => {
-        console.log("fulfilled ", action.payload);
+        //console.log("fulfilled ", action.payload);
         state.loading = false;
         state.success = action.payload?.isSuccessed;
         state.message = action.payload?.message;
@@ -298,7 +298,7 @@ const authSlice = createSlice({
       })
       // Password change failed
       .addCase(changePassword.rejected, (state, action) => {
-        console.log("rejectttt");
+        //console.log("rejectttt");
         state.loading = false;
         state.success = false;
         state.error = action?.payload;

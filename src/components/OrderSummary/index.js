@@ -95,7 +95,7 @@ const OrderSummary = ({ availabilityData }) => {
 
   const handleRedeem = () => {
     // Handle redeem logic here
-    console.log("Redeeming gift code:", giftCode);
+    //console.log("Redeeming gift code:", giftCode);
     setShowGiftCode(false);
   };
 

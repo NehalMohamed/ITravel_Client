@@ -9,7 +9,7 @@ import { fetchDestinationTrips } from "../../redux/Slices/tripsSlice";
 import TourCard from "../TourCard";
 import LoadingPage from "../Loader/LoadingPage";
 import PopUp from "../Shared/popup/PopUp";
-
+import { Link } from "react-router-dom";
 const DestinationExcursions = () => {
   const { state } = useLocation(); // Get tripData passed from navigation
   const destinationId = state?.DestinationId;
@@ -78,7 +78,21 @@ const DestinationExcursions = () => {
               <Row>
                 {trips.map((trip) => (
                   <Col key={trip.trip_id} lg={4} md={6} className="d-flex">
-                    <TourCard trip={trip} />
+                    <Link
+                      className="w-100"
+                      to={
+                        !trip.is_comm_soon
+                          ? `/trip/${trip.route}`
+                          : "/trip/ComingSoon"
+                      }
+                      state={{
+                        tripId: trip.trip_id,
+                        trip_type: trip.trip_type,
+                      }}
+                    >
+                      <TourCard trip={trip} />
+                    </Link>
+                    {/* <TourCard trip={trip} /> */}
                   </Col>
                 ))}
               </Row>

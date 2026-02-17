@@ -18,6 +18,16 @@ let showingLoginAlert = false;
 // =========================
 api.interceptors.request.use(
   (config) => {
+    let lang = localStorage.getItem("lang");
+    config.headers["Accept-Language"] = lang;
+    if (config.isFormData) {
+      config.headers["Content-Type"] = "multipart/form-data";
+    } else {
+      config.headers["Content-Type"] = "application/json";
+    }
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     // Allow non-auth requests
     if (config.skipAuth === true) return config;
 
@@ -59,7 +69,7 @@ api.interceptors.request.use(
     return config;
   },
 
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // =========================
@@ -147,7 +157,7 @@ api.interceptors.response.use(
 
     // Other errors
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

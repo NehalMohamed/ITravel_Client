@@ -57,7 +57,7 @@ export const fetchBookingCount = createAsyncThunk(
       // Assuming the API returns a simple number like in your example
       return response.data;
     } catch (error) {
-      console.error("Error fetching booking count:", error);
+      //console.error("Error fetching booking count:", error);
       // Return 0 on error but don't show error to user for count
       return 0;
     }

@@ -56,7 +56,7 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
       // Refresh the image from server after successful upload
       dispatch(fetchProfileImage());
     } catch (error) {
-      console.error("Image upload failed:", error);
+      //console.error("Image upload failed:", error);
     }
   };
   // Trigger file input click when camera icon is clicked

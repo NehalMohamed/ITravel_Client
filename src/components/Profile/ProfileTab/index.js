@@ -9,6 +9,7 @@ import LoadingPage from "../../Loader/LoadingPage";
 const ProfileTab = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   // const currentLang =
   //   useSelector((state) => state.language.currentLang) || "en";
   const currentLang = localStorage.getItem("lang") || "de";

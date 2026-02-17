@@ -27,7 +27,7 @@ const GoogleLoginButton = (props) => {
         let { family_name, given_name, email } = userInfo.data;
         //check if this login or register (different in api path and payload)
         const redirectUrl = localStorage.getItem("redirect_after_login");
-        console.log("redirectUrl ", redirectUrl);
+        //console.log("redirectUrl ", redirectUrl);
         if (props.login) {
           let formData = {
             email: email,

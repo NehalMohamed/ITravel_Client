@@ -59,7 +59,7 @@ export const fetchWishlistCount = createAsyncThunk(
       // Assuming the API returns a simple number like in your example
       return response.data;
     } catch (error) {
-      console.error("Error fetching wishlist count:", error);
+      //console.error("Error fetching wishlist count:", error);
       // Return 0 on error but don't show error to user for count
       return 0;
     }
@@ -132,7 +132,7 @@ export const addToWishlist = createAsyncThunk(
         //getAuthHeaders()
       );
 
-      console.log("Add to wishlist response:", response.data);
+      //console.log("Add to wishlist response:", response.data);
 
       // Refresh wishlist count after adding
       const clientId = getClientId();
@@ -231,7 +231,7 @@ const wishlistSlice = createSlice({
       })
       // Add to wishlist
       .addCase(addToWishlist.pending, (state) => {
-        console.log("pending ");
+        //console.log("pending ");
         state.operation.loading = true;
         state.operation.error = null;
         state.operation.success = false;
@@ -247,13 +247,13 @@ const wishlistSlice = createSlice({
           state.operation.success = true;
         } else {
           // Handle successful response but operation failed
-          console.log(action.payload.error);
+          //console.log(action.payload.error);
           state.operation.error = action.payload.error;
           state.operation.success = false;
         }
       })
       .addCase(addToWishlist.rejected, (state, action) => {
-        console.log("addToWishlist ", action.payload);
+        //console.log("addToWishlist ", action.payload);
         state.operation.loading = false;
         state.operation.error = action.payload;
         state.operation.success = false;
